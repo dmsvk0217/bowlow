@@ -84,6 +84,7 @@ a {
 }
 .mobile__menu__section__1__item {
   padding-right: 15px;
+  font-size: 13px;
 }
 .mobile__menu__section__2 {
   display: flex;
@@ -100,8 +101,10 @@ a {
   padding-bottom: 30px;
 }
 .mobile__menu__section__3__item {
+  font-size: 13px;
 }
 .mobile__menu__section__4 {
+  font-size: 13px;
 }
 .mobile__box {
   display: block;
