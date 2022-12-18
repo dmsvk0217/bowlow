@@ -1,9 +1,43 @@
-.landing {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+* {
+  box-sizing: border-box;
 }
-body {
-  background-color: gray;
+.land {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 100vh;
+  width: 100%;
+  background-color: white;
+}
+.grid {
+  display: grid;
+  place-items: center;
+  width: 70%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 15px;
+}
+.item {
+  z-index: 1;
+  height: 200px;
+  width: 100%;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 1em;
+}
+
+.landingImg {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 117px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .landingImg {
+    top: 0;
+  }
 }
