@@ -8,11 +8,13 @@ import BowulPage from "./component/BowulPage/BowulPage";
 import NewArrivalsPage from "./component/NewArrivalsPage/NewArrivalsPage";
 import BestItemPage from "./component/BestItemPage/BestItemPage";
 import Shop from "./component/Shop/Shop";
+import ScrollToTop from "./component/ScrollToTop";
 
 function App() {
   return (
     <React.StrictMode>
       <Router>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />

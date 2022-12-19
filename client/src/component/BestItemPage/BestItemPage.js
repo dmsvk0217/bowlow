@@ -1,5 +1,4 @@
 import React from "react";
-import "./BestItemPage.css";
 import GridItem from "../common/GridItem/GridItem";
 import img from "../img/img";
 

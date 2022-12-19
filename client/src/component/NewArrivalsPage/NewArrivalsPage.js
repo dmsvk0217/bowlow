@@ -1,5 +1,4 @@
 import React from "react";
-import "./NewArrivalsPage.css";
 import GridItem from "../common/GridItem/GridItem";
 import img from "../img/img";
 

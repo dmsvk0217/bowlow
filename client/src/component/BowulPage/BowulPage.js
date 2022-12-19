@@ -1,5 +1,4 @@
 import React from "react";
-import "./BowulPage.css";
 import GridItem from "../common/GridItem/GridItem";
 import img from "../img/img";
 

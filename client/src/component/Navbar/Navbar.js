@@ -24,7 +24,7 @@ function Navbar() {
       <nav className="navbar" ref={navBarChange}>
         <div className="navbar__top">
           <div className="navbar__top__logo">
-            <span>BOWLOW</span>
+            <Link to="/">BOWLOW</Link>
           </div>
           <ul className="navbar__top__middleMenu">
             <li className="nabar__top__middleMune__item">
