@@ -10,29 +10,28 @@ function LandingPage() {
   const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
-    <>
-      <div className="landing">
-        <img className="landingImg" src={landingImage} alt="LandingIMG" />
-        <div className="land">
-          <div className="paddingDiv" />
-          <GridText text="신상품" />
-          <div className="grid">
-            {list.map((e, index) => (
-              <GridItem key={index} image={img[e - 1]} />
-            ))}
-          </div>
-
-          <div className="paddingDiv"></div>
-          <GridText text="베스트" />
-          <div className="grid">
-            {list.map((e, index) => (
-              <GridItem key={index} image={img[e - 1]} />
-            ))}
-          </div>
-          <div className="paddingDiv" />
+    <div className="landing">
+      <img className="landingImg" src={landingImage} alt="LandingIMG" />
+      <div className="marginTop"></div>
+      <div className="land">
+        <div className="paddingDiv" />
+        <GridText text="신상품" />
+        <div className="grid">
+          {list.map((e, index) => (
+            <GridItem key={index} image={img[e - 1]} />
+          ))}
         </div>
+
+        <div className="paddingDiv"></div>
+        <GridText text="베스트" />
+        <div className="grid">
+          {list.map((e, index) => (
+            <GridItem key={index} image={img[e - 1]} />
+          ))}
+        </div>
+        <div className="paddingDiv" />
       </div>
-    </>
+    </div>
   );
 }
 
