@@ -32,16 +32,16 @@
   display: flex;
   justify-content: space-between;
 }
-.navbar li {
+.navbar li,
+.mobile__menu li {
   list-style: none;
 }
-ul {
-  padding-left: 0px;
-}
-.navbar a {
+.navbar a,
+.mobile__menu a {
   text-decoration: none;
   color: black;
 }
+
 .navbar__top__logo {
   font-size: 20px;
 }

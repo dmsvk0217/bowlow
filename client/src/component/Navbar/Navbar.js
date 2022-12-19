@@ -11,7 +11,7 @@ function Navbar() {
     positionChange.current.style =
       "display:block; visibility: visible; right:0px; z-index:101";
     opacityChange.current.style =
-      "opacity:0.5; visibility: visible; right: 300px; z-index:100";
+      "opacity:0.5; visibility: visible; right: 270px; z-index:100";
   };
 
   const menuOffHandler = () => {
