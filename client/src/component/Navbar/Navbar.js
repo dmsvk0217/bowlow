@@ -58,16 +58,16 @@ function Navbar() {
 
         <ul className="navbar__bottom">
           <li className="bottom_navbar_item">
-            <Link to="#">BOWUL</Link>
+            <Link to="/bowul">BOWUL</Link>
           </li>
           <li className="bottom_navbar_item">
-            <Link to="#">NEW ARRIVALS</Link>
+            <Link to="/newArrivals">NEW ARRIVALS</Link>
           </li>
           <li className="bottom_navbar_item">
-            <Link to="#">BEST</Link> ITEM
+            <Link to="/bestItem">BEST ITEM</Link>
           </li>
           <li className="bottom_navbar_item">
-            <Link to="#">SHOP</Link>
+            <Link to="/shop">SHOP</Link>
           </li>
         </ul>
       </nav>
