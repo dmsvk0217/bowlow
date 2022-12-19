@@ -1,0 +1,14 @@
+.gridItem {
+  height: 100%;
+}
+
+.gridItem p {
+  font-size: 11px;
+  line-height: normal;
+  letter-spacing: 0.5px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,9 @@
+.gridText {
+  padding-top: 70px;
+  padding-bottom: 80px;
+}
+
+.gridText p {
+  font-size: 18px;
+  font-weight: 700;
+}

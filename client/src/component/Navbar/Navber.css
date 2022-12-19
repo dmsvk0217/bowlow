@@ -14,20 +14,31 @@
   background: none;
   z-index: 2;
 }
+
 .navbar:hover {
   background-color: white;
 }
+
+.nabar__top__middleMune__item a,
+.navbar__top__sideMenu__item a {
+  color: #111;
+  font-size: 12px;
+  line-height: 1.67em;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
 .navbar__top {
   display: flex;
   justify-content: space-between;
 }
-li {
+.navbar li {
   list-style: none;
 }
 ul {
   padding-left: 0px;
 }
-a {
+.navbar a {
   text-decoration: none;
   color: black;
 }
@@ -47,7 +58,7 @@ a {
 }
 .navbar__top__sideMenu__item {
   font-size: 13px;
-  padding: 0px 20px;
+  padding: 0px 15px;
 }
 .navbar__bottom {
   display: flex;
