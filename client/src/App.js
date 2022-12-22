@@ -10,6 +10,7 @@ import BestItemPage from "./component/BestItemPage/BestItemPage";
 import Shop from "./component/Shop/Shop";
 import ScrollToTop from "./component/ScrollToTop";
 import Notice from "./component/Notice/Notice";
+import Event from "./component/Event/Event";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/bestItem" element={<BestItemPage />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/notice" element={<Notice />} />
+          <Route path="/event" element={<Event />} />
         </Routes>
         <Footer />
       </Router>
