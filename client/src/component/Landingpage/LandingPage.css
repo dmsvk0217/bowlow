@@ -26,10 +26,6 @@
   bottom: 0;
 }
 
-.paddingDiv {
-  padding-bottom: 50px;
-}
-
 @media only screen and (max-width: 900px) {
   .landingImg {
     top: 0;

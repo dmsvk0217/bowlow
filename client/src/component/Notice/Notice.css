@@ -1,0 +1,31 @@
+.content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0px auto 100px;
+  padding: 0 20px;
+}
+
+.topList {
+  display: flex;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 12px;
+}
+
+.topList__name {
+  width: 30px;
+}
+.topList__title {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  .content {
+    margin: 75px auto 0px;
+    padding: 0 15px;
+  }
+}

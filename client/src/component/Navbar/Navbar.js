@@ -28,27 +28,27 @@ function Navbar() {
           </div>
           <ul className="navbar__top__middleMenu">
             <li className="nabar__top__middleMune__item">
-              <Link to="#">공지사항</Link>
+              <Link to="/notice">공지사항</Link>
             </li>
             <li className="nabar__top__middleMune__item">
-              <Link to="#">이벤트</Link>
+              <Link to="/event">이벤트</Link>
             </li>
             <li className="nabar__top__middleMune__item">
-              <Link to="#">리뷰</Link>
+              <Link to="/review">리뷰</Link>
             </li>
             <li className="nabar__top__middleMune__item">
-              <Link to="#">마이 페이지</Link>
+              <Link to="/myPage">마이 페이지</Link>
             </li>
           </ul>
           <ul className="navbar__top__sideMenu">
             <li className="navbar__top__sideMenu__item">
-              <Link to="#">검색</Link>
+              <Link to="/search">검색</Link>
             </li>
             <li className="navbar__top__sideMenu__item">
-              <Link to="#">로그인</Link>
+              <Link to="/login">로그인</Link>
             </li>
             <li className="navbar__top__sideMenu__item">
-              <Link to="#">장바구니</Link>
+              <Link to="/bag">장바구니</Link>
             </li>
           </ul>
           <Link to="#" className="menu" onClick={menuOnHandler}>
@@ -74,48 +74,48 @@ function Navbar() {
       <div ref={positionChange} className="mobile__menu">
         <ul className="mobile__menu__section__1">
           <li className="mobile__menu__section__1__item">
-            <Link to="#">검색</Link>
+            <Link to="/search">검색</Link>
           </li>
           <li className="mobile__menu__section__1__item">
-            <Link to="#">로그인</Link>
+            <Link to="/login">로그인</Link>
           </li>
           <li className="mobile__menu__section__1__item">
-            <Link to="#">장바구니</Link>
+            <Link to="/bag">장바구니</Link>
           </li>
           <li className="mobile__menu__section__1__item">
-            <Link to="#">마이 페이지</Link>
+            <Link to="/myPage">마이 페이지</Link>
           </li>
         </ul>
 
         <ul className="mobile__menu__section__2">
           <li className="mobile__menu__section__2__item">
-            <Link to="#">BOWUL</Link>
+            <Link to="/bowul">BOWUL</Link>
           </li>
           <li className="mobile__menu__section__2__item">
-            <Link to="#">NEW ARRIVALS</Link>
+            <Link to="newArrivals">NEW ARRIVALS</Link>
           </li>
           <li className="mobile__menu__section__2__item">
-            <Link to="#">BEST ITEM</Link>
+            <Link to="/bestItem">BEST ITEM</Link>
           </li>
           <li className="mobile__menu__section__2__item">
-            <Link to="#">SHOP</Link>
+            <Link to="/shop">SHOP</Link>
           </li>
         </ul>
 
         <ul className="mobile__menu__section__3">
           <li className="mobile__menu__section__3__item">
-            <Link to="#">공지사항</Link>
+            <Link to="/notice">공지사항</Link>
           </li>
           <li className="mobile__menu__section__3__item">
-            <Link to="#">이벤트</Link>
+            <Link to="/event">이벤트</Link>
           </li>
           <li className="mobile__menu__section__3__item">
-            <Link to="#">리뷰</Link>
+            <Link to="/review">리뷰</Link>
           </li>
         </ul>
 
         <ul className="mobile__menu__section__4">
-          <Link to="#">Instagram</Link>
+          <Link to="/instagram">Instagram</Link>
         </ul>
       </div>
       <div

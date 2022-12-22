@@ -9,6 +9,7 @@ import NewArrivalsPage from "./component/NewArrivalsPage/NewArrivalsPage";
 import BestItemPage from "./component/BestItemPage/BestItemPage";
 import Shop from "./component/Shop/Shop";
 import ScrollToTop from "./component/ScrollToTop";
+import Notice from "./component/Notice/Notice";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/newArrivals" element={<NewArrivalsPage />} />
           <Route path="/bestItem" element={<BestItemPage />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/notice" element={<Notice />} />
         </Routes>
         <Footer />
       </Router>

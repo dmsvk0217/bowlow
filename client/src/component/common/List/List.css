@@ -1,0 +1,21 @@
+.info__container {
+  display: flex;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid black;
+}
+ul {
+  list-style: none;
+}
+.number {
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.title {
+  padding-bottom: 5px;
+}
+
+.writer__date {
+  font-weight: 200;
+}

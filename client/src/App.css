@@ -17,11 +17,17 @@ body {
   letter-spacing: 0.5px;
 }
 
+ul {
+  list-style: none;
+}
+.container {
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
+
 .gird__container {
   display: flex;
   justify-content: center;
-  margin-top: 200px;
-  margin-bottom: 100px;
 }
 
 .grid {
@@ -30,4 +36,14 @@ body {
   width: 70%;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
+}
+
+.marginDiv50 {
+  margin-bottom: 50px;
+}
+
+.marginDiv80 {
+  width: 100%;
+  height: 1px;
+  margin-bottom: 80px;
 }
