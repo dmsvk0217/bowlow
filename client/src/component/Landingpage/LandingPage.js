@@ -16,7 +16,7 @@ function LandingPage() {
       <div className="land">
         <div className="marginDiv50" />
         <GridText text="신상품" />
-        <div className="grid3">
+        <div className="grid3 product__container">
           {list.map((e, index) => (
             <GridItem key={index} image={img[e - 1]} />
           ))}
@@ -24,7 +24,7 @@ function LandingPage() {
 
         <div className="marginDiv50"></div>
         <GridText text="베스트" />
-        <div className="grid3">
+        <div className="grid3 product__container">
           {list.map((e, index) => (
             <GridItem key={index} image={img[e - 1]} />
           ))}
