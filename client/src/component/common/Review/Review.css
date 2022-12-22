@@ -1,0 +1,62 @@
+.reviewContainer {
+  width: 100%;
+  height: auto;
+  font-size: 13px;
+  border: 1px solid lightgray;
+}
+
+.reviewAndProductContainer {
+  padding: 13px;
+}
+
+.review__image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.review__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewContent {
+  width: 100%;
+  height: 33px;
+  /* 특정 단위로 텍스트를 자르기 위한 구문 */
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 텍스트를 자를 때 원하는 단위 ex) 3줄 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product__nameAndsize {
+  font-weight: 200;
+}
+
+.writerAndDate {
+  font-weight: 200;
+}
+
+.product {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid lightgray;
+  display: flex;
+}
+
+.product__detail {
+  display: flex;
+  flex-direction: column;
+  line-height: 140%;
+}
+
+.product__image {
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 5px;
+}

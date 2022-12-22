@@ -7,7 +7,7 @@ function BestItemPage() {
 
   return (
     <div className="gird__container container">
-      <div className="grid">
+      <div className="grid3">
         {list.map((e, index) => (
           <GridItem key={index} image={img[e + 19]} />
         ))}

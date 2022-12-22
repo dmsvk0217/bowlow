@@ -20,9 +20,11 @@ body {
 ul {
   list-style: none;
 }
+
 .container {
   margin-top: 200px;
   margin-bottom: 100px;
+  width: 100%;
 }
 
 .gird__container {
@@ -30,12 +32,28 @@ ul {
   justify-content: center;
 }
 
-.grid {
+.grid3 {
   display: grid;
   place-items: center;
-  width: 70%;
   grid-template-columns: repeat(3, 1fr);
+  align-items: start;
   grid-gap: 15px;
+}
+
+.grid3 > .reviewContainer > img {
+  max-height: 500px;
+}
+
+.grid4 {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+  grid-gap: 15px;
+}
+
+.grid4 > .reviewContainer > img {
+  max-height: 370px;
 }
 
 .marginDiv50 {
