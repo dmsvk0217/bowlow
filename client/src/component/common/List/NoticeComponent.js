@@ -2,8 +2,8 @@ import React from "react";
 import "./List.css";
 import { Link } from "react-router-dom";
 
-function List(props) {
-  const notice = props.list;
+function NoticeComponent(props) {
+  const notice = props.notice;
 
   return (
     <ul>
@@ -32,4 +32,4 @@ function List(props) {
   );
 }
 
-export default List;
+export default NoticeComponent;

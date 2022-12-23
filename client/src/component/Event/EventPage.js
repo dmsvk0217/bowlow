@@ -1,9 +1,9 @@
 import React from "react";
-import List from "../common/List/List";
-import lists from "../common/List/NoticeList";
+import EventComponent from "../common/List/EventComponent";
+import events from "../common/List/EventList";
 import "./Event.css";
 
-function Event() {
+function EventPage() {
   return (
     <div className="container">
       <div className="marginDiv80"></div>
@@ -14,12 +14,12 @@ function Event() {
             <div className="topList__title">신상품 5% 할인 이벤트</div>
           </li>
         </ul>
-        {lists.map((list, index) => (
-          <List key={index} list={list} />
+        {events.map((event, index) => (
+          <EventComponent key={index} event={event} />
         ))}
       </div>
     </div>
   );
 }
 
-export default Event;
+export default EventPage;

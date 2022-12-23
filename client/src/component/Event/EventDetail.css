@@ -1,0 +1,35 @@
+.event_top {
+  padding: 10px 0;
+}
+
+.event_title {
+  margin-bottom: 5px;
+}
+
+.event_writerAndDate {
+  font-size: 0.7rem;
+  color: #91949c;
+}
+
+.event_content {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  align-items: center;
+  height: 350px;
+}
+
+.event_button {
+  background-color: black;
+  color: white;
+  width: 150px;
+  height: 30px;
+  float: right;
+  margin: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}

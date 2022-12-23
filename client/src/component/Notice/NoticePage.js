@@ -1,9 +1,9 @@
 import React from "react";
-import List from "../common/List/List";
-import lists from "../common/List/NoticeList";
+import NoticeComponent from "../common/List/NoticeComponent";
+import notices from "../common/List/NoticeList";
 import "./Notice.css";
 
-function Notice() {
+function NoticePage() {
   return (
     <div className="container">
       <div className="marginDiv80"></div>
@@ -14,12 +14,12 @@ function Notice() {
             <div className="topList__title">신상품 5% 할인 이벤트</div>
           </li>
         </ul>
-        {lists.map((list, index) => (
-          <List key={index} list={list} />
+        {notices.map((notice, index) => (
+          <NoticeComponent key={index} notice={notice} />
         ))}
       </div>
     </div>
   );
 }
 
-export default Notice;
+export default NoticePage;
