@@ -2,6 +2,7 @@ import React from "react";
 import Review from "../Review/Review";
 import "./ReviewPage.css";
 import { reviewBest, reviewPhoto } from "../../common/Review/ReviewList";
+import ReviewText from "../Review/ReviewText";
 
 export default function ReviewPage() {
   return (
@@ -23,6 +24,14 @@ export default function ReviewPage() {
             <Review key={index} review={review} />
           ))}
         </div>
+        <div className="marginDiv50"></div>
+        <div className="marginDiv80"></div>
+        <div className="Review__title">Review</div>
+        <div className="marginDiv50"></div>
+        <ReviewText />
+        <ReviewText />
+        <ReviewText />
+        <ReviewText />
       </div>
     </div>
   );
