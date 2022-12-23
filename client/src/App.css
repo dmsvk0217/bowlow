@@ -21,6 +21,11 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -28,6 +33,20 @@ ul {
   margin-top: 200px;
   margin-bottom: 100px;
   width: 100%;
+}
+
+.content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0px auto 100px;
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  .content {
+    margin: 75px auto 0px;
+    padding: 0 15px;
+  }
 }
 
 .product__container {

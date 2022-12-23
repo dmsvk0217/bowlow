@@ -12,6 +12,7 @@ import ScrollToTop from "./component/ScrollToTop";
 import Notice from "./component/Notice/Notice";
 import Event from "./component/Event/Event";
 import ReviewPage from "./component/common/ReviewPage/ReviewPage";
+import NoticeDatail from "./component/Notice/NoticeDatail";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/bestItem" element={<BestItemPage />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/notice" element={<Notice />} />
+          <Route path="/notice/:id" element={<NoticeDatail />} />
           <Route path="/event" element={<Event />} />
           <Route path="/review" element={<ReviewPage />} />
         </Routes>
