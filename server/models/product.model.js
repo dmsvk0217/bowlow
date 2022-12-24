@@ -1,4 +1,4 @@
-const sql = require("./db");
+const db = require("./db");
 
 // constructor
 const Product = function (product) {
@@ -14,12 +14,41 @@ const Product = function (product) {
   this.category2 = product.category2;
 };
 
-const Product_option = function (product_option) {
-  this.id = product_option.id;
-  this.product_id = product_option.product_id;
-  this.color = product_option.color;
-  this.size = product_option.size;
-  this.quantitiy = product_option.quantitiy;
+product.getAll = (title, result) => {
+  if (title) {
+    query += ` WHERE title LIKE '%${title}%'`;
+  }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    result(null, res);
+  });
+};
+
+Product.getProduct = (product, cb) => {
+  let sql = "SELECT * FROM product ";
+  let sql_object;
+
+  //type, category1,2 별 분류
+  if (product.type != 4) {
+    sql += "where type=?";
+    sql_object = product.type;
+  } else if (product.category2 == 0) {
+    sql += "where category1=?";
+    sql_object = product.category1;
+  } else {
+    sql += "where category1=? and category2=?";
+    sql_object = [product.category1, product.category2];
+  }
+
+  db.query(sql, sql_object, (err, result) => {
+    console.log("🚀 ~ file: product.model.js:36 ~ db.query ~ result", result);
+    if (err) return cb(err, null);
+    return cb(null, result);
+  });
 };
 
 // Product.create = (newproduct, result) => {
@@ -51,38 +80,6 @@ const Product_option = function (product_option) {
 
 //     // not found product with the id
 //     result({ kind: "not_found" }, null);
-//   });
-// };
-
-// product.getAll = (title, result) => {
-//   let query = "SELECT * FROM products";
-
-//   if (title) {
-//     query += ` WHERE title LIKE '%${title}%'`;
-//   }
-
-//   sql.query(query, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(null, err);
-//       return;
-//     }
-
-//     //console.log("products: ", res);
-//     result(null, res);
-//   });
-// };
-
-// product.getAllPublished = (result) => {
-//   sql.query("SELECT * FROM products WHERE published=true", (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(null, err);
-//       return;
-//     }
-
-//     console.log("products: ", res);
-//     result(null, res);
 //   });
 // };
 
@@ -141,4 +138,4 @@ const Product_option = function (product_option) {
 //   });
 // };
 
-// module.exports = product;
+module.exports = Product;
