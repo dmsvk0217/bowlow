@@ -2,7 +2,6 @@ const db = require("./db");
 
 // constructor
 const Product = function (product) {
-  this.id = product.id;
   this.name = product.name;
   this.price = product.price;
   this.content = product.content;
@@ -14,21 +13,7 @@ const Product = function (product) {
   this.category2 = product.category2;
 };
 
-product.getAll = (title, result) => {
-  if (title) {
-    query += ` WHERE title LIKE '%${title}%'`;
-  }
-  sql.query(query, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-    result(null, res);
-  });
-};
-
-Product.getProduct = (product, cb) => {
+Product.get = (product, cb) => {
   let sql = "SELECT * FROM product ";
   let sql_object;
 
@@ -48,6 +33,14 @@ Product.getProduct = (product, cb) => {
     console.log("🚀 ~ file: product.model.js:36 ~ db.query ~ result", result);
     if (err) return cb(err, null);
     return cb(null, result);
+  });
+};
+
+Product.create = (product, cb) => {
+  const sql = "insert into product set ?";
+  db.query(sql, product, (err, result) => {
+    if (err) return cb(err);
+    return cb(null, { crateProductSuccess: true });
   });
 };
 

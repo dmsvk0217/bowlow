@@ -13,7 +13,7 @@ const User = function (user) {
 };
 
 User.register = (user, cb) => {
-  var sql = "Select * from user where email=?";
+  let sql = "Select * from user where email=?";
 
   //이메일 중복체크 후 비밀번호 암호화 후 db에 저장.
   db.query(sql, user.email, function (err, result) {
@@ -39,7 +39,7 @@ User.register = (user, cb) => {
 };
 
 User.login = (user, cb) => {
-  var sql = "Select * from user where email=?";
+  let sql = "Select * from user where email=?";
 
   //이메일 존재 여부 확인 -> 비밀번호 복호화 비교 -> return
   db.query(sql, user.email, function (err, result) {
@@ -59,12 +59,12 @@ User.login = (user, cb) => {
 
 User.generateToken = (user, cb) => {
   //jwt 생성하기
-  var token = jwt.sign(user.email, secretToken);
+  let token = jwt.sign(user.email, secretToken);
   console.log("🚀 ~ file: user.model.js:64 ~ token", token);
 
   user.token = token;
 
-  var sql = "UPDATE user set token=? where email=?";
+  let sql = "UPDATE user set token=? where email=?";
   db.query(sql, [user.token, user.email], function (err, result) {
     console.log("🚀 ~ file: user.model.js:70 ~ result", result);
     if (err) return cb(err);
@@ -74,7 +74,7 @@ User.generateToken = (user, cb) => {
 
 User.logout = (user, cb) => {
   //user db token null 처리
-  var sql = "UPDATE user set token=NULL where email=?";
+  let sql = "UPDATE user set token=NULL where email=?";
 
   db.query(sql, [user.email], function (err, result) {
     console.log("🚀 ~ file: user.model.js:80 ~ result", result);
