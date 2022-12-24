@@ -1,5 +1,37 @@
 {
   "dependencies": {
-    "express": "^4.18.2"
-  }
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "bootstrap": "^5.2.3",
+    "classnames": "^2.3.2",
+    "concurrently": "^7.5.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "cookieparser": "^0.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "react-bootstrap": "^2.7.0",
+    "react-dropzone": "^14.2.3",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0"
+  },
+  "name": "node",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "backend": "nodemon server/server.js",
+    "frontend": "npm run front --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

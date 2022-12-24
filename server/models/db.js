@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const DBconfig = require("../config/db.config");
 
 //mysql db설정
-var connection = mysql.createConnection({
+var db = mysql.createConnection({
   host: DBconfig.HOST,
   port: DBconfig.PORT,
   user: DBconfig.USER,
@@ -10,4 +10,4 @@ var connection = mysql.createConnection({
   database: DBconfig.DATABASE,
 });
 
-module.exports = connection;
+module.exports = db;
