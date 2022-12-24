@@ -1,4 +1,4 @@
-const sql = require("./db");
+const db = require("./db");
 
 const Review = function (review) {
   this.id = review.id;

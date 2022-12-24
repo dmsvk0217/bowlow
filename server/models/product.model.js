@@ -2,6 +2,7 @@ const db = require("./db");
 
 // constructor
 const Product = function (product) {
+  this.id = product.id;
   this.name = product.name;
   this.price = product.price;
   this.content = product.content;
