@@ -24,7 +24,31 @@ exports.register = (req, res) => {
   });
 };
 
-exports.login = () => {};
+exports.login = (req, res) => {
+  //validate request check
+  if (!req.body) {
+    res.status(400).send({
+      data: "Content can not be empty!",
+    });
+  }
+
+  var user = new User({
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  User.login(user, (err, data) => {
+    if (err)
+      res.state(500).json(data || "Some error occured while logining user");
+
+    User.generateToken(user, (err, result) => {
+      if (err)
+        res.state(500).json(data || "Some error occured while logining user");
+
+      res.cookie("x_auth", user.token).status(200).json(data);
+    });
+  });
+};
 
 exports.logout = () => {};
 
