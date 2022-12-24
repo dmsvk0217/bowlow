@@ -12,9 +12,9 @@ exports.get = (req, res) => {
     category2: req.body.category2,
   });
 
-  Product.getProduct(product, (err, data) => {
+  Product.get(product, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getProduct user");
+      res.state(500).json(data || "Some error occured while getting Product");
     res.json(data);
   });
 };
@@ -34,9 +34,31 @@ exports.create = (req, res) => {
     category2: req.body.category2,
   });
 
-  Product.createProduct(product, (err, data) => {
+  Product.create(product, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getProduct user");
+      res.state(500).json(data || "Some error occured while creating Product");
+    res.json(data);
+  });
+};
+
+exports.update = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ data: "Content can not be empty" });
+  }
+
+  const product = new Product({
+    name: req.body.name,
+    price: req.body.price,
+    content: req.body.content,
+    image: req.body.image,
+    type: req.body.type,
+    category1: req.body.category1,
+    category2: req.body.category2,
+  });
+
+  Product.update(product, (err, data) => {
+    if (err)
+      res.state(500).json(data || "Some error occured while updating product");
     res.json(data);
   });
 };

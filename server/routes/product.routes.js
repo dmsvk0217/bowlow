@@ -6,5 +6,7 @@ module.exports = (app) => {
 
   router.post("/", productController.create);
 
+  router.put("/", productController.update);
+
   app.use("api/product");
 };

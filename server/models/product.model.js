@@ -39,8 +39,19 @@ Product.get = (product, cb) => {
 Product.create = (product, cb) => {
   const sql = "insert into product set ?";
   db.query(sql, product, (err, result) => {
+    console.log("🚀 ~ file: product.model.js:42 ~ db.query ~ result", result);
     if (err) return cb(err);
     return cb(null, { crateProductSuccess: true });
+  });
+};
+
+Product.update = (product, cb) => {
+  const sql = "UPDATE product set ? where name=?";
+  const sql_object = [product, product.name];
+  db.query(sql, sql_object, (err, result) => {
+    console.log("🚀 ~ file: product.model.js:51 ~ db.query ~ result", result);
+    if (err) return cb(err);
+    return cb(null, { updateProductSuccess: true });
   });
 };
 
