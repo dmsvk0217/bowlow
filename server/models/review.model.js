@@ -21,6 +21,18 @@ Review.get = (review, cb) => {
   });
 };
 
+Review.findOne = (id, cb) => {
+  let sql = "SELECT * FROM review where = ?";
+  let sql_object = id;
+
+  db.query(sql, sql_object, (err, result) => {
+    console.log("🚀get ~ file: review.model.js:36 ~ db.query ~ result", result);
+    if (err) return cb(err, null);
+    if (!result) return cb({ kind: "not_found" }, null);
+    return cb(null, result);
+  });
+};
+
 Review.create = (review, cb) => {
   const sql = "insert into Rrview set ?";
 
