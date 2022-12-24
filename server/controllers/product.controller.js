@@ -62,3 +62,26 @@ exports.update = (req, res) => {
     res.json(data);
   });
 };
+
+exports.delete = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ data: "Content can not be empty" });
+  }
+
+  const name = req.body.name;
+  Product.delete(name, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found list with id ${req.params.id}.`,
+          deleteProductSuccess: false,
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete product with name " + name,
+          deleteProductSuccess: false,
+        });
+      }
+    } else res.send({ deleteProductSuccess: true });
+  });
+};

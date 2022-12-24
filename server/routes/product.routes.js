@@ -8,5 +8,7 @@ module.exports = (app) => {
 
   router.put("/", productController.update);
 
+  router.delete("/", productController.delete);
+
   app.use("api/product");
 };

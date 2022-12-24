@@ -30,7 +30,10 @@ Product.get = (product, cb) => {
   }
 
   db.query(sql, sql_object, (err, result) => {
-    console.log("🚀 ~ file: product.model.js:36 ~ db.query ~ result", result);
+    console.log(
+      "🚀get ~ file: product.model.js:36 ~ db.query ~ result",
+      result
+    );
     if (err) return cb(err, null);
     return cb(null, result);
   });
@@ -39,7 +42,10 @@ Product.get = (product, cb) => {
 Product.create = (product, cb) => {
   const sql = "insert into product set ?";
   db.query(sql, product, (err, result) => {
-    console.log("🚀 ~ file: product.model.js:42 ~ db.query ~ result", result);
+    console.log(
+      "🚀create ~ file: product.model.js:42 ~ db.query ~ result",
+      result
+    );
     if (err) return cb(err);
     return cb(null, { crateProductSuccess: true });
   });
@@ -49,97 +55,27 @@ Product.update = (product, cb) => {
   const sql = "UPDATE product set ? where name=?";
   const sql_object = [product, product.name];
   db.query(sql, sql_object, (err, result) => {
-    console.log("🚀 ~ file: product.model.js:51 ~ db.query ~ result", result);
+    console.log(
+      "🚀update ~ file: product.model.js:51 ~ db.query ~ result",
+      result
+    );
     if (err) return cb(err);
     return cb(null, { updateProductSuccess: true });
   });
 };
 
-// Product.create = (newproduct, result) => {
-//   sql.query("INSERT INTO products SET ?", newproduct, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(err, null);
-//       return;
-//     }
+Product.delete = (name, cb) => {
+  const sql = "DELETE FROM products WHERE name = ?";
+  db.query(sql, name, (err, result) => {
+    if (err) return cb(err);
+    console.log("🚀 ~ file: product.model.js:61 ~ db.query ~ result", result);
 
-//     console.log("created product: ", { id: res.insertId, ...newproduct });
-//     result(null, { id: res.insertId, ...newproduct });
-//   });
-// };
-
-// product.findById = (id, result) => {
-//   sql.query(`SELECT * FROM products WHERE id = ${id}`, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(err, null);
-//       return;
-//     }
-
-//     if (res.length) {
-//       console.log("found product: ", res[0]);
-//       result(null, res[0]);
-//       return;
-//     }
-
-//     // not found product with the id
-//     result({ kind: "not_found" }, null);
-//   });
-// };
-
-// product.updateById = (id, product, result) => {
-//   sql.query(
-//     "UPDATE products SET title = ?, description = ?, published = ? WHERE id = ?",
-//     [product.title, product.description, product.published, id],
-//     (err, res) => {
-//       if (err) {
-//         console.log("error: ", err);
-//         result(null, err);
-//         return;
-//       }
-
-//       if (res.affectedRows == 0) {
-//         // not found product with the id
-//         result({ kind: "not_found" }, null);
-//         return;
-//       }
-
-//       console.log("updated product: ", { id: id, ...product });
-//       result(null, { id: id, ...product });
-//     }
-//   );
-// };
-
-// product.remove = (id, result) => {
-//   sql.query("DELETE FROM products WHERE id = ?", id, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(null, err);
-//       return;
-//     }
-
-//     if (res.affectedRows == 0) {
-//       // not found product with the id
-//       result({ kind: "not_found" }, null);
-//       return;
-//     }
-
-//     console.log("deleted product with id: ", id);
-//     result(null, res);
-//   });
-// };
-
-// product.removeAll = (result) => {
-//   sql.query("DELETE FROM products", (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(null, err);
-//       return;
-//     }
-
-//     console.log(`deleted ${res.affectedRows} products`);
-//     result(null, res);
-//   });
-// };
+    if (result.affectedRows == 0) {
+      return cb({ kind: "not_found" }, null);
+    }
+    console.log("deleted product with name: ", name);
+    result(null, result);
+  });
+};
 
 module.exports = Product;
