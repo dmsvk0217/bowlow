@@ -71,3 +71,17 @@ User.generateToken = (user, cb) => {
     return cb(null, result);
   });
 };
+
+User.logout = (user, cb) => {
+  //user db token null 처리
+  var sql = "UPDATE user set token=NULL where email=?";
+
+  db.query(sql, [user.email], function (err, result) {
+    console.log("🚀 ~ file: user.model.js:80 ~ result", result);
+    if (err) cb(err);
+
+    return cb(null, { logoutSuccess: true });
+  });
+};
+
+module.exports = User;

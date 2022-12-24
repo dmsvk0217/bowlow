@@ -19,7 +19,7 @@ exports.register = (req, res) => {
 
   User.register(user, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while registering user");
+      res.state(500).json(data || "Some error occured while register user");
     res.json(data);
   });
 };
@@ -38,19 +38,26 @@ exports.login = (req, res) => {
   });
 
   User.login(user, (err, data) => {
-    if (err)
-      res.state(500).json(data || "Some error occured while logining user");
+    if (err) res.state(500).json(data || "Some error occured while login user");
 
     User.generateToken(user, (err, result) => {
       if (err)
-        res.state(500).json(data || "Some error occured while logining user");
+        res.state(500).json(data || "Some error occured while login user");
 
       res.cookie("x_auth", user.token).status(200).json(data);
     });
   });
 };
 
-exports.logout = () => {};
+exports.logout = (req, res) => {
+  const user = req.user;
+
+  User.logout(user, (err, data) => {
+    if (err)
+      res.state(500).json(data || "Some error occured while logout user");
+    res.json(data);
+  });
+};
 
 exports.auth = (req, res) => {
   //여기까지 왔다면 인증이 완료된 것임.

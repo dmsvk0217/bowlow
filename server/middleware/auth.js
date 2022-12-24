@@ -3,6 +3,12 @@ const { secretToken } = require("../config/auth.config");
 const db = require("../models/db");
 
 let auth = (req, res, next) => {
+  if (!req.body) {
+    res.status(400).send({
+      data: "Content can not be empty!",
+    });
+  }
+
   //cookies꺼내기 -> jwt 복호화 -> user email -> select b yemail -> db token과 jwt 일치여부 확인 -> 인증
   const token = req.cookies.x_auth;
 
