@@ -9,6 +9,8 @@ const User = function (user) {
   this.phone = user.phone;
   this.address = user.address;
   this.email = user.email;
+  this.cart_count = user.cart_count;
+  this.auth = user.auth;
   this.token = user.token;
 };
 
@@ -59,13 +61,15 @@ User.login = (user, cb) => {
 
 User.generateToken = (user, cb) => {
   //jwt 생성하기
-  let token = jwt.sign(user.email, secretToken);
+  let token = jwt.sign(user.id, secretToken);
   console.log("🚀 ~ file: user.model.js:64 ~ token", token);
 
   user.token = token;
 
-  let sql = "UPDATE user set token=? where email=?";
-  db.query(sql, [user.token, user.email], function (err, result) {
+  let sql = "UPDATE user set token=? where id=?";
+  let sqlObject = [user.token, user.id];
+
+  db.query(sql, sqlObject, function (err, result) {
     console.log("🚀 ~ file: user.model.js:70 ~ result", result);
     if (err) return cb(err);
     return cb(null, result);
@@ -81,6 +85,17 @@ User.logout = (user, cb) => {
     if (err) cb(err);
 
     return cb(null, { logoutSuccess: true });
+  });
+};
+
+User.cartCount = (user, cb) => {
+  let sql = "UPDATE user set cart_count=? where id=?";
+  let sqlObject = [user.cart_count + 1, user.id];
+
+  db.query(sql, sqlObject, function (err, result) {
+    console.log("🚀 ~ file: user.model.js:96 ~ result", result);
+    if (err) cb(err);
+    return cb(null, result[0]);
   });
 };
 

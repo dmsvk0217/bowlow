@@ -2,8 +2,8 @@ const sql = require("./db");
 
 const Order = function (order) {
   this.id = order.id;
-  this.user_id = cart.user_id;
-  this.product_id = cart.product_id;
-  this.product_option_id = cart.product_option_id;
-  this.quantity = cart.quantity;
+  this.user_id = order.user_id;
+  this.product_id = order.product_id;
+  this.quantity = order.quantity;
+  this.date = order.date;
 };

@@ -13,5 +13,7 @@ module.exports = (app) => {
 
   router.post("/auth", auth, userController.auth);
 
+  router.post("/cartCount", auth, userController.cartCount);
+
   app.use("/api/user", router);
 };
