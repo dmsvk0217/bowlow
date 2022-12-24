@@ -1,13 +1,13 @@
-const Notice = require("../models/Notice.model");
+const Event = require("../models/event.model");
 
 exports.get = (req, res) => {
   if (!req.body) {
     res.status(400).send({ data: "Content can not be empty" });
   }
 
-  Notice.get((err, data) => {
+  Event.get((err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getting Notice");
+      res.state(500).json(data || "Some error occured while getting Event");
     res.json(data);
   });
 };
@@ -19,17 +19,17 @@ exports.findOne = (req, res) => {
 
   const id = req.params.id;
 
-  Notice.findOne(id, (err, data) => {
+  Event.findOne(id, (err, data) => {
     if (err)
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Notice with id ${req.params.id}.`,
-          findOneNoticeSuccess: false,
+          message: `Not found Event with id ${req.params.id}.`,
+          findOneEventSuccess: false,
         });
       } else {
         res.status(500).send({
-          message: "Could not findOne Notice with id " + id,
-          findOneNoticeSuccess: false,
+          message: "Could not findOne Event with id " + id,
+          findOneEventSuccess: false,
         });
       }
     res.json(data);
@@ -42,16 +42,17 @@ exports.create = (req, res) => {
   }
 
   //uuid 생성?
-  const notice = new Notice({
+  const event = new Event({
+    id: req.body.id,
     user_name: req.body.user_name,
     title: req.body.title,
     content: req.body.content,
     date: req.body.date,
   });
 
-  Notice.create(notice, (err, data) => {
+  Event.create(event, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while creating Notice");
+      res.state(500).json(data || "Some error occured while creating Event");
     res.json(data);
   });
 };
@@ -61,16 +62,17 @@ exports.update = (req, res) => {
     res.status(400).send({ data: "Content can not be empty" });
   }
 
-  const notice = new Notice({
+  const event = new Event({
+    id: req.body.id,
     user_name: req.body.user_name,
     title: req.body.title,
     content: req.body.content,
     date: req.body.date,
   });
 
-  Notice.update(notice, (err, data) => {
+  Event.update(event, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while updating Notice");
+      res.state(500).json(data || "Some error occured while updating Event");
     res.json(data);
   });
 };
@@ -82,19 +84,19 @@ exports.delete = (req, res) => {
 
   const id = req.params.id;
 
-  Notice.delete(id, (err, data) => {
+  Event.delete(id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
           message: `Not found list with id ${req.params.id}.`,
-          deleteNoticeSuccess: false,
+          deleteEventSuccess: false,
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Notice with id " + id,
-          deleteNoticeSuccess: false,
+          message: "Could not delete Event with id " + id,
+          deleteEventSuccess: false,
         });
       }
-    } else res.send({ deleteNoticeSuccess: true });
+    } else res.send({ deleteEventSuccess: true });
   });
 };

@@ -18,6 +18,18 @@ Notice.get = (notice, cb) => {
   });
 };
 
+Notice.findOne = (id, cb) => {
+  let sql = "SELECT * FROM notice where = ?";
+  let sql_object = id;
+
+  db.query(sql, sql_object, (err, result) => {
+    console.log("🚀get ~ file: Notice.model.js:36 ~ db.query ~ result", result);
+    if (err) return cb(err, null);
+    if (!result) return cb({ kind: "not_found" }, null);
+    return cb(null, result);
+  });
+};
+
 Notice.create = (notice, cb) => {
   const sql = "insert into notice set ?";
   db.query(sql, notice, (err, result) => {
