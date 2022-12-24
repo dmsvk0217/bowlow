@@ -1,14 +1,14 @@
 const jwt = require("jsonwebtoken");
-const secret = require("../config/auth.config");
+const { secretToken } = require("../config/auth.config");
 const db = require("../models/db");
 
 let auth = (req, res, next) => {
-  //cookies 값 가지고
+  //cookies꺼내기 -> jwt 복호화 -> user email -> select b yemail -> db token과 jwt 일치여부 확인 -> 인증
   const token = req.cookies.x_auth;
-  sql = "select * from user where uid=? and token=?";
-  //jwt 복호화 한후
-  jwt.verify(token, secret.secretToken, (err, decode) => {
-    // decode 값 is userid
+
+  sql = "select * from user where email=? and token=?";
+  jwt.verify(token, secretToken, (err, decode) => {
+    // decode is user email
     if (err) res.status(500).send(err);
     db.query(sql, [decode, token], (err, user) => {
       if (err) res.status(500).send(err);

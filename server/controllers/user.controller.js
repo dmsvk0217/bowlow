@@ -52,4 +52,7 @@ exports.login = (req, res) => {
 
 exports.logout = () => {};
 
-exports.auth = () => {};
+exports.auth = (req, res) => {
+  //여기까지 왔다면 인증이 완료된 것임.
+  res.json({ isAuth: true, email: req.user.email });
+};
