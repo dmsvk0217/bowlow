@@ -1,4 +1,4 @@
-const sql = require("./db");
+const db = require("./db");
 
 const Event = function (event) {
   this.id = event.id;

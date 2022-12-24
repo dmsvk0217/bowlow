@@ -1,4 +1,4 @@
-const sql = require("./db");
+const db = require("./db");
 
 const Cart = function (cart) {
   this.id = cart.id;

@@ -1,4 +1,4 @@
-const sql = require("./db");
+const db = require("./db");
 
 const Product_option = function (product_option) {
   this.id = product_option.id;
