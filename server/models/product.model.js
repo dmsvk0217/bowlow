@@ -64,16 +64,16 @@ Product.update = (product, cb) => {
   });
 };
 
-Product.delete = (name, cb) => {
-  const sql = "DELETE FROM products WHERE name = ?";
-  db.query(sql, name, (err, result) => {
+Product.delete = (id, cb) => {
+  const sql = "DELETE FROM products WHERE id = ?";
+  db.query(sql, id, (err, result) => {
     if (err) return cb(err);
     console.log("🚀 ~ file: product.model.js:61 ~ db.query ~ result", result);
 
     if (result.affectedRows == 0) {
       return cb({ kind: "not_found" }, null);
     }
-    console.log("deleted product with name: ", name);
+    console.log("deleted product with id: ", id);
     result(null, result);
   });
 };

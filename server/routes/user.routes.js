@@ -13,5 +13,5 @@ module.exports = (app) => {
 
   router.post("/auth", auth, userController.auth);
 
-  app.use("/api/user/", router);
+  app.use("/api/user", router);
 };

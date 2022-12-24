@@ -68,8 +68,8 @@ exports.delete = (req, res) => {
     res.status(400).send({ data: "Content can not be empty" });
   }
 
-  const name = req.body.name;
-  Product.delete(name, (err, data) => {
+  const id = req.params.id;
+  Product.delete(id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -78,7 +78,7 @@ exports.delete = (req, res) => {
         });
       } else {
         res.status(500).send({
-          message: "Could not delete product with name " + name,
+          message: "Could not delete product with id " + id,
           deleteProductSuccess: false,
         });
       }
