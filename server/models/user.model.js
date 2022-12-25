@@ -19,11 +19,8 @@ User.register = (user, cb) => {
 
   //이메일 중복체크 후 비밀번호 암호화 후 db에 저장.
   db.query(sql, user.email, function (err, result) {
-    console.log("🚀 ~ file: user.model.js:21 ~ result", result);
     if (err) return cb(err);
     if (result[0]) return cb(null, { exist: true });
-
-    console.log("🚀 ~ file: user.model.js:26 ~ result", result);
     const saltRounds = 10;
     const myPlaintextPassword = user.password;
 
@@ -32,10 +29,7 @@ User.register = (user, cb) => {
 
       let sql = "insert into user set ?";
       user.password = hash;
-      console.log("🚀 ~ file: user.model.js:34 ~ user", user);
-
       db.query(sql, user, function (err, result, fields) {
-        console.log("🚀 ~ file: user.model.js:35 ~ result", result);
         if (err) return cb(err, null);
         data = { registerSuccess: true };
         return cb(null, data);
@@ -49,23 +43,15 @@ User.login = (user, cb) => {
 
   //이메일 존재 여부 확인 -> 비밀번호 복호화 비교 -> return
   db.query(sql, user.email, function (err, result) {
-    console.log("🚀 ~ file: user.model.js:52 ~ result", result);
-
     if (err) return cb(err);
     if (!result[0]) return cb("exist_false", { exist: false });
 
     const plaintextPassword = user.password;
     const hash = result[0].password;
-    console.log("🚀 ~ file: user.model.js:60 ~ hash", hash);
     user = result[0];
-    console.log("🚀 ~ file: user.model.js:61 ~ user", user);
-
     bcrypt.compare(plaintextPassword, hash, function (err, result) {
-      console.log("🚀 ~ file: user.model.js:63 ~ result", result);
       if (err) return cb(err);
       if (!result) return cb("wrong_password", { worngPassword: true });
-
-      console.log("🚀 ~ file: user.model.js:67 ~ result", result);
       return cb(null, { loginSuccess: true });
     });
   });
@@ -74,13 +60,10 @@ User.login = (user, cb) => {
 User.generateToken = (email, cb) => {
   //jwt 생성하기
   let token = jwt.sign(email, secretToken);
-  console.log("🚀 ~ file: user.model.js:79 ~ token", token);
-
-  let sql = "UPDATE user set token=? where id=?";
+  let sql = "UPDATE user set token=? where email=?";
   let sqlObject = [token, email];
 
   db.query(sql, sqlObject, function (err, result) {
-    console.log("🚀 ~ file: user.model.js:70 ~ result", result);
     if (err) return cb(err);
     return cb(null, token);
   });
@@ -91,7 +74,6 @@ User.logout = (user, cb) => {
   let sql = "UPDATE user set token=NULL where email=?";
 
   db.query(sql, [user.email], function (err, result) {
-    console.log("🚀 ~ file: user.model.js:80 ~ result", result);
     if (err) cb(err);
 
     return cb(null, { logoutSuccess: true });
@@ -103,7 +85,6 @@ User.cartCount = (user, cb) => {
   let sqlObject = [user.cart_count + 1, user.id];
 
   db.query(sql, sqlObject, function (err, result) {
-    console.log("🚀 ~ file: user.model.js:96 ~ result", result);
     if (err) cb(err);
     return cb(null, result[0]);
   });

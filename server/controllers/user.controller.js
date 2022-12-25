@@ -83,6 +83,8 @@ exports.logout = (req, res) => {
 };
 
 exports.auth = (req, res) => {
+  console.log("🚀 ~ file: user.controller.js:86 ~ req.user", req.user);
+
   //여기까지 왔다면 인증이 완료된 것임.
   res.json({ isAuth: true, user: req.user });
 };

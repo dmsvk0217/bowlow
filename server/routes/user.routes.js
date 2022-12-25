@@ -10,7 +10,7 @@ module.exports = (app) => {
 
   router.post("/logout", auth, userController.logout);
 
-  router.post("/auth", auth, userController.auth);
+  router.get("/auth", auth, userController.auth);
 
   router.post("/cartCount", auth, userController.cartCount);
 

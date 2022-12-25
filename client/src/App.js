@@ -16,6 +16,11 @@ import EventDatail from "./component/Event/EventDatail";
 import ReviewPage from "./component/common/ReviewPage/ReviewPage";
 import LoginPage from "./component/LoginPage/LoginPage";
 import RegisterPage from "./component/RegisterPage/RegisterPage";
+import Auth from "./hoc/auth";
+
+const AuthLandingPage = Auth(LandingPage, null);
+const AuthLoginPage = Auth(LoginPage, false);
+const AuthRegisterPage = Auth(RegisterPage, false);
 
 function App() {
   return (
@@ -24,7 +29,7 @@ function App() {
         <ScrollToTop />
         <Navbar />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<AuthLandingPage />} />
           <Route path="/bowul" element={<BowulPage />} />
           <Route path="/newArrivals" element={<NewArrivalsPage />} />
           <Route path="/bestItem" element={<BestItemPage />} />
@@ -34,8 +39,8 @@ function App() {
           <Route path="/event" element={<EventPage />} />
           <Route path="/event/:id" element={<EventDatail />} />
           <Route path="/review" element={<ReviewPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<AuthLoginPage />} />
+          <Route path="/register" element={<AuthRegisterPage />} />
         </Routes>
         <Footer />
       </Router>
