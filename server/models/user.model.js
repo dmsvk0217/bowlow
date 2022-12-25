@@ -7,7 +7,6 @@ const User = function (user) {
   this.password = user.password;
   this.name = user.name;
   this.phone = user.phone;
-  this.address = user.address;
   this.email = user.email;
   this.cart_count = user.cart_count;
   this.auth = user.auth;
@@ -19,19 +18,23 @@ User.register = (user, cb) => {
 
   //이메일 중복체크 후 비밀번호 암호화 후 db에 저장.
   db.query(sql, user.email, function (err, result) {
+    console.log("🚀 ~ file: user.model.js:21 ~ result", result);
     if (err) return cb(err);
-    console.log(result);
-    if (result) return cb(null, { exist: true });
+    if (result[0]) return cb(null, { exist: true });
 
+    console.log("🚀 ~ file: user.model.js:26 ~ result", result);
     const saltRounds = 10;
     const myPlaintextPassword = user.password;
 
     bcrypt.hash(myPlaintextPassword, saltRounds, function (err, hash) {
       if (err) return cb(err);
 
-      const sqlInsertUser = "insert into user set ?";
+      let sql = "insert into user set ?";
       user.password = hash;
-      db.query(sqlInsertUser, user, function (err, result, fields) {
+      console.log("🚀 ~ file: user.model.js:34 ~ user", user);
+
+      db.query(sql, user, function (err, result, fields) {
+        console.log("🚀 ~ file: user.model.js:35 ~ result", result);
         if (err) return cb(err, null);
         data = { registerSuccess: true };
         return cb(null, data);

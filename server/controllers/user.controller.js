@@ -8,18 +8,26 @@ exports.register = (req, res) => {
     });
   }
 
+  console.log("🚀 ~ file: user.controller.js:6 ~ body", req.body);
+
   var user = new User({
-    id: req.body.id,
     password: req.body.password,
     name: req.body.name,
     phone: req.body.phone,
-    address: req.body.address,
     email: req.body.email,
+    cart_count: 0,
+    auth: 0,
   });
 
   User.register(user, (err, data) => {
+    console.log(
+      "🚀 ~ file: user.controller.js:21 ~ User.register ~ data",
+      data
+    );
+    console.log("🚀 ~ file: user.controller.js:21 ~ User.register ~ err", err);
+
     if (err)
-      res.state(500).json(data || "Some error occured while register user");
+      res.status(500).json(data || "Some error occured while register user");
     res.json(data);
   });
 };

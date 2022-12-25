@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const { secretToken } = require("../config/auth.config");
 const db = require("../models/db");
 
-let auth = (req, res, next) => {
+const auth = (req, res, next) => {
   if (!req.body) {
     res.status(400).send({
       data: "Content can not be empty!",
