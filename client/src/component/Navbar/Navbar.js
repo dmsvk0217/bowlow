@@ -1,8 +1,13 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Navber.css";
+import axios from "axios";
 
 function Navbar() {
+  const isAuth = useSelector((state) => state.user.userData.isAuth);
+  const navigate = useNavigate();
+
   const positionChange = useRef();
   const opacityChange = useRef();
   const navBarChange = useRef();
@@ -17,6 +22,21 @@ function Navbar() {
   const menuOffHandler = () => {
     positionChange.current.style = "right:-300px; z-index:-1";
     opacityChange.current.style = "opacity:0;  right: 0px; z-index:-1";
+  };
+
+  const logoutHandler = () => {
+    axios
+      .post("/api/user/logout")
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.logoutSuccess) {
+          console.log("로그아웃 성공");
+          navigate("/login", { replace: true });
+        }
+      })
+      .catch((err) => {
+        alert("로그아웃 중에 에러가 발생했습니다. \n", err);
+      });
   };
 
   return (
@@ -45,7 +65,11 @@ function Navbar() {
               <Link to="/search">검색</Link>
             </li>
             <li className="navbar__top__sideMenu__item">
-              <Link to="/login">로그인</Link>
+              {isAuth == false ? (
+                <Link to="/login">로그인</Link>
+              ) : (
+                <Link onClick={logoutHandler}>로그아웃</Link>
+              )}
             </li>
             <li className="navbar__top__sideMenu__item">
               <Link to="/bag">장바구니</Link>
