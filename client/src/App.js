@@ -14,6 +14,8 @@ import NoticeDatail from "./component/Notice/NoticeDatail";
 import EventPage from "./component/Event/EventPage";
 import EventDatail from "./component/Event/EventDatail";
 import ReviewPage from "./component/common/ReviewPage/ReviewPage";
+import LoginPage from "./component/LoginPage/LoginPage";
+import RegisterPage from "./component/RegisterPage/RegisterPage";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="/event" element={<EventPage />} />
           <Route path="/event/:id" element={<EventDatail />} />
           <Route path="/review" element={<ReviewPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
         <Footer />
       </Router>
