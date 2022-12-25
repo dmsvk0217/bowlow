@@ -1,6 +1,7 @@
 const db = require("./db");
 const bcrypt = require("bcrypt");
 const { secretToken } = require("../config/auth.config");
+const jwt = require("jsonwebtoken");
 
 const User = function (user) {
   this.id = user.id;
@@ -48,29 +49,36 @@ User.login = (user, cb) => {
 
   //이메일 존재 여부 확인 -> 비밀번호 복호화 비교 -> return
   db.query(sql, user.email, function (err, result) {
-    console.log("🚀 ~ file: user.model.js:44 ~ result", result);
+    console.log("🚀 ~ file: user.model.js:52 ~ result", result);
+    console.log("🚀 ~ file: user.model.js:52 ~ result[0]", result[0]);
+
     if (err) return cb(err);
-    if (!result) return cb(null, { exist: false });
+    if (!result[0]) return cb("exist_false", { exist: false });
+
+    const id = result[0].id;
+
     const plaintextPassword = user.password;
     const hash = result[0].password;
-    bcrypt.compare(plaintextPassword, hash, function (err, result) {
-      if (err) return cb(err);
-      if (!result) return cb(null, { worngPassword: true });
+    console.log("🚀 ~ file: user.model.js:60 ~ hash", hash);
 
-      return cb(null, { loginSuccess: true });
+    bcrypt.compare(plaintextPassword, hash, function (err, result) {
+      console.log("🚀 ~ file: user.model.js:63 ~ result", result);
+      if (err) return cb(err);
+      if (!result) return cb("wrong_password", { worngPassword: true });
+
+      console.log("🚀 ~ file: user.model.js:67 ~ result", result);
+      return cb(null, { loginSuccess: true }, id);
     });
   });
 };
 
-User.generateToken = (user, cb) => {
+User.generateToken = (id, cb) => {
   //jwt 생성하기
-  let token = jwt.sign(user.id, secretToken);
+  let token = jwt.sign(id, secretToken);
   console.log("🚀 ~ file: user.model.js:64 ~ token", token);
 
-  user.token = token;
-
   let sql = "UPDATE user set token=? where id=?";
-  let sqlObject = [user.token, user.id];
+  let sqlObject = [token, id];
 
   db.query(sql, sqlObject, function (err, result) {
     console.log("🚀 ~ file: user.model.js:70 ~ result", result);

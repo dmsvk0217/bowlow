@@ -27,14 +27,10 @@ function RegisterPage() {
 
     dispatch(registerUser(data))
       .then((response) => {
-        console.log(
-          "🚀 ~ file: RegisterPage.js:25 ~ .then ~ response",
-          response
-        );
         if (response.payload.registerSuccess) {
           console.log("[register] 회원가입 성공입니다.");
           navigate("/login", { replace: true });
-        } else if (response.data.exist) {
+        } else if (response.payload.exist) {
           setalramText("이메일에 해당하는 계정이 이미 존재합니다");
         } else {
           // other cases

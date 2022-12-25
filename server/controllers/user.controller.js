@@ -45,12 +45,19 @@ exports.login = (req, res) => {
     password: req.body.password,
   });
 
-  User.login(user, (err, data) => {
-    if (err) res.state(500).json(data || "Some error occured while login user");
+  User.login(user, (err, data, id) => {
+    if (err == "exist_false") return res.json(data);
+    if (err == "wrong_password") return res.json(data);
+    if (err)
+      return res
+        .status(500)
+        .json(data || "Some error occured while login user");
 
-    User.generateToken(user, (err, result) => {
+    User.generateToken(id, (err, result) => {
       if (err)
-        res.state(500).json(data || "Some error occured while login user");
+        return res
+          .state(500)
+          .json(data || "Some error occured while login user");
 
       res.cookie("x_auth", user.token).status(200).json(data);
     });
