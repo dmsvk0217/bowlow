@@ -11,6 +11,8 @@ const auth = (req, res, next) => {
 
   //cookies꺼내기 -> jwt 복호화 -> user email -> select by email -> db token과 jwt 일치여부 확인 -> 인증
   const token = req.cookies.x_auth;
+  if (!token) return res.json({ isAuth: false, error: true });
+
   console.log("🚀 ~ file: auth.js:14 ~ auth ~ token", token);
 
   sql = "select * from user where email=? and token=?";

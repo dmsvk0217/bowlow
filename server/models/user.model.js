@@ -52,6 +52,12 @@ User.login = (user, cb) => {
     bcrypt.compare(plaintextPassword, hash, function (err, result) {
       if (err) return cb(err);
       if (!result) return cb("wrong_password", { worngPassword: true });
+
+      console.log(
+        "🚀 ~ file: [user.login 안에서 return 하기 직전에 user 객체]user.model.js:52 ~ user",
+        user
+      );
+
       return cb(null, { loginSuccess: true });
     });
   });

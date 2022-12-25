@@ -50,6 +50,10 @@ exports.login = (req, res) => {
   });
 
   User.login(user, (err, data) => {
+    console.log(
+      "🚀 ~ file: [user.login에서 나와서 id 설정되어있어야함] user.controller.js:53 ~ User.login ~ user",
+      user
+    );
     if (err == "exist_false") return res.json(data);
     if (err == "wrong_password") return res.json(data);
     if (err)
