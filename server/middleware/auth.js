@@ -9,12 +9,12 @@ const auth = (req, res, next) => {
     });
   }
 
-  //cookies꺼내기 -> jwt 복호화 -> user id -> select b id -> db token과 jwt 일치여부 확인 -> 인증
+  //cookies꺼내기 -> jwt 복호화 -> user email -> select by email -> db token과 jwt 일치여부 확인 -> 인증
   const token = req.cookies.x_auth;
 
-  sql = "select * from user where id=? and token=?";
+  sql = "select * from user where email=? and token=?";
   jwt.verify(token, secretToken, (err, decode) => {
-    // decode is user id
+    // decode is user email
     if (err) res.status(500).send(err);
     db.query(sql, [decode, token], (err, user) => {
       if (err) res.status(500).send(err);

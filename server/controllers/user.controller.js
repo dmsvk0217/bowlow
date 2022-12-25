@@ -33,6 +33,8 @@ exports.register = (req, res) => {
 };
 
 exports.login = (req, res) => {
+  console.log("Cookies: ", req.cookies);
+
   //validate request check
   if (!req.body) {
     res.status(400).send({
@@ -40,12 +42,14 @@ exports.login = (req, res) => {
     });
   }
 
+  const eamil = req.body.email;
+
   var user = new User({
     email: req.body.email,
     password: req.body.password,
   });
 
-  User.login(user, (err, data, id) => {
+  User.login(user, (err, data) => {
     if (err == "exist_false") return res.json(data);
     if (err == "wrong_password") return res.json(data);
     if (err)
@@ -53,13 +57,17 @@ exports.login = (req, res) => {
         .status(500)
         .json(data || "Some error occured while login user");
 
-    User.generateToken(id, (err, result) => {
+    User.generateToken(eamil, (err, token) => {
+      console.log(
+        "🚀 ~ file: user.controller.js:59 ~ User.generateToken ~ token",
+        token
+      );
       if (err)
         return res
           .state(500)
           .json(data || "Some error occured while login user");
 
-      res.cookie("x_auth", user.token).status(200).json(data);
+      res.cookie("x_auth", token).status(200).json(data);
     });
   });
 };

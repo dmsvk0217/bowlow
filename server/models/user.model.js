@@ -50,16 +50,15 @@ User.login = (user, cb) => {
   //이메일 존재 여부 확인 -> 비밀번호 복호화 비교 -> return
   db.query(sql, user.email, function (err, result) {
     console.log("🚀 ~ file: user.model.js:52 ~ result", result);
-    console.log("🚀 ~ file: user.model.js:52 ~ result[0]", result[0]);
 
     if (err) return cb(err);
     if (!result[0]) return cb("exist_false", { exist: false });
 
-    const id = result[0].id;
-
     const plaintextPassword = user.password;
     const hash = result[0].password;
     console.log("🚀 ~ file: user.model.js:60 ~ hash", hash);
+    user = result[0];
+    console.log("🚀 ~ file: user.model.js:61 ~ user", user);
 
     bcrypt.compare(plaintextPassword, hash, function (err, result) {
       console.log("🚀 ~ file: user.model.js:63 ~ result", result);
@@ -67,23 +66,23 @@ User.login = (user, cb) => {
       if (!result) return cb("wrong_password", { worngPassword: true });
 
       console.log("🚀 ~ file: user.model.js:67 ~ result", result);
-      return cb(null, { loginSuccess: true }, id);
+      return cb(null, { loginSuccess: true });
     });
   });
 };
 
-User.generateToken = (id, cb) => {
+User.generateToken = (email, cb) => {
   //jwt 생성하기
-  let token = jwt.sign(id, secretToken);
-  console.log("🚀 ~ file: user.model.js:64 ~ token", token);
+  let token = jwt.sign(email, secretToken);
+  console.log("🚀 ~ file: user.model.js:79 ~ token", token);
 
   let sql = "UPDATE user set token=? where id=?";
-  let sqlObject = [token, id];
+  let sqlObject = [token, email];
 
   db.query(sql, sqlObject, function (err, result) {
     console.log("🚀 ~ file: user.model.js:70 ~ result", result);
     if (err) return cb(err);
-    return cb(null, result);
+    return cb(null, token);
   });
 };
 
