@@ -32,7 +32,7 @@ function NoticeCreatePage() {
       console.log(response.payload);
       if (response.payload.crateNoticeSuccess) {
         console.log("공지사항 글쓰기 성공입니다.");
-        navigate("/notice", { replace: false });
+        navigate("/notice", { replace: true });
         return;
       }
       alert("글쓰기를 성공적으로 완료하지 못했습니다.");
