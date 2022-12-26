@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import NoticeComponent from "../common/List/NoticeComponent";
-import "./Notice.css";
+import "./NoticePage.css";
 import { useDispatch } from "react-redux";
 import { getNotices } from "../../_actions/notice_action";
+import { Link } from "react-router-dom";
 
 function NoticePage() {
   const [notices, setnotices] = useState(null);
@@ -23,6 +24,9 @@ function NoticePage() {
     <div className="container">
       <div className="marginDiv80"></div>
       <div className="content">
+        <div className="createBtn">
+          <Link to="./create">글쓰기</Link>
+        </div>
         <ul>
           <li className="topList">
             <div className="topList__name">공지</div>

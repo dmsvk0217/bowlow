@@ -10,6 +10,7 @@ import BestItemPage from "./component/BestItemPage/BestItemPage";
 import Shop from "./component/Shop/Shop";
 import ScrollToTop from "./component/ScrollToTop";
 import NoticePage from "./component/Notice/NoticePage";
+import NoticeCreatePage from "./component/Notice/NoticeCreatePage";
 import NoticeDatail from "./component/Notice/NoticeDatail";
 import EventPage from "./component/Event/EventPage";
 import EventDatail from "./component/Event/EventDatail";
@@ -24,27 +25,28 @@ const AuthRegisterPage = Auth(RegisterPage, false);
 
 function App() {
   return (
-    <React.StrictMode>
-      <Router>
-        <ScrollToTop />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<AuthLandingPage />} />
-          <Route path="/bowul" element={<BowulPage />} />
-          <Route path="/newArrivals" element={<NewArrivalsPage />} />
-          <Route path="/bestItem" element={<BestItemPage />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/notice" element={<NoticePage />} />
-          <Route path="/notice/:id" element={<NoticeDatail />} />
-          <Route path="/event" element={<EventPage />} />
-          <Route path="/event/:id" element={<EventDatail />} />
-          <Route path="/review" element={<ReviewPage />} />
-          <Route path="/login" element={<AuthLoginPage />} />
-          <Route path="/register" element={<AuthRegisterPage />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </React.StrictMode>
+    // <React.StrictMode>
+    <Router>
+      <ScrollToTop />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<AuthLandingPage />} />
+        <Route path="/bowul" element={<BowulPage />} />
+        <Route path="/newArrivals" element={<NewArrivalsPage />} />
+        <Route path="/bestItem" element={<BestItemPage />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/notice" element={<NoticePage />} />
+        <Route path="/notice/create" element={<NoticeCreatePage />} />
+        <Route path="/notice/:id" element={<NoticeDatail />} />
+        <Route path="/event" element={<EventPage />} />
+        <Route path="/event/:id" element={<EventDatail />} />
+        <Route path="/review" element={<ReviewPage />} />
+        <Route path="/login" element={<AuthLoginPage />} />
+        <Route path="/register" element={<AuthRegisterPage />} />
+      </Routes>
+      <Footer />
+    </Router>
+    //</React.StrictMode>
   );
 }
 
