@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const router = require("express").Router();
+  var router = require("express").Router();
   const noticeController = require("../controllers/notice.controller");
 
   router.get("/", noticeController.get);
@@ -12,5 +12,5 @@ module.exports = (app) => {
 
   router.delete("/:id", noticeController.delete);
 
-  app.use("api/notice");
+  app.use("/api/notice", router);
 };

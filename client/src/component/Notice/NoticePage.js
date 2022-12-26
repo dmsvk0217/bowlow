@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NoticeComponent from "../common/List/NoticeComponent";
-import notices from "../common/List/NoticeList";
 import "./Notice.css";
+import { useDispatch } from "react-redux";
+import { getNotices } from "../../_actions/notice_action";
 
 function NoticePage() {
+  const [notices, setnotices] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getNotices())
+      .then((response) => {
+        console.log(response.payload);
+        setnotices(response.payload);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="container">
       <div className="marginDiv80"></div>
@@ -14,9 +29,10 @@ function NoticePage() {
             <div className="topList__title">신상품 5% 할인 이벤트</div>
           </li>
         </ul>
-        {notices.map((notice, index) => (
-          <NoticeComponent key={index} notice={notice} />
-        ))}
+        {notices &&
+          notices.map((notice, index) => (
+            <NoticeComponent key={index} notice={notice} />
+          ))}
       </div>
     </div>
   );

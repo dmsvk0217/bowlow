@@ -15,6 +15,7 @@ app.get("/", function (req, res) {
 });
 
 require("./routes/user.routes")(app);
+require("./routes/notice.routes")(app);
 require("./routes/product.routes")(app);
 
 const port = 7777;

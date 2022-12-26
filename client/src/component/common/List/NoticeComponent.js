@@ -9,7 +9,7 @@ function NoticeComponent(props) {
     <ul>
       <li>
         <div className="info__container">
-          <div className="number">{notice.number}</div>
+          <div className="number">{notice.id}</div>
           <div className="info">
             <div className="title">
               <Link
@@ -22,8 +22,8 @@ function NoticeComponent(props) {
               </Link>
             </div>
             <div className="writer__date">
-              {notice.user}
-              <span>| {notice.date}</span>
+              {notice.user_name}
+              <span> | {notice.date}</span>
             </div>
           </div>
         </div>

@@ -33,9 +33,6 @@ exports.register = (req, res) => {
 };
 
 exports.login = (req, res) => {
-  console.log("Cookies: ", req.cookies);
-
-  //validate request check
   if (!req.body) {
     res.status(400).send({
       data: "Content can not be empty!",
@@ -43,17 +40,13 @@ exports.login = (req, res) => {
   }
 
   const eamil = req.body.email;
-
-  var user = new User({
+  const user = new User({
     email: req.body.email,
     password: req.body.password,
   });
 
   User.login(user, (err, data) => {
-    console.log(
-      "🚀 ~ file: [user.login에서 나와서 id 설정되어있어야함] user.controller.js:53 ~ User.login ~ user",
-      user
-    );
+    // user 객체가 변경되지 않음.
     if (err == "exist_false") return res.json(data);
     if (err == "wrong_password") return res.json(data);
     if (err)
@@ -61,7 +54,7 @@ exports.login = (req, res) => {
         .status(500)
         .json(data || "Some error occured while login user");
 
-    User.generateToken(eamil, (err, token) => {
+    User.generateToken(user.email, (err, token) => {
       console.log(
         "🚀 ~ file: user.controller.js:59 ~ User.generateToken ~ token",
         token
@@ -78,6 +71,7 @@ exports.login = (req, res) => {
 
 exports.logout = (req, res) => {
   const user = req.user;
+  console.log("🚀 ~ [logout!!]file: user.controller.js:82 ~ user", user);
 
   User.logout(user, (err, data) => {
     if (err)

@@ -8,7 +8,7 @@ const Notice = function (notice) {
   this.date = notice.date;
 };
 
-Notice.get = (notice, cb) => {
+Notice.get = (cb) => {
   let sql = "SELECT * FROM notice ";
 
   db.query(sql, (err, result) => {
