@@ -76,13 +76,23 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
+  console.log("🚀 ~ file: notice.controller.js:79 ~ exports.delete ~ req");
   if (!req.body) {
     res.status(400).send({ data: "Content can not be empty" });
   }
 
   const id = req.params.id;
+  console.log("🚀 ~ file: notice.controller.js:84 ~ exports.delete ~ id", id);
 
   Notice.delete(id, (err, data) => {
+    console.log(
+      "🚀 ~ file: notice.controller.js:88 ~ Notice.delete ~ data",
+      data
+    );
+    console.log(
+      "🚀 ~ file: notice.controller.js:88 ~ Notice.delete ~ err",
+      err
+    );
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({

@@ -12,7 +12,6 @@ Notice.get = (cb) => {
   let sql = "SELECT * FROM notice ";
 
   db.query(sql, (err, result) => {
-    console.log("🚀get ~ file: notice.model.js:36 ~ db.query ~ result", result);
     if (err) return cb(err, null);
     return cb(null, result);
   });
@@ -23,7 +22,7 @@ Notice.findOne = (id, cb) => {
   let sql_object = id;
 
   db.query(sql, sql_object, (err, result) => {
-    console.log("🚀get ~ file: Notice.model.js:36 ~ db.query ~ result", result);
+    console.log("🚀 ~ file: notice.model.js:26 ~ db.query ~ result", result);
     if (err) return cb(err, null);
     if (!result) return cb({ kind: "not_found" }, null);
     return cb(null, result);
@@ -56,8 +55,10 @@ Notice.update = (notice, cb) => {
 };
 
 Notice.delete = (id, cb) => {
-  const sql = "DELETE FROM notices WHERE id = ?";
+  console.log("🚀 ~ file: notice.model.js:58 ~ Notice.delete ~ id", id);
+  const sql = "DELETE FROM notice WHERE id = ?";
   db.query(sql, id, (err, result) => {
+    console.log("🚀 ~ file: notice.model.js:60 ~ db.query ~ err", err);
     if (err) return cb(err);
     console.log("🚀 ~ file: notice.model.js:61 ~ db.query ~ result", result);
 
@@ -65,7 +66,7 @@ Notice.delete = (id, cb) => {
       return cb({ kind: "not_found" }, null);
     }
     console.log("deleted notice with id: ", id);
-    result(null, result);
+    cb(null, result);
   });
 };
 

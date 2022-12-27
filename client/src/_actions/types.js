@@ -5,3 +5,4 @@ export const GET_LIST = "get_list";
 
 export const GET_NOTICES = "get_notices";
 export const CREATE_NOTICE = "create_notice";
+export const DELETE_NOTICE = "delete_notice";

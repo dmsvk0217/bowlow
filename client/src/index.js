@@ -4,10 +4,7 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import rootReducer from "./_reducers/index";
-
 import { applyMiddleware, createStore } from "redux";
-
-import { composeWithDevTools } from "redux-devtools-extension"; // 개발자 도구
 import Reducethunk from "redux-thunk";
 import ReducePromise from "redux-promise";
 

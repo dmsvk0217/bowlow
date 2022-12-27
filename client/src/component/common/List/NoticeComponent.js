@@ -13,7 +13,7 @@ function NoticeComponent(props) {
           <div className="info">
             <div className="title">
               <Link
-                to={`/notice/${notice.number}`}
+                to={`/notice/${notice.id}`}
                 state={{
                   notice: notice,
                 }}
