@@ -7,7 +7,7 @@ const Cart = function (cart) {
   this.quantity = cart.quantity;
 };
 
-Cart.get = (cart, cb) => {
+Cart.get = (cb) => {
   let sql = "SELECT * FROM Cart ";
 
   db.query(sql, (err, result) => {

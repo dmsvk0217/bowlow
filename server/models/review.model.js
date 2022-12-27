@@ -11,7 +11,7 @@ const Review = function (review) {
   this.image = review.image;
 };
 
-Review.get = (review, cb) => {
+Review.get = (cb) => {
   const sql = "SELECT * FROM review ";
 
   db.query(sql, (err, result) => {

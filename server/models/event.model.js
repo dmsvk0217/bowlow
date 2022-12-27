@@ -8,7 +8,7 @@ const Event = function (event) {
   this.date = event.date;
 };
 
-Event.get = (event, cb) => {
+Event.get = (cb) => {
   let sql = "SELECT * FROM event ";
 
   db.query(sql, (err, result) => {

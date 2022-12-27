@@ -14,7 +14,7 @@ const Product = function (product) {
   this.category2 = product.category2;
 };
 
-Product.get = (product, cb) => {
+Product.get = (cb) => {
   let sql = "SELECT * FROM product ";
   let sql_object;
 

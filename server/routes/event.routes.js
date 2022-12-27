@@ -12,5 +12,5 @@ module.exports = (app) => {
 
   router.delete("/:id", eventController.delete);
 
-  app.use("api/event");
+  app.use("/api/event", router);
 };

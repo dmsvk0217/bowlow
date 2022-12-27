@@ -9,11 +9,11 @@ function EventComponent(props) {
     <ul>
       <li>
         <div className="info__container">
-          <div className="number">{eventOne.number}</div>
+          <div className="number">{eventOne.id}</div>
           <div className="info">
             <div className="title">
               <Link
-                to={`/event/${eventOne.number}`}
+                to={`/event/${eventOne.id}`}
                 state={{
                   eventOne: eventOne,
                 }}
@@ -22,8 +22,8 @@ function EventComponent(props) {
               </Link>
             </div>
             <div className="writer__date">
-              {eventOne.user}
-              <span>| {eventOne.date}</span>
+              {eventOne.user_name}
+              <span> | {eventOne.date}</span>
             </div>
           </div>
         </div>

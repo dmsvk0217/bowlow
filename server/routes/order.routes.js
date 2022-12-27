@@ -8,5 +8,5 @@ module.exports = (app) => {
 
   router.delete("/:id", orderController.delete);
 
-  app.use("api/order");
+  app.use("/api/order", router);
 };

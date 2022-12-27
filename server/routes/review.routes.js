@@ -12,5 +12,5 @@ module.exports = (app) => {
 
   router.delete("/:id", reviewController.delete);
 
-  app.use("api/review");
+  app.use("/api/review", router);
 };

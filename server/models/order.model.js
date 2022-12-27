@@ -8,7 +8,7 @@ const Order = function (order) {
   this.date = order.date;
 };
 
-Order.get = (order, cb) => {
+Order.get = (cb) => {
   let sql = "SELECT * FROM order ";
 
   db.query(sql, (err, result) => {
