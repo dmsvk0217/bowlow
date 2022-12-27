@@ -8,7 +8,6 @@ function NoticeUpdatePage(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const id = useParams().id;
-  const user_name = useSelector((state) => state.user.userData.user.name);
   const getNotice = useSelector((state) =>
     state.notice.find((notice) => notice.id == id)
   );
@@ -22,24 +21,15 @@ function NoticeUpdatePage(props) {
   }, [getNotice]);
 
   const updateHandler = () => {
-    console.log(
-      "🚀 ~ file: NoticeUpdatePage.js:16 ~ NoticeUpdatePage ~ user_name",
-      user_name
-    );
-    console.log(
-      "🚀 ~ file: NoticeUpdatePage.js:16 ~ NoticeUpdatePage ~ user_name",
-      new Date()
-    );
-
     const dataTosubmit = {
-      user_name: user_name,
+      user_name: getNotice.user_name,
       title: title,
       content: content,
       date: new Date(),
       id: id,
     };
     dispatch(updateNotice(notice.id, dataTosubmit));
-    navigate(-1, { replace: true });
+    navigate(`/notice/${notice.id}`, { replace: true });
   };
 
   return (

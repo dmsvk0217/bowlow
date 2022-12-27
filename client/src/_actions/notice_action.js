@@ -46,6 +46,6 @@ export function updateNotice(id, dataTosubmit) {
 
   return {
     type: UPDATE_NOTICE,
-    payload: { dataTosubmit, id },
+    payload: dataTosubmit,
   };
 }

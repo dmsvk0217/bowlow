@@ -15,10 +15,12 @@ function noticeReducer(state = {}, action) {
       return [...state, payload];
     case UPDATE_NOTICE:
       return state.map((notice) => {
-        if (notice.id === payload.id) {
-          notice.title = payload.dataTosubmit.title;
-          notice.content = payload.dataTosubmit.content;
+        if (notice.id == parseInt(payload.id)) {
+          notice.title = payload.title;
+          notice.content = payload.content;
           return notice;
+          // return { ...notice, ...payload }; // 덮어씌운 객체 반환.
+          // 왜 -> 얘는 안될까??
         } else {
           return notice;
         }
