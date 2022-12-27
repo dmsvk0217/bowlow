@@ -18,6 +18,7 @@ import ReviewPage from "./component/common/ReviewPage/ReviewPage";
 import LoginPage from "./component/LoginPage/LoginPage";
 import RegisterPage from "./component/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
+import NoticeUpdatePage from "./component/Notice/NoticeUpdatePage";
 
 const AuthLandingPage = Auth(LandingPage, null);
 const AuthLoginPage = Auth(LoginPage, false);
@@ -37,6 +38,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/notice" element={<NoticePage />} />
         <Route path="/notice/create" element={<NoticeCreatePage />} />
+        <Route path="/notice/update/:id" element={<NoticeUpdatePage />} />
         <Route path="/notice/:id" element={<NoticeDatail />} />
         <Route path="/event" element={<EventPage />} />
         <Route path="/event/:id" element={<EventDatail />} />

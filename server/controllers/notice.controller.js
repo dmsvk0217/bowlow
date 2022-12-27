@@ -57,6 +57,7 @@ exports.create = (req, res) => {
 };
 
 exports.update = (req, res) => {
+  console.log("🚀 ~ file: notice.controller.js:60 ~ req.body", req.body);
   if (!req.body) {
     res.status(400).send({ data: "Content can not be empty" });
   }
@@ -66,12 +67,14 @@ exports.update = (req, res) => {
     title: req.body.title,
     content: req.body.content,
     date: req.body.date,
+    id: req.body.id,
   });
+  console.log("🚀 ~ file: notice.controller.js:71 ~ notice", notice);
 
   Notice.update(notice, (err, data) => {
     if (err)
       res.state(500).json(data || "Some error occured while updating Notice");
-    res.json(data);
+    res.json(notice);
   });
 };
 

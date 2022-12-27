@@ -33,7 +33,7 @@ function NoticeDatail(props) {
     <div className="container">
       <div className="content">
         <div className="createBtn">
-          <Link to="/notice/update">수정하기</Link>
+          <Link to={`/notice/update/${notice?.id}`}>수정하기</Link>
           <Link onClick={deleteHandler}>삭제하기</Link>
         </div>
         <div className="notice_top">

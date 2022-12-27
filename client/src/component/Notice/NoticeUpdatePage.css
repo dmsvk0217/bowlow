@@ -1,0 +1,46 @@
+.notice_top {
+  padding: 10px 0;
+}
+
+.notice_title {
+  margin-bottom: 5px;
+}
+
+.notice_writerAndDate {
+  font-size: 0.7rem;
+  color: #91949c;
+}
+
+.createBtn {
+  width: 100%;
+  text-align: right;
+  padding: 10px;
+}
+
+.createBtn a {
+  font-size: 12px;
+  color: #91949c;
+}
+
+.notice_content {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  align-items: center;
+  height: 350px;
+}
+
+.notice_button {
+  background-color: black;
+  color: white;
+  width: 150px;
+  height: 30px;
+  float: right;
+  margin: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}

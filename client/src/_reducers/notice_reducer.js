@@ -1,4 +1,9 @@
-import { GET_NOTICES, CREATE_NOTICE, DELETE_NOTICE } from "../_actions/types";
+import {
+  GET_NOTICES,
+  CREATE_NOTICE,
+  DELETE_NOTICE,
+  UPDATE_NOTICE,
+} from "../_actions/types";
 
 function noticeReducer(state = {}, action) {
   const { type, payload } = action;
@@ -8,9 +13,17 @@ function noticeReducer(state = {}, action) {
       return payload;
     case CREATE_NOTICE:
       return [...state, payload];
+    case UPDATE_NOTICE:
+      return state.map((notice) => {
+        if (notice.id === payload.id) {
+          notice.title = payload.dataTosubmit.title;
+          notice.content = payload.dataTosubmit.content;
+          return notice;
+        } else {
+          return notice;
+        }
+      });
     case DELETE_NOTICE:
-      console.log("[DELETE_NOTICE] id : ", payload.id);
-      console.log("[DELETE_NOTICE] payload : ", payload);
       return state.filter(({ id }) => id !== payload.id);
     default:
       return state;

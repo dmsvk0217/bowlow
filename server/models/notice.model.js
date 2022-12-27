@@ -49,7 +49,10 @@ Notice.update = (notice, cb) => {
       "🚀update ~ file: notice.model.js:51 ~ db.query ~ result",
       result
     );
+    console.log("🚀 ~ file: Notice.model.js:55 ~ db.query ~ err", err);
     if (err) return cb(err);
+    console.log("🚀 ~ [성공!!!]file: Notice.model.js:55 ~ db.query ~ err", err);
+
     return cb(null, { updateNoticeSuccess: true });
   });
 };
