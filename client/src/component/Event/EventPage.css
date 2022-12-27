@@ -23,6 +23,12 @@
   cursor: pointer;
 }
 
+.createBtn {
+  width: 100%;
+  text-align: right;
+  padding: 10px;
+}
+
 @media only screen and (max-width: 900px) {
   .content {
     margin: 75px auto 0px;

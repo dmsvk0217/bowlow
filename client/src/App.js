@@ -13,6 +13,7 @@ import NoticePage from "./component/Notice/NoticePage";
 import NoticeCreatePage from "./component/Notice/NoticeCreatePage";
 import NoticeDatail from "./component/Notice/NoticeDatail";
 import EventPage from "./component/Event/EventPage";
+import EventCreatePage from "./component/Event/EventCreatePage";
 import EventDatail from "./component/Event/EventDatail";
 import ReviewPage from "./component/common/ReviewPage/ReviewPage";
 import LoginPage from "./component/LoginPage/LoginPage";
@@ -41,6 +42,7 @@ function App() {
         <Route path="/notice/update/:id" element={<NoticeUpdatePage />} />
         <Route path="/notice/:id" element={<NoticeDatail />} />
         <Route path="/event" element={<EventPage />} />
+        <Route path="/event/create" element={<EventCreatePage />} />
         <Route path="/event/:id" element={<EventDatail />} />
         <Route path="/review" element={<ReviewPage />} />
         <Route path="/login" element={<AuthLoginPage />} />

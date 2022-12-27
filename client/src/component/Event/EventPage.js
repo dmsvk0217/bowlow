@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import EventComponent from "../common/List/EventComponent";
-import "./Event.css";
+import "./EventPage.css";
 import { getEvents } from "../../_actions/event_action";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function EventPage() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function EventPage() {
     <div className="container">
       <div className="marginDiv80"></div>
       <div className="content">
+        <div className="createBtn">
+          <Link to="./create">글쓰기</Link>
+        </div>
         <ul>
           <li className="topList">
             <div className="topList__name">공지</div>
