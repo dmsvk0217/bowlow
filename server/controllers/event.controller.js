@@ -72,7 +72,7 @@ exports.update = (req, res) => {
 
   Event.update(event, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while updating Event");
+      res.status(500).json(data || "Some error occured while updating Event");
     res.json(data);
   });
 };

@@ -46,6 +46,7 @@ Event.update = (event, cb) => {
   const sql = "UPDATE Event set ? where id=?";
   const sql_object = [event, event.id];
   db.query(sql, sql_object, (err, result) => {
+    console.log("🚀 ~ file: event.model.js:49 ~ db.query ~ err", err);
     console.log(
       "🚀update ~ file: Event.model.js:51 ~ db.query ~ result",
       result

@@ -20,6 +20,7 @@ import LoginPage from "./component/LoginPage/LoginPage";
 import RegisterPage from "./component/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
 import NoticeUpdatePage from "./component/Notice/NoticeUpdatePage";
+import EventUpdatePage from "./component/Event/EventUpdatePage";
 
 const AuthLandingPage = Auth(LandingPage, null);
 const AuthLoginPage = Auth(LoginPage, false);
@@ -37,13 +38,19 @@ function App() {
         <Route path="/newArrivals" element={<NewArrivalsPage />} />
         <Route path="/bestItem" element={<BestItemPage />} />
         <Route path="/shop" element={<Shop />} />
+
+        {/* notice */}
         <Route path="/notice" element={<NoticePage />} />
+        <Route path="/notice/:id" element={<NoticeDatail />} />
         <Route path="/notice/create" element={<NoticeCreatePage />} />
         <Route path="/notice/update/:id" element={<NoticeUpdatePage />} />
-        <Route path="/notice/:id" element={<NoticeDatail />} />
+
+        {/* event */}
         <Route path="/event" element={<EventPage />} />
-        <Route path="/event/create" element={<EventCreatePage />} />
         <Route path="/event/:id" element={<EventDatail />} />
+        <Route path="/event/create" element={<EventCreatePage />} />
+        <Route path="/event/update/:id" element={<EventUpdatePage />} />
+
         <Route path="/review" element={<ReviewPage />} />
         <Route path="/login" element={<AuthLoginPage />} />
         <Route path="/register" element={<AuthRegisterPage />} />

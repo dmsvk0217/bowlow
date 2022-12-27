@@ -11,15 +11,15 @@ function EventDatail() {
     state.event.find((event) => event.id == id)
   );
 
-  const [eventOne, seteventOne] = useState(null);
+  const [event, setevent] = useState(null);
 
   useEffect(() => {
-    seteventOne(getEvent);
+    setevent(getEvent);
   }, [getEvent]);
 
   const deleteHandler = (e) => {
     e.preventDefault();
-    dispatch(deleteEvent(eventOne));
+    dispatch(deleteEvent(event));
     navigate("/event", { replace: true });
   };
 
@@ -27,17 +27,17 @@ function EventDatail() {
     <div className="container">
       <div className="content">
         <div className="createBtn">
-          <Link to={`/event/update/${eventOne?.id}`}>수정하기</Link>
+          <Link to={`/event/update/${event?.id}`}>수정하기</Link>
           <Link onClick={deleteHandler}>삭제하기</Link>
         </div>
         <div className="event_top">
-          <div className="event_title">{eventOne?.title}</div>
+          <div className="event_title">{event?.title}</div>
           <div className="event_writerAndDate">
-            {eventOne?.user_name} | {eventOne?.date}
+            {event?.user_name} | {event?.date}
           </div>
         </div>
-        <div className="event_content">{eventOne?.content}</div>
-        <button className="event_button" onClick={() => navigate(-1)}>
+        <div className="event_content">{event?.content}</div>
+        <button className="event_button" onClick={() => navigate("/event")}>
           List
         </button>
       </div>

@@ -77,7 +77,7 @@ exports.update = (req, res) => {
 
   Review.update(review, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while updating review");
+      res.status(500).json(data || "Some error occured while updating review");
     res.json(data);
   });
 };
