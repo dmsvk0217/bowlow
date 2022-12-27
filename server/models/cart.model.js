@@ -27,7 +27,7 @@ Cart.create = (cart, cb) => {
 };
 
 Cart.delete = (id, cb) => {
-  const sql = "DELETE FROM Carts WHERE id = ?";
+  const sql = "DELETE FROM cart WHERE id = ?";
   db.query(sql, id, (err, result) => {
     console.log("🚀 ~ file: cart.model.js:32 ~ db.query ~ result", result);
     if (err) return cb(err);
@@ -35,7 +35,7 @@ Cart.delete = (id, cb) => {
       return cb({ kind: "not_found" }, null);
     }
     console.log("deleted Cart with id: ", id);
-    result(null, result);
+    return cb(null, result);
   });
 };
 

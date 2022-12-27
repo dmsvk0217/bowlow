@@ -34,13 +34,13 @@ export function updateEvent(id, dataTosubmit) {
   };
 }
 
-export function deleteEvent(id) {
+export function deleteEvent(eventOne) {
   const request = axios
-    .delete(`/api/event/${id}`, { withCredentials: true })
+    .delete(`/api/event/${eventOne.id}`, { withCredentials: true })
     .then((response) => response.payload);
 
   return {
     type: DELETE_EVENT,
-    payload: { request, id },
+    payload: eventOne,
   };
 }

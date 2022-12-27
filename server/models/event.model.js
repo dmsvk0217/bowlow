@@ -12,7 +12,7 @@ Event.get = (cb) => {
   let sql = "SELECT * FROM event ";
 
   db.query(sql, (err, result) => {
-    console.log("🚀get ~ file: event.model.js:36 ~ db.query ~ result", result);
+    console.log("🚀get ~ file: event.model.js:36 ~ db.query ~ result get 완료");
     if (err) return cb(err, null);
     return cb(null, result);
   });
@@ -56,7 +56,7 @@ Event.update = (event, cb) => {
 };
 
 Event.delete = (id, cb) => {
-  const sql = "DELETE FROM Events WHERE id = ?";
+  const sql = "DELETE FROM event WHERE id = ?";
   db.query(sql, id, (err, result) => {
     if (err) return cb(err);
     console.log("🚀 ~ file: Event.model.js:61 ~ db.query ~ result", result);
@@ -65,7 +65,7 @@ Event.delete = (id, cb) => {
       return cb({ kind: "not_found" }, null);
     }
     console.log("deleted Event with id: ", id);
-    result(null, result);
+    return cb(null, result);
   });
 };
 

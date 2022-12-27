@@ -81,7 +81,7 @@ Product.update = (product, cb) => {
 };
 
 Product.delete = (id, cb) => {
-  const sql = "DELETE FROM products WHERE id = ?";
+  const sql = "DELETE FROM product WHERE id = ?";
   db.query(sql, id, (err, result) => {
     if (err) return cb(err);
     console.log("🚀 ~ file: product.model.js:61 ~ db.query ~ result", result);
@@ -90,7 +90,7 @@ Product.delete = (id, cb) => {
       return cb({ kind: "not_found" }, null);
     }
     console.log("deleted product with id: ", id);
-    result(null, result);
+    return cb(null, result);
   });
 };
 

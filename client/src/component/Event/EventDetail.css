@@ -33,3 +33,9 @@
   outline: 0;
   cursor: pointer;
 }
+
+.createBtn {
+  width: 100%;
+  text-align: right;
+  padding: 10px;
+}

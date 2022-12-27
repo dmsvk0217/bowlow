@@ -12,14 +12,7 @@ function EventComponent(props) {
           <div className="number">{eventOne.id}</div>
           <div className="info">
             <div className="title">
-              <Link
-                to={`/event/${eventOne.id}`}
-                state={{
-                  eventOne: eventOne,
-                }}
-              >
-                {eventOne.title}
-              </Link>
+              <Link to={`/event/${eventOne.id}`}>{eventOne.title}</Link>
             </div>
             <div className="writer__date">
               {eventOne.user_name}

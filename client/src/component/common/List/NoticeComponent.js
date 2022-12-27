@@ -12,14 +12,7 @@ function NoticeComponent(props) {
           <div className="number">{notice.id}</div>
           <div className="info">
             <div className="title">
-              <Link
-                to={`/notice/${notice.id}`}
-                state={{
-                  notice: notice,
-                }}
-              >
-                {notice.title}
-              </Link>
+              <Link to={`/notice/${notice.id}`}>{notice.title}</Link>
             </div>
             <div className="writer__date">
               {notice.user_name}

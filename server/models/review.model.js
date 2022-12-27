@@ -61,7 +61,7 @@ Review.update = (review, cb) => {
 };
 
 Review.delete = (id, cb) => {
-  const sql = "DELETE FROM reviews WHERE id = ?";
+  const sql = "DELETE FROM review WHERE id = ?";
   db.query(sql, id, (err, result) => {
     if (err) return cb(err);
     console.log("🚀 ~ file: review.model.js:61 ~ db.query ~ result", result);
@@ -70,7 +70,7 @@ Review.delete = (id, cb) => {
       return cb({ kind: "not_found" }, null);
     }
     console.log("deleted review with id: ", id);
-    result(null, result);
+    return cb(null, result);
   });
 };
 

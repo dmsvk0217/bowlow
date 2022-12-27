@@ -28,7 +28,7 @@ Order.create = (order, cb) => {
 };
 
 Order.delete = (id, cb) => {
-  const sql = "DELETE FROM Orders WHERE id = ?";
+  const sql = "DELETE FROM order WHERE id = ?";
   db.query(sql, id, (err, result) => {
     console.log("🚀 ~ file: Order.model.js:32 ~ db.query ~ result", result);
     if (err) return cb(err);
@@ -36,7 +36,7 @@ Order.delete = (id, cb) => {
       return cb({ kind: "not_found" }, null);
     }
     console.log("deleted Order with id: ", id);
-    result(null, result);
+    return cb(null, result);
   });
 };
 

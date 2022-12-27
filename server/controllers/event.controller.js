@@ -83,6 +83,7 @@ exports.delete = (req, res) => {
   }
 
   const id = req.params.id;
+  console.log("🚀 ~ file: event.controller.js:86 ~ exports.delete ~ id", id);
 
   Event.delete(id, (err, data) => {
     if (err) {
