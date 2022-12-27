@@ -7,7 +7,7 @@ exports.get = (req, res) => {
 
   Notice.get((err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getting Notice");
+      res.status(500).json(data || "Some error occured while getting Notice");
     res.json(data);
   });
 };
@@ -51,7 +51,7 @@ exports.create = (req, res) => {
 
   Notice.create(notice, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while creating Notice");
+      res.status(500).json(data || "Some error occured while creating Notice");
     res.json(data);
   });
 };
@@ -73,7 +73,7 @@ exports.update = (req, res) => {
 
   Notice.update(notice, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while updating Notice");
+      res.status(500).json(data || "Some error occured while updating Notice");
     res.json(notice);
   });
 };

@@ -12,29 +12,48 @@ const Product = function (product) {
   this.type = product.type;
   this.category1 = product.category1;
   this.category2 = product.category2;
+  this.date = product.date;
 };
+// insert into product values(
+//   null,
+//   "트위스트 루즈 브이넥 니트",
+//   59900,
+//   "꽈배기 짜임으로 루즈한 핏감의 브이넥 니트입니다. 램스울 70 나일론 30 혼용 소매와 몸판 짜임이 다른 니트 디테일",
+// "https://bowlow.co.kr/web/product/medium/202212/e3a728b5c175ef1c006b9a68b437d17f.webp",
+//   0,
+//   0,
+//   2,
+//   5,
+//   3,
+//   "2022-12-27"
+// );
 
-Product.get = (cb) => {
-  let sql = "SELECT * FROM product ";
-  let sql_object;
+// [BOWLOW MADE] 프리미엄 히든 더블 코트
+// 15시 이전 주문 시 당일발송
+// KRW 238,000
 
-  //type, category1,2 별 분류
-  if (product.type != 4) {
-    sql += "where type=?";
-    sql_object = product.type;
-  } else if (product.category2 == 0) {
-    sql += "where category1=?";
-    sql_object = product.category1;
-  } else {
-    sql += "where category1=? and category2=?";
-    sql_object = [product.category1, product.category2];
+// [BOWLOW MADE] 프리미엄 울 포켓 셔츠
+// 15시 이전 주문 시 당일발송
+// KRW 81,400
+
+// 휴스턴 무스탕 레더 자켓
+// KRW 134,900
+
+//추가적인 category1,2 별 분류를 통한 초기 로딩 시간 줄이기 및 최적화 요.
+Product.get = (type, cb) => {
+  console.log("🚀 ~ file: product.model.js:43 ~ type", type);
+
+  let sql = "SELECT * FROM product where type=?";
+  const sql_object = [type];
+
+  if (type == 0) {
+    sql += " or type=?";
+    sql_object.pop();
+    sql_object.push(2);
+    sql_object.push(3);
   }
 
   db.query(sql, sql_object, (err, result) => {
-    console.log(
-      "🚀get ~ file: product.model.js:36 ~ db.query ~ result",
-      result
-    );
     if (err) return cb(err, null);
     return cb(null, result);
   });

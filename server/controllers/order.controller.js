@@ -7,7 +7,7 @@ exports.get = (req, res) => {
 
   Order.get((err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getting Order");
+      res.statue(500).json(data || "Some error occured while getting Order");
     res.json(data);
   });
 };
@@ -28,7 +28,7 @@ exports.create = (req, res) => {
 
   Order.create(order, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while creating Order");
+      res.status(500).json(data || "Some error occured while creating Order");
     res.json(data);
   });
 };

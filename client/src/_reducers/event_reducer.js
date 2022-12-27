@@ -5,7 +5,7 @@ import {
   DELETE_EVENT,
 } from "../_actions/types";
 
-function eventReducer(state = {}, action) {
+const eventReducer = (state = {}, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -28,6 +28,6 @@ function eventReducer(state = {}, action) {
     default:
       return state;
   }
-}
+};
 
 export default eventReducer;

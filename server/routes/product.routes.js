@@ -3,7 +3,7 @@ module.exports = (app) => {
 
   var router = require("express").Router();
 
-  router.get("/", productController.get);
+  router.get("/:type", productController.get);
 
   router.get("/:id", productController.findOne);
 

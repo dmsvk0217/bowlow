@@ -61,7 +61,7 @@ exports.login = (req, res) => {
       );
       if (err)
         return res
-          .state(500)
+          .status(500)
           .json(data || "Some error occured while login user");
 
       res.cookie("x_auth", token).status(200).json(data);
@@ -75,7 +75,7 @@ exports.logout = (req, res) => {
 
   User.logout(user, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while logout user");
+      res.status(500).json(data || "Some error occured while logout user");
     res.json(data);
   });
 };
@@ -91,7 +91,7 @@ exports.cartCount = (req, res) => {
   const user = req.user;
   User.cartCount(user, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while user cartCount");
+      res.status(500).json(data || "Some error occured while user cartCount");
     res.json(data);
   });
 };

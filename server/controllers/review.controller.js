@@ -7,7 +7,7 @@ exports.get = (req, res) => {
 
   Review.get((err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getting review");
+      res.status(500).json(data || "Some error occured while getting review");
     res.json(data);
   });
 };
@@ -54,7 +54,7 @@ exports.create = (req, res) => {
 
   Review.create(review, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while creating review");
+      res.status(500).json(data || "Some error occured while creating review");
     res.json(data);
   });
 };

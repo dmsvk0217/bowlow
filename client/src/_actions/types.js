@@ -12,3 +12,8 @@ export const GET_EVENTS = "get_events";
 export const CREATE_EVENT = "create_event";
 export const UPDATE_EVENT = "update_event";
 export const DELETE_EVENT = "delete_event";
+
+export const GET_PRODUCTS = "get_products";
+export const CREATE_PRODUCT = "create_product";
+export const UPDATE_PRODUCT = "update_product";
+export const DELETE_PRODUCT = "delete_product";

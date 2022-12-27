@@ -7,7 +7,7 @@ exports.get = (req, res) => {
 
   Event.get((err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getting Event");
+      res.status(500).json(data || "Some error occured while getting Event");
     res.json(data);
   });
 };
@@ -52,7 +52,7 @@ exports.create = (req, res) => {
 
   Event.create(event, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while creating Event");
+      res.status(500).json(data || "Some error occured while creating Event");
     res.json(data);
   });
 };

@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./LandingPage.css";
 import landingImage from "../img/LandingImg.png";
 import GridItem from "../common/GridItem/GridItem";
 import GridText from "../common/GridText/GridText";
-import Footer from "../common/Footer/Footer";
 import img from "../img/img";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../../_actions/product_action";
 
 function LandingPage() {
-  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const dispatch = useDispatch();
+  const [newArrivalesProducts, setnewArrivalesProducts] = useState(null);
+  const [BestProducts, setBestProducts] = useState(null);
 
+  useEffect(() => {
+    const type = 0;
+    dispatch(getProduct(type)).then((response) => {
+      const products = response.payload;
+      setnewArrivalesProducts(products.filter((product) => product.type == 2));
+      setBestProducts(products.filter((product) => product.type == 3));
+    });
+  }, []);
   return (
     <div className="landing">
       <img className="landingImg" src={landingImage} alt="LandingIMG" />
@@ -17,17 +28,19 @@ function LandingPage() {
         <div className="marginDiv50" />
         <GridText text="신상품" />
         <div className="grid3 product__container">
-          {list.map((e, index) => (
-            <GridItem key={index} image={img[e - 1]} />
-          ))}
+          {newArrivalesProducts &&
+            newArrivalesProducts.map((product, index) => (
+              <GridItem key={index} product={product} />
+            ))}
         </div>
 
         <div className="marginDiv50"></div>
         <GridText text="베스트" />
         <div className="grid3 product__container">
-          {list.map((e, index) => (
-            <GridItem key={index} image={img[e - 1]} />
-          ))}
+          {BestProducts &&
+            BestProducts.map((product, index) => (
+              <GridItem key={index} product={product} />
+            ))}
         </div>
         <div className="marginDiv50" />
       </div>

@@ -7,7 +7,7 @@ exports.get = (req, res) => {
 
   Cart.get((err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while getting Cart");
+      res.statue(500).json(data || "Some error occured while getting Cart");
     res.json(data);
   });
 };
@@ -27,7 +27,7 @@ exports.create = (req, res) => {
 
   Cart.create(cart, (err, data) => {
     if (err)
-      res.state(500).json(data || "Some error occured while creating Cart");
+      res.statue(500).json(data || "Some error occured while creating Cart");
     res.json(data);
   });
 };
