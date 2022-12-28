@@ -10,7 +10,7 @@ const productReducer = (state = {}, action) => {
 
   switch (type) {
     case GET_PRODUCTS:
-      return [...state, ...payload];
+      return payload;
     case CREATE_PRODUCT:
       return [...state, payload];
     case UPDATE_PRODUCT:

@@ -2,6 +2,7 @@ import { GET_CARTS, CREATE_CART, DELETE_CART } from "./types";
 import axios from "axios";
 
 export function getCarts(user_id) {
+  console.log("[!]getCarts");
   const request = axios
     .get(`/api/cart/${user_id}`, { withCredentials: true })
     .then((response) => response.data);
@@ -17,6 +18,8 @@ export function createCart(dataTosubmit) {
     .post("/api/cart/", dataTosubmit, { withCredentials: true })
     .then((response) => response.data);
 
+  console.log("request : ", request);
+  console.log("request.cart : ", request.cart);
   return {
     type: CREATE_CART,
     payload: request,

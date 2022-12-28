@@ -26,7 +26,12 @@ Cart.create = (cart, cb) => {
     console.log("🚀 ~ file: cart.model.js:24 ~ db.query ~ err", err);
     console.log("🚀 ~ file: cart.model.js:23 ~ db.query ~ result", result);
     if (err) return cb(err);
-    return cb(null, { crateCartSuccess: true });
+
+    const sql = "select * from cart where cart_id = ?";
+    db.query(sql, result.insertId, (err, result) => {
+      if (err) return cb(err);
+      return cb(null, { crateCartSuccess: true, cart: result[0] });
+    });
   });
 };
 

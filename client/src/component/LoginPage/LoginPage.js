@@ -4,6 +4,7 @@ import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../_actions/user_action";
+import { getCarts } from "../../_actions/cart_action";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function LoginPage() {
       .then((response) => {
         if (response.payload.loginSuccess) {
           console.log("[login] 로그인 성공입니다.");
+          dispatch(getCarts());
           navigate("/", { replace: true });
           return;
         }
