@@ -20,7 +20,7 @@ function Shop() {
         <div className="grid3 ">
           {products &&
             products.map((product, index) => (
-              <GridItem key={index} product={product} />
+              <GridItem key={index} product={product} type={4} />
             ))}
         </div>
       </div>

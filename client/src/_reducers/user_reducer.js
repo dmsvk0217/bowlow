@@ -1,4 +1,9 @@
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from "../_actions/types";
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  CART_COUNT_USER,
+} from "../_actions/types";
 
 function userReducer(state = {}, action) {
   const { type, payload } = action;
@@ -7,13 +12,16 @@ function userReducer(state = {}, action) {
     case LOGIN_USER:
       return { ...state, loginSuccess: payload };
     case REGISTER_USER:
-      console.log(
-        "🚀 ~ file: user_reducer.js:4 ~ userReducer ~ payload",
-        payload
-      );
       return { ...state, registerSuccess: payload };
     case AUTH_USER:
-      return { ...state, userData: payload };
+      return {
+        ...state,
+        userData: payload,
+        cart_count: state.userData.user.cart_count,
+      };
+    case CART_COUNT_USER: {
+      return { ...state, cart_count: state.cart_count + 1 };
+    }
     default:
       return state;
   }

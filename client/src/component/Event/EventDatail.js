@@ -3,6 +3,7 @@ import "./EventDetail.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent } from "../../_actions/event_action";
+
 function EventDatail() {
   const navigate = useNavigate();
   const dispatch = useDispatch();

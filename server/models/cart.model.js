@@ -5,6 +5,7 @@ const Cart = function (cart) {
   this.user_id = cart.user_id;
   this.product_id = cart.product_id;
   this.quantity = cart.quantity;
+  this.date = cart.date;
 };
 
 Cart.get = (cb) => {
@@ -18,8 +19,10 @@ Cart.get = (cb) => {
 };
 
 Cart.create = (cart, cb) => {
+  console.log("🚀 ~ file: cart.model.js:22 ~ cart", cart);
   const sql = "insert into Cart set ?";
   db.query(sql, cart, (err, result) => {
+    console.log("🚀 ~ file: cart.model.js:24 ~ db.query ~ err", err);
     console.log("🚀 ~ file: cart.model.js:23 ~ db.query ~ result", result);
     if (err) return cb(err);
     return cb(null, { crateCartSuccess: true });

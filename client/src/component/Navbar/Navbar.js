@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navber.css";
@@ -8,9 +8,16 @@ function Navbar() {
   const isAuth = useSelector((state) => state.user.userData.isAuth);
   const navigate = useNavigate();
 
+  const getCartCount = useSelector((state) => state.user.cart_count);
   const positionChange = useRef();
   const opacityChange = useRef();
   const navBarChange = useRef();
+
+  const [cart_count, setcart_count] = useState(0);
+
+  useEffect(() => {
+    setcart_count(getCartCount);
+  }, [getCartCount]);
 
   const menuOnHandler = () => {
     positionChange.current.style =
@@ -72,7 +79,7 @@ function Navbar() {
               )}
             </li>
             <li className="navbar__top__sideMenu__item">
-              <Link to="/bag">장바구니</Link>
+              <Link to="/bag">장바구니 {cart_count && cart_count}</Link>
             </li>
           </ul>
           <Link to="#" className="menu" onClick={menuOnHandler}>

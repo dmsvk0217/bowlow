@@ -19,7 +19,7 @@ function NewArrivalsPage() {
         <div className="grid3 ">
           {products &&
             products.map((product, index) => (
-              <GridItem key={index} product={product} />
+              <GridItem key={index} product={product} type={2} />
             ))}
         </div>
       </div>

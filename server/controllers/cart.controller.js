@@ -13,22 +13,26 @@ exports.get = (req, res) => {
 };
 
 exports.create = (req, res) => {
+  console.log("🚀 ~ file: cart.controller.js:16 ~ reqbody", req.body);
   if (!req.body) {
-    res.status(400).send({ data: "Content can not be empty" });
+    return res.status(400).send({ data: "Content can not be empty" });
   }
 
   //uuid 생성?
   const cart = new Cart({
-    id: cart.id,
-    user_id: cart.user_id,
-    product_id: cart.product_id,
-    quantity: cart.quantity,
+    user_id: req.body.user_id,
+    product_id: req.body.product_id,
+    quantity: req.body.quantity,
+    date: req.body.date,
   });
+  console.log("🚀 ~ file: cart.controller.js:27 ~ cart", cart);
 
   Cart.create(cart, (err, data) => {
     if (err)
-      res.statue(500).json(data || "Some error occured while creating Cart");
-    res.json(data);
+      return res
+        .status(500)
+        .json(data || "Some error occured while creating Cart");
+    return res.json(data);
   });
 };
 

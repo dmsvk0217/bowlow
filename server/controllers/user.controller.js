@@ -82,7 +82,6 @@ exports.logout = (req, res) => {
 
 exports.auth = (req, res) => {
   console.log("🚀 ~ file: user.controller.js:86 ~ req.user", req.user);
-
   //여기까지 왔다면 인증이 완료된 것임.
   res.json({ isAuth: true, user: req.user });
 };
@@ -91,7 +90,9 @@ exports.cartCount = (req, res) => {
   const user = req.user;
   User.cartCount(user, (err, data) => {
     if (err)
-      res.status(500).json(data || "Some error occured while user cartCount");
-    res.json(data);
+      return res
+        .status(500)
+        .json(data || "Some error occured while user cartCount");
+    return res.json(data);
   });
 };

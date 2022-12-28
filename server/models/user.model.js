@@ -90,6 +90,8 @@ User.cartCount = (user, cb) => {
   let sqlObject = [user.cart_count + 1, user.id];
 
   db.query(sql, sqlObject, function (err, result) {
+    console.log("🚀 ~ file: user.model.js:93 ~ result", result);
+    console.log("🚀 ~ file: user.model.js:93 ~ err", err);
     if (err) cb(err);
     return cb(null, result[0]);
   });
