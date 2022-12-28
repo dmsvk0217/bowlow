@@ -1,5 +1,12 @@
 import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, CART_COUNT_USER } from "./types";
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  CART_COUNT_USER,
+  ADD_COUNT_USER,
+  DELETE_COUNT_USER,
+} from "./types";
 
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -45,5 +52,19 @@ export function cartCountUser() {
   return {
     type: CART_COUNT_USER,
     payload: request,
+  };
+}
+
+export function addCountUser() {
+  return {
+    type: ADD_COUNT_USER,
+    payload: null,
+  };
+}
+
+export function deleteCountUser() {
+  return {
+    type: DELETE_COUNT_USER,
+    payload: null,
   };
 }

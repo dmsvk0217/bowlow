@@ -15,7 +15,7 @@ import NoticeDatail from "./component/Notice/NoticeDatail";
 import EventPage from "./component/Event/EventPage";
 import EventCreatePage from "./component/Event/EventCreatePage";
 import EventDatail from "./component/Event/EventDatail";
-import ReviewPage from "./component/common/ReviewPage/ReviewPage";
+import ReviewPage from "./component/ReviewPage/ReviewPage";
 import LoginPage from "./component/LoginPage/LoginPage";
 import RegisterPage from "./component/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";

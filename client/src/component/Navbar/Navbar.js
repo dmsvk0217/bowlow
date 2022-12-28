@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Navber.css";
 import axios from "axios";
+import { deleteCountUser } from "../../_actions/user_action";
 
 function Navbar() {
   const isAuth = useSelector((state) => state.user.userData.isAuth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const getCartCount = useSelector((state) => state.user.cart_count);
@@ -38,6 +40,7 @@ function Navbar() {
         console.log(res.data);
         if (res.data.logoutSuccess) {
           console.log("로그아웃 성공");
+          dispatch(deleteCountUser());
           navigate("/login", { replace: true });
         }
       })
@@ -45,6 +48,7 @@ function Navbar() {
         alert("로그아웃 중에 에러가 발생했습니다. \n", err);
       });
   };
+  console.log("navbar load!!");
 
   return (
     <>
@@ -79,7 +83,11 @@ function Navbar() {
               )}
             </li>
             <li className="navbar__top__sideMenu__item">
-              <Link to="/cart">장바구니 {cart_count && cart_count}</Link>
+              <Link to="/cart">
+                장바구니
+                {isAuth == true ? <span> {cart_count}</span> : <span></span>}
+                {/* {isAuth == false ?  : } */}
+              </Link>
             </li>
           </ul>
           <Link to="#" className="menu" onClick={menuOnHandler}>
