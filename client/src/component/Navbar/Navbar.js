@@ -79,7 +79,7 @@ function Navbar() {
               )}
             </li>
             <li className="navbar__top__sideMenu__item">
-              <Link to="/bag">장바구니 {cart_count && cart_count}</Link>
+              <Link to="/cart">장바구니 {cart_count && cart_count}</Link>
             </li>
           </ul>
           <Link to="#" className="menu" onClick={menuOnHandler}>
@@ -111,7 +111,7 @@ function Navbar() {
             <Link to="/login">로그인</Link>
           </li>
           <li className="mobile__menu__section__1__item">
-            <Link to="/bag">장바구니</Link>
+            <Link to="/cart">장바구니</Link>
           </li>
           <li className="mobile__menu__section__1__item">
             <Link to="/myPage">마이 페이지</Link>

@@ -1,0 +1,38 @@
+.cart_one {
+  position: relative;
+  width: 100%;
+  max-height: 127px;
+  margin: 0;
+  padding: 12px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #111;
+}
+
+.cart_one img {
+  width: 80px;
+  height: 103px;
+  float: left;
+}
+
+.cart_one p {
+  line-height: 160%;
+}
+
+.cart_content {
+  margin-left: 90px;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+.deleteButton button {
+  background-color: white;
+  cursor: pointer;
+}
+.total {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+}

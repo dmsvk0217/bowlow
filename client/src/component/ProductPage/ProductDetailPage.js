@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ProductDetailPage.css";
 import GridItem from "../common/GridItem/GridItem";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { createCart } from "../../_actions/cart_action";
 import { cartCountUser } from "../../_actions/user_action";
 
@@ -10,6 +10,7 @@ function ProductDetailPage() {
   const id = useParams().id;
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const Producttype = location.state?.type;
   const user_id = useSelector((state) => state.user.userData.user.id);
   const getProduct = useSelector((state) =>
@@ -32,7 +33,7 @@ function ProductDetailPage() {
     settype(Producttype);
   }, [getProduct, user_id, type]);
 
-  const addCartHandler = (e) => {
+  const addCartHandler = (type, e) => {
     const today = new Date();
     let time = {
       year: today.getFullYear(), //현재 년도
@@ -52,9 +53,11 @@ function ProductDetailPage() {
       console.log(response.payload);
       if (response.payload.crateCartSuccess) {
         dispatch(cartCountUser());
-        alert(`${product.name}이 장바구니에 성공적으로 담겼습니다.`);
+        if (type == 1)
+          return alert(`${product.name}이 장바구니에 성공적으로 담겼습니다.`);
+        if (type == 2) return navigate("/cart", { replace: false });
       } else {
-        alert(`${product.name}을 장바구니에 담는데 실패했습니다.`);
+        return alert(`${product.name}을 장바구니에 담는데 실패했습니다.`);
       }
     });
   };
@@ -81,8 +84,10 @@ function ProductDetailPage() {
           <br />
           <br />
           <h3>실시간 재고 조회</h3>
-          <button className="buyButton">구매하기</button>
-          <button className="cartButton" onClick={addCartHandler}>
+          <button className="buyButton" onClick={() => addCartHandler(2)}>
+            구매하기
+          </button>
+          <button className="cartButton" onClick={() => addCartHandler(1)}>
             장바구니 담기
           </button>
         </div>

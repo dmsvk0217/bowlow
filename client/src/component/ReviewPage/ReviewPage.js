@@ -1,8 +1,8 @@
 import React from "react";
-import Review from "../Review/Review";
+import Review from "../common/Review/Review";
 import "./ReviewPage.css";
-import { reviewBest, reviewPhoto } from "../../common/Review/ReviewList";
-import ReviewText from "../Review/ReviewText";
+import { reviewBest, reviewPhoto } from "../common/Review/ReviewList";
+import ReviewText from "../common/Review/ReviewText";
 
 export default function ReviewPage() {
   return (

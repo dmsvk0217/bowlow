@@ -22,6 +22,7 @@ import Auth from "./hoc/auth";
 import NoticeUpdatePage from "./component/Notice/NoticeUpdatePage";
 import EventUpdatePage from "./component/Event/EventUpdatePage";
 import ProductDetailPage from "./component/ProductPage/ProductDetailPage";
+import CartPage from "./component/Cart/CartPage";
 
 const AuthLandingPage = Auth(LandingPage, null);
 const AuthLoginPage = Auth(LoginPage, false);
@@ -39,6 +40,7 @@ function App() {
         <Route path="/newArrivals" element={<NewArrivalsPage />} />
         <Route path="/bestItem" element={<BestItemPage />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/cart" element={<CartPage />} />
 
         {/* product */}
         <Route path="/product/:id" element={<ProductDetailPage />} />
