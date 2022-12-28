@@ -9,9 +9,12 @@ exports.get = (req, res) => {
   const user_id = req.params.user_id;
 
   Cart.get(user_id, (err, data) => {
+    console.log("🚀 ~ file: cart.controller.js:12 ~ Cart.get ~ data", data);
     if (err)
-      res.statue(500).json(data || "Some error occured while getting Cart");
-    res.json(data);
+      return res
+        .statue(500)
+        .json(data || "Some error occured while getting Cart");
+    return res.json(data);
   });
 };
 

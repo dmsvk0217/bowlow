@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCountUser, auth } from "../_actions/user_action";
 import { useNavigate } from "react-router-dom";
+import { getCarts } from "../_actions/cart_action";
 
 export default function (SpecificConponent, option, adminRoute = null) {
   function AuthenticationCheck(props) {
@@ -10,7 +11,7 @@ export default function (SpecificConponent, option, adminRoute = null) {
 
     useEffect(() => {
       dispatch(auth()).then((response) => {
-        console.log("auth hoc response : ", response);
+        console.log("auth hoc response : ", response.payload);
 
         //login 안한 상태
         if (!response.payload.isAuth) {
@@ -19,7 +20,9 @@ export default function (SpecificConponent, option, adminRoute = null) {
           }
         } else {
           //login 한 상태
+          const id = response.payload.user.id;
           dispatch(getCountUser());
+          dispatch(getCarts(id));
           if (!option) {
             navigate("/", { replace: true });
           }

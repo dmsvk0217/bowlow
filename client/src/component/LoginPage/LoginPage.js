@@ -23,7 +23,6 @@ function LoginPage() {
       .then((response) => {
         if (response.payload.loginSuccess) {
           console.log("[login] 로그인 성공입니다.");
-          dispatch(getCarts());
           navigate("/", { replace: true });
           return;
         }

@@ -50,9 +50,6 @@ User.login = (user, cb) => {
     const hash = result[0].password;
 
     user = result[0];
-    console.log("🚀 ~ file: user.model.js:52 ~ result", result[0]);
-    console.log("🚀 ~ file: user.model.js:52 ~ user", user);
-
     bcrypt.compare(plaintextPassword, hash, function (err, result) {
       if (err) return cb(err);
       if (!result) return cb("wrong_password", { worngPassword: true });
@@ -90,8 +87,6 @@ User.cartCount = (type, user, cb) => {
   let sqlObject = [user.cart_count + type, user.id];
 
   db.query(sql, sqlObject, function (err, result) {
-    console.log("🚀 ~ file: user.model.js:93 ~ result", result);
-    console.log("🚀 ~ file: user.model.js:93 ~ err", err);
     if (err) cb(err);
     return cb(null, result[0]);
   });

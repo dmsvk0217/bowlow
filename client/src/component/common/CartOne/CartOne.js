@@ -8,6 +8,7 @@ import { subCountUser } from "../../../_actions/user_action";
 function CartOne(props) {
   const cart = props.cart;
   const dispatch = useDispatch();
+  cart.price = "" + cart.price;
 
   const deleteHandler = () => {
     dispatch(deleteCart(cart));

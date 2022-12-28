@@ -5,7 +5,14 @@ export function getCarts(user_id) {
   console.log("[!]getCarts");
   const request = axios
     .get(`/api/cart/${user_id}`, { withCredentials: true })
-    .then((response) => response.data);
+    .then((response) => {
+      console.log("🚀 ~ file: cart_action.js:9 ~ .then ~ response", response);
+      console.log(
+        "🚀 ~ file: cart_action.js:9 ~ getCarts ~ response.data",
+        response.data
+      );
+      return response.data;
+    });
 
   return {
     type: GET_CARTS,
@@ -18,8 +25,6 @@ export function createCart(dataTosubmit) {
     .post("/api/cart/", dataTosubmit, { withCredentials: true })
     .then((response) => response.data);
 
-  console.log("request : ", request);
-  console.log("request.cart : ", request.cart);
   return {
     type: CREATE_CART,
     payload: request,

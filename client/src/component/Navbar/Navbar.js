@@ -48,7 +48,6 @@ function Navbar() {
         alert("로그아웃 중에 에러가 발생했습니다. \n", err);
       });
   };
-  console.log("navbar load!!");
 
   return (
     <>

@@ -14,6 +14,8 @@ Cart.get = (user_id, cb) => {
   const sql_object = user_id;
 
   db.query(sql, sql_object, (err, result) => {
+    console.log("🚀 ~ file: cart.model.js:17 ~ db.query ~ err", err);
+    console.log("🚀 ~ file: cart.model.js:17 ~ db.query ~ result", result);
     if (err) return cb(err, null);
     return cb(null, result);
   });

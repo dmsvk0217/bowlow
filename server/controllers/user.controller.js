@@ -7,9 +7,6 @@ exports.register = (req, res) => {
       data: "Content can not be empty!",
     });
   }
-
-  console.log("🚀 ~ file: user.controller.js:6 ~ body", req.body);
-
   var user = new User({
     password: req.body.password,
     name: req.body.name,
@@ -20,12 +17,6 @@ exports.register = (req, res) => {
   });
 
   User.register(user, (err, data) => {
-    console.log(
-      "🚀 ~ file: user.controller.js:21 ~ User.register ~ data",
-      data
-    );
-    console.log("🚀 ~ file: user.controller.js:21 ~ User.register ~ err", err);
-
     if (err)
       res.status(500).json(data || "Some error occured while register user");
     res.json(data);
@@ -39,7 +30,6 @@ exports.login = (req, res) => {
     });
   }
 
-  const eamil = req.body.email;
   const user = new User({
     email: req.body.email,
     password: req.body.password,
@@ -55,10 +45,6 @@ exports.login = (req, res) => {
         .json(data || "Some error occured while login user");
 
     User.generateToken(user.email, (err, token) => {
-      console.log(
-        "🚀 ~ file: user.controller.js:59 ~ User.generateToken ~ token",
-        token
-      );
       if (err)
         return res
           .status(500)
@@ -71,8 +57,6 @@ exports.login = (req, res) => {
 
 exports.logout = (req, res) => {
   const user = req.user;
-  console.log("🚀 ~ [logout!!]file: user.controller.js:82 ~ user", user);
-
   User.logout(user, (err, data) => {
     if (err)
       res.status(500).json(data || "Some error occured while logout user");

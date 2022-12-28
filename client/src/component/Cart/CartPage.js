@@ -7,7 +7,6 @@ import { getCarts } from "../../_actions/cart_action";
 function CartPage() {
   const dispatch = useDispatch();
   const [carts, setcarts] = useState([]);
-  console.log("🚀 ~ file: CartPage.js:10 ~ CartPage ~ carts", carts);
   const [totalPrice, settotalPrice] = useState(0);
   const user_id = useSelector((state) => state.user.userData.user.id);
   const getCartsList = useSelector((state) => state.cart);
@@ -27,7 +26,6 @@ function CartPage() {
     console.log("getCartsList store 변경!! carts : ", carts);
   }, [getCartsList]);
 
-  console.log("end------");
   return (
     <div className="container">
       <div className="content">

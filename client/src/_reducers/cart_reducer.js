@@ -7,8 +7,6 @@ const cartReducer = (state = [], action) => {
     case GET_CARTS:
       return payload;
     case CREATE_CART:
-      console.log("payload : ", payload);
-      console.log("payload.cart : ", payload.cart);
       return [...state, payload.cart];
     case DELETE_CART:
       return state.filter((cart) => {
