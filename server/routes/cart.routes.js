@@ -2,7 +2,7 @@ module.exports = (app) => {
   const router = require("express").Router();
   const cartController = require("../controllers/cart.controller");
 
-  router.get("/", cartController.get);
+  router.get("/:user_id", cartController.get);
 
   router.post("/", cartController.create);
 

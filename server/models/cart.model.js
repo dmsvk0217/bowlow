@@ -8,11 +8,12 @@ const Cart = function (cart) {
   this.date = cart.date;
 };
 
-Cart.get = (cb) => {
-  let sql = "SELECT * FROM Cart ";
+Cart.get = (user_id, cb) => {
+  const sql =
+    "select * from cart left join product on cart.product_id = product.id where cart.user_id=?";
+  const sql_object = user_id;
 
-  db.query(sql, (err, result) => {
-    console.log("🚀 ~ file: cart.model.js:14 ~ db.query ~ result", result);
+  db.query(sql, sql_object, (err, result) => {
     if (err) return cb(err, null);
     return cb(null, result);
   });

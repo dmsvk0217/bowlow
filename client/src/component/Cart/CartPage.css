@@ -9,11 +9,16 @@
   text-align: right;
 }
 .cart_total span {
-  position: absolute;
-  right: 170px;
+  text-align: right;
 }
 
-.cart_total p {
+.cart_total .total_right {
+  width: 150px;
+}
+
+.total_flex {
+  display: flex;
+  justify-content: flex-end;
   line-height: 180%;
 }
 

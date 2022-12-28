@@ -86,7 +86,6 @@ function Navbar() {
               <Link to="/cart">
                 장바구니
                 {isAuth == true ? <span> {cart_count}</span> : <span></span>}
-                {/* {isAuth == false ?  : } */}
               </Link>
             </li>
           </ul>

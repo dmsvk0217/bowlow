@@ -1,9 +1,9 @@
-import { GET_CARTS, CREATE_CART, UPDATE_CART, DELETE_CART } from "./types";
+import { GET_CARTS, CREATE_CART } from "./types";
 import axios from "axios";
 
-export function getCarts() {
+export function getCarts(user_id) {
   const request = axios
-    .get("/api/cart/", { withCredentials: true })
+    .get(`/api/cart/${user_id}`, { withCredentials: true })
     .then((response) => response.data);
 
   return {

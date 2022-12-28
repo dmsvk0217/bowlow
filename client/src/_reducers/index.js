@@ -3,6 +3,7 @@ import user from "../_reducers/user_reducer";
 import notice from "./notice_reducer";
 import event from "./event_reducer";
 import product from "./product_reducer";
+import cart from "./cart_reducer";
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   notice,
   event,
   product,
+  cart,
 });
 
 export default persistReducer(persistConfig, rootReducer);

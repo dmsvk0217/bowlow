@@ -5,7 +5,9 @@ exports.get = (req, res) => {
     res.status(400).send({ data: "Content can not be empty" });
   }
 
-  Cart.get((err, data) => {
+  const user_id = req.params.user_id;
+
+  Cart.get(user_id, (err, data) => {
     if (err)
       res.statue(500).json(data || "Some error occured while getting Cart");
     res.json(data);
