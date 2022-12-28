@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navber.css";
 import axios from "axios";
-import { deleteCountUser } from "../../_actions/user_action";
+import { initCountUser } from "../../_actions/user_action";
 
 function Navbar() {
   const isAuth = useSelector((state) => state.user.userData.isAuth);
@@ -40,7 +40,7 @@ function Navbar() {
         console.log(res.data);
         if (res.data.logoutSuccess) {
           console.log("로그아웃 성공");
-          dispatch(deleteCountUser());
+          dispatch(initCountUser());
           navigate("/login", { replace: true });
         }
       })

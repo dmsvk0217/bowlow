@@ -7,32 +7,27 @@ import { getCarts } from "../../_actions/cart_action";
 function CartPage() {
   const dispatch = useDispatch();
   const [carts, setcarts] = useState([]);
+  console.log("🚀 ~ file: CartPage.js:10 ~ CartPage ~ carts", carts);
   const [totalPrice, settotalPrice] = useState(0);
-  const user_id = useSelector((state) => {
-    return state.user.userData.user.id;
-  });
+  const user_id = useSelector((state) => state.user.userData.user.id);
+  const getCartsList = useSelector((state) => state.cart);
+
+  console.log("start------");
 
   useEffect(() => {
-    dispatch(getCarts(user_id)).then((response) => {
-      console.log(response.payload);
-      setcarts(response.payload);
-    });
+    dispatch(getCarts(user_id));
+    console.log("초기 랜더링 carts : ", carts);
   }, []);
-
   useEffect(() => {
+    setcarts(getCartsList);
     carts.map((cart) => {
-      console.log("price 계산중");
       settotalPrice((prev) => prev + cart.price);
-      console.log(
-        "🚀 ~ file: CartPage.js:27 ~ carts.map ~ cart.price",
-        cart.price
-      );
-      console.log(
-        "🚀 ~ file: CartPage.js:27 ~ carts.map ~ totalPrice",
-        totalPrice
-      );
     });
-  }, [carts]);
+
+    console.log("getCartsList store 변경!! carts : ", carts);
+  }, [getCartsList]);
+
+  console.log("end------");
   return (
     <div className="container">
       <div className="content">
@@ -43,7 +38,7 @@ function CartPage() {
         </div>
         <div className="border_div"></div>
         {carts &&
-          carts.map((cart) => {
+          carts?.map((cart) => {
             return <CartOne cart={cart} />;
           })}
         <div className="cart_total">

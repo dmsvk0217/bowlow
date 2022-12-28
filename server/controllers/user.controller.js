@@ -88,7 +88,13 @@ exports.auth = (req, res) => {
 
 exports.cartCount = (req, res) => {
   const user = req.user;
-  User.cartCount(user, (err, data) => {
+  const type = req.body.type;
+  console.log(
+    "🚀 ~ file: user.controller.js:92 ~ req.body.type",
+    req.body.type
+  );
+
+  User.cartCount(type, user, (err, data) => {
     if (err)
       return res
         .status(500)

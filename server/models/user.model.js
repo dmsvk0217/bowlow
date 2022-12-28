@@ -85,9 +85,9 @@ User.logout = (user, cb) => {
   });
 };
 
-User.cartCount = (user, cb) => {
+User.cartCount = (type, user, cb) => {
   let sql = "UPDATE user set cart_count=? where id=?";
-  let sqlObject = [user.cart_count + 1, user.id];
+  let sqlObject = [user.cart_count + type, user.id];
 
   db.query(sql, sqlObject, function (err, result) {
     console.log("🚀 ~ file: user.model.js:93 ~ result", result);

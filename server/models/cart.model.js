@@ -1,7 +1,7 @@
 const db = require("./db");
 
 const Cart = function (cart) {
-  this.id = cart.id;
+  this.cart_id = cart.cart_id;
   this.user_id = cart.user_id;
   this.product_id = cart.product_id;
   this.quantity = cart.quantity;
@@ -30,15 +30,16 @@ Cart.create = (cart, cb) => {
   });
 };
 
-Cart.delete = (id, cb) => {
-  const sql = "DELETE FROM cart WHERE id = ?";
-  db.query(sql, id, (err, result) => {
+Cart.delete = (cart_id, cb) => {
+  const sql = "DELETE FROM cart WHERE cart_id = ?";
+  db.query(sql, cart_id, (err, result) => {
+    console.log("🚀 ~ file: cart.model.js:36 ~ db.query ~ err", err);
     console.log("🚀 ~ file: cart.model.js:32 ~ db.query ~ result", result);
     if (err) return cb(err);
     if (result.affectedRows == 0) {
       return cb({ kind: "not_found" }, null);
     }
-    console.log("deleted Cart with id: ", id);
+    console.log("deleted Cart with cart_id: ", cart_id);
     return cb(null, result);
   });
 };

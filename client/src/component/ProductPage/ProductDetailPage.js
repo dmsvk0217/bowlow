@@ -4,7 +4,7 @@ import GridItem from "../common/GridItem/GridItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { createCart } from "../../_actions/cart_action";
-import { cartCountUser } from "../../_actions/user_action";
+import { addCountUser } from "../../_actions/user_action";
 
 function ProductDetailPage() {
   const id = useParams().id;
@@ -51,8 +51,11 @@ function ProductDetailPage() {
 
     dispatch(createCart(dataTosubmit)).then((response) => {
       console.log(response.payload);
+      //DB에 Cart 추가가 완료가 되었을 경우에
       if (response.payload.crateCartSuccess) {
-        dispatch(cartCountUser());
+        //UserDB에 cart_count +=1 업데이트하기
+        //그런데 두 작업을 묶어서 하나가 취소될경우 되돌릴 수 있도록 바꿔야 할 듯함.
+        dispatch(addCountUser());
         if (type == 1)
           return alert(`${product.name}이 장바구니에 성공적으로 담겼습니다.`);
         if (type == 2) return navigate("/cart", { replace: false });

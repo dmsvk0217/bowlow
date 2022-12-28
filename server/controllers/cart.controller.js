@@ -1,4 +1,5 @@
 const Cart = require("../models/cart.model");
+const User = require("../models/user.model");
 
 exports.get = (req, res) => {
   if (!req.body) {
@@ -43,21 +44,27 @@ exports.delete = (req, res) => {
     res.status(400).send({ data: "Content can not be empty" });
   }
 
-  const id = req.params.id;
+  const cart_id = req.params.id;
+  console.log(
+    "🚀 ~ file: cart.controller.js:47 ~ exports.delete ~ cart_id",
+    cart_id
+  );
 
-  Cart.delete(id, (err, data) => {
+  Cart.delete(cart_id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found list with id ${req.params.id}.`,
+        return res.status(404).send({
+          message: `Not found list with id ${req.params.cart_id}.`,
           deleteCartSuccess: false,
         });
       } else {
-        res.status(500).send({
-          message: "Could not delete Cart with id " + id,
+        return res.status(500).send({
+          message: "Could not delete Cart with cart_id " + cart_id,
           deleteCartSuccess: false,
         });
       }
-    } else res.send({ deleteCartSuccess: true });
+    } else {
+      return res.send({ deleteCartSuccess: true });
+    }
   });
 };

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addCountUser, auth } from "../_actions/user_action";
+import { getCountUser, auth } from "../_actions/user_action";
 import { useNavigate } from "react-router-dom";
 
 export default function (SpecificConponent, option, adminRoute = null) {
@@ -19,7 +19,7 @@ export default function (SpecificConponent, option, adminRoute = null) {
           }
         } else {
           //login 한 상태
-          dispatch(addCountUser());
+          dispatch(getCountUser());
           if (!option) {
             navigate("/", { replace: true });
           }

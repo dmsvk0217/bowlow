@@ -3,9 +3,10 @@ export const LOGIN_USER = "login_user";
 export const REGISTER_USER = "register_user";
 export const AUTH_USER = "auth_user";
 export const GET_LIST = "get_list";
-export const CART_COUNT_USER = "cart_count_user";
+export const GET_COUNT_USER = "get_count_user";
 export const ADD_COUNT_USER = "add_count_user";
-export const DELETE_COUNT_USER = "delete_count_user";
+export const INIT_COUNT_USER = "init_count_user";
+export const SUB_COUNT_USER = "sub_count_user";
 
 //notice
 export const GET_NOTICES = "get_notices";

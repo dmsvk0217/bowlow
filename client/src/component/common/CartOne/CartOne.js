@@ -1,9 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./CartOne.css";
+import { useDispatch } from "react-redux";
+import { deleteCart } from "../../../_actions/cart_action";
+import { subCountUser } from "../../../_actions/user_action";
 
 function CartOne(props) {
   const cart = props.cart;
+  const dispatch = useDispatch();
+
+  const deleteHandler = () => {
+    dispatch(deleteCart(cart));
+    dispatch(subCountUser());
+  };
   return (
     <div className="cart_one">
       <Link to="/">
@@ -18,7 +27,7 @@ function CartOne(props) {
         <br />
         <br />
         <div className="deleteButton">
-          <button>X</button>
+          <button onClick={deleteHandler}>X</button>
         </div>
         <div className="total">
           <p>
