@@ -10,10 +10,6 @@ const cartReducer = (state = [], action) => {
       return [...state, payload.cart];
     case DELETE_CART:
       return state.filter((cart) => {
-        console.log("cart : ", cart);
-        console.log("cart.cart_id : ", cart.cart_id);
-        console.log("payload : ", payload);
-        console.log("cart.cart_id !== payload : ", cart.cart_id !== payload);
         return cart.cart_id !== payload;
       });
     default:

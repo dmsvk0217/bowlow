@@ -12,16 +12,13 @@ function CartPage() {
   const getCartsList = useSelector((state) => state.cart);
 
   useEffect(() => {
-    dispatch(getCarts(user_id));
-  }, []);
-
-  useEffect(() => {
     setcarts(getCartsList);
     console.log("getCartsList 변경 : ", getCartsList);
   }, [getCartsList]);
 
   useEffect(() => {
     console.log("carts 변경 : ", carts);
+    settotalPrice(0);
     carts.map((cart) => {
       settotalPrice((prev) => {
         console.log(
