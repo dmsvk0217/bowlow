@@ -92,4 +92,17 @@ User.cartCount = (type, user, cb) => {
   });
 };
 
+User.initCartCount = (user_id, cb) => {
+  console.log("🚀 ~ file: user.model.js:96 ~ user_id", user_id);
+  let sql = "UPDATE user set cart_count=0 where id=?";
+  let sqlObject = user_id;
+
+  db.query(sql, sqlObject, function (err, result) {
+    console.log("🚀 ~ file: user.model.js:100 ~ result", result);
+    console.log("🚀 ~ file: user.model.js:100 ~ err", err);
+    if (err) cb(err);
+    return cb(null, result[0]);
+  });
+};
+
 module.exports = User;

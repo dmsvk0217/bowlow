@@ -17,8 +17,8 @@ function TotalLeft(props) {
   const setphone2 = props.setphone2;
   const phone3 = props.phone3;
   const setphone3 = props.setphone3;
-  const email1 = props.email1;
-  const setemail1 = props.setemail1;
+  const email = props.email;
+  const setemail = props.setemail;
   const emailDomain = props.emailDomain;
   const setemailDomain = props.setemailDomain;
 
@@ -89,9 +89,9 @@ function TotalLeft(props) {
       <input
         className="input33"
         type="text"
-        name="email1"
-        value={email1}
-        onChange={(e) => setemail1(e.target.value)}
+        name="email"
+        value={email}
+        onChange={(e) => setemail(e.target.value)}
       />
       <span>@</span>
       <input

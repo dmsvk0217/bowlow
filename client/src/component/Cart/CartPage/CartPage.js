@@ -9,7 +9,6 @@ import TotalRight from "../TotalRight/TotalRight";
 function CartPage() {
   const [carts, setcarts] = useState([]);
   const [totalPrice, settotalPrice] = useState(0);
-  const user_id = useSelector((state) => state.user.userData.user.id);
   const getCartsList = useSelector((state) => state.cart);
   const [onOrder, setonOrder] = useState(false);
 
@@ -17,10 +16,10 @@ function CartPage() {
   const [addressNumber, setaddressNumber] = useState("");
   const [address, setaddress] = useState("");
   const [addressDetail, setaddressDetail] = useState("");
-  const [phone1, setphone1] = useState("");
+  const [phone1, setphone1] = useState("010");
   const [phone2, setphone2] = useState("");
   const [phone3, setphone3] = useState("");
-  const [email1, setemail1] = useState("");
+  const [email, setemail] = useState("");
   const [emailDomain, setemailDomain] = useState("");
 
   useEffect(() => {
@@ -65,15 +64,26 @@ function CartPage() {
             setphone2={setphone2}
             phone3={phone3}
             setphone3={setphone3}
-            email1={email1}
-            setemail1={setemail1}
+            email={email}
+            setemail={setemail}
             emailDomain={emailDomain}
             setemailDomain={setemailDomain}
           />
         )}
 
         {onOrder ? (
-          <TotalRight totalPrice={totalPrice} />
+          <TotalRight
+            totalPrice={totalPrice}
+            name={name}
+            addressNumber={addressNumber}
+            address={address}
+            addressDetail={addressDetail}
+            phone1={phone1}
+            phone2={phone2}
+            phone3={phone3}
+            email={email}
+            emailDomain={emailDomain}
+          />
         ) : (
           <CartTotal totalPrice={totalPrice} setonOrder={setonOrder} />
         )}

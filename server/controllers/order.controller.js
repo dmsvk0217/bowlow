@@ -1,4 +1,6 @@
+const Cart = require("../models/cart.model");
 const Order = require("../models/order.model");
+const User = require("../models/user.model");
 
 exports.get = (req, res) => {
   if (!req.body) {
@@ -7,29 +9,43 @@ exports.get = (req, res) => {
 
   Order.get((err, data) => {
     if (err)
-      res.statue(500).json(data || "Some error occured while getting Order");
+      res.status(500).json(data || "Some error occured while getting Order");
     res.json(data);
   });
 };
 
 exports.create = (req, res) => {
   if (!req.body) {
-    res.status(400).send({ data: "Content can not be empty" });
+    return res.status(400).send({ data: "Content can not be empty" });
   }
 
-  //uuid 생성?
-  const order = new Order({
-    id: order.id,
-    user_id: order.user_id,
-    product_id: order.product_id,
-    quantity: order.quantity,
-    date: order.date,
-  });
+  const orders = req.body;
+  // console.log("🚀 ~ file: order.controller.js:22 ~ orders", orders);
+  const user_id = req.user.id;
+  // console.log("🚀 ~ file: order.controller.js:24 ~ user_id", user_id);
 
-  Order.create(order, (err, data) => {
-    if (err)
-      res.status(500).json(data || "Some error occured while creating Order");
-    res.json(data);
+  //createOrder 역할 :  1) createOrder
+  Order.create(orders, (err, data) => {
+    if (err) return res.status(500).json(err);
+
+    //2) cart비우기.
+    Cart.deleteAllByUserId(user_id, (err, result) => {
+      console.log(
+        "🚀 ~ file: order.controller.js:33 ~ Cart.deleteAllByUserId ~ err",
+        err
+      );
+      if (err) return res.status(500).send(err);
+
+      //3) uesr db 장바구니 카운터 0으로 만들기
+      User.initCartCount(user_id, (err, result) => {
+        console.log(
+          "🚀 ~ file: order.controller.js:41 ~ User.initCartCount ~ user_id",
+          user_id
+        );
+        if (err) return res.status(500).send(err);
+        return res.json({ crateOrderSuccess: true });
+      });
+    });
   });
 };
 

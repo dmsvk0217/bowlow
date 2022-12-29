@@ -51,4 +51,24 @@ Cart.delete = (cart_id, cb) => {
   });
 };
 
+Cart.deleteAllByUserId = (user_id, cb) => {
+  const sql = "DELETE FROM cart WHERE user_id = ?";
+  db.query(sql, user_id, (err, result) => {
+    console.log(
+      "🚀 ~ file: [deleteAllByUserId]cart.model.js:36 ~ db.query ~ err",
+      err
+    );
+    console.log(
+      "🚀 ~ file: [deleteAllByUserId]cart.model.js:32 ~ db.query ~ result",
+      result
+    );
+    if (err) return cb(err);
+    if (result.affectedRows == 0) {
+      return cb({ kind: "not_found" }, null);
+    }
+    console.log("deleteAllByUserId Cart with user_id: ", user_id);
+    return cb(null, result);
+  });
+};
+
 module.exports = Cart;

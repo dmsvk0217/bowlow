@@ -31,3 +31,7 @@ export const GET_CARTS = "get_carts";
 export const CREATE_CART = "create_cart";
 export const UPDATE_CART = "update_cart";
 export const DELETE_CART = "delete_cart";
+
+//order
+export const GET_ORDERS = "get_orders";
+export const CREATE_ORDER = "create_order";
