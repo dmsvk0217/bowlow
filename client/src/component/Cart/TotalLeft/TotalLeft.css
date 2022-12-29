@@ -1,0 +1,63 @@
+.total_left {
+  float: left;
+  width: 50%;
+  padding-right: 5%;
+  margin-top: 15px;
+}
+
+.total_left input {
+  height: 30px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-bottom: 5px !important;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  text-transform: none !important;
+  padding: 5px 0 5px 10px;
+  color: #111;
+  font-family: "Montserrat", "Pretendard", sans-serif;
+}
+
+/* input 태그 설명 text */
+.total_left p,
+.total_left span {
+  padding-bottom: 5px;
+  letter-spacing: 0;
+}
+.total_left p {
+  font-size: 12px;
+}
+.input100 {
+  width: 100%;
+}
+.input33 {
+  width: 31.95%;
+}
+
+.between_span {
+  display: inline-block;
+  width: 2.5%;
+  margin-bottom: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+select.box {
+  height: 30px;
+  box-sizing: border-box;
+  padding: 5px 0 5px 10px;
+  color: #111;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  font-family: "Montserrat", "Pretendard", sans-serif;
+}
+
+.email_box {
+  margin-left: 10px;
+}
+
+option {
+  font-size: 16px;
+}
