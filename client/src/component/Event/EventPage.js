@@ -12,7 +12,6 @@ function EventPage() {
 
   useEffect(() => {
     dispatch(getEvents()).then((response) => {
-      console.log(response.payload);
       setevents(response.payload);
     });
   }, []);

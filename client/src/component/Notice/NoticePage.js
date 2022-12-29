@@ -12,7 +12,6 @@ function NoticePage() {
   useEffect(() => {
     dispatch(getNotices())
       .then((response) => {
-        console.log(response.payload);
         setnotices(response.payload);
       })
       .catch((err) => {

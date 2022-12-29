@@ -10,11 +10,6 @@ function BowulPage() {
   useEffect(() => {
     const getType = 1;
     dispatch(getProduct(getType)).then((response) => {
-      console.log("🚀 ~ file: BowulPage.js:13 ~ dispatch ~ response", response);
-      console.log(
-        "🚀 ~ file: BowulPage.js:13 ~ dispatch ~ response payload",
-        response.payload
-      );
       setproducts(response.payload);
     });
   }, []);

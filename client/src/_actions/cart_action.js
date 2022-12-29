@@ -2,15 +2,9 @@ import { GET_CARTS, CREATE_CART, DELETE_CART } from "./types";
 import axios from "axios";
 
 export function getCarts(user_id) {
-  console.log("[!]getCarts");
   const request = axios
     .get(`/api/cart/${user_id}`, { withCredentials: true })
     .then((response) => {
-      console.log("🚀 ~ file: cart_action.js:9 ~ .then ~ response", response);
-      console.log(
-        "🚀 ~ file: cart_action.js:9 ~ getCarts ~ response.data",
-        response.data
-      );
       return response.data;
     });
 

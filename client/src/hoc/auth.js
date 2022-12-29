@@ -12,10 +12,20 @@ export default function (SpecificConponent, option, adminRoute = null) {
     useEffect(() => {
       dispatch(auth()).then((response) => {
         console.log("auth hoc response : ", response.payload);
-
+        if (!option) {
+          if (response.payload.isAuth) {
+            const id = response.payload.user.id;
+            dispatch(getCountUser());
+            dispatch(getCarts(id));
+            return;
+          } else {
+            return;
+          }
+        }
         //login 안한 상태
         if (!response.payload.isAuth) {
           if (option) {
+            alert("로그인이 필요한 페이지입니다.");
             navigate("/", { replace: true });
           }
         } else {

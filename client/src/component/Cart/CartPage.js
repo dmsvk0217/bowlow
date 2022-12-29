@@ -11,20 +11,35 @@ function CartPage() {
   const user_id = useSelector((state) => state.user.userData.user.id);
   const getCartsList = useSelector((state) => state.cart);
 
-  console.log("start------");
-
   useEffect(() => {
     dispatch(getCarts(user_id));
-    console.log("초기 랜더링 carts : ", carts);
   }, []);
+
   useEffect(() => {
     setcarts(getCartsList);
-    carts.map((cart) => {
-      settotalPrice((prev) => prev + cart.price);
-    });
-
-    console.log("getCartsList store 변경!! carts : ", carts);
+    console.log("getCartsList 변경 : ", getCartsList);
   }, [getCartsList]);
+
+  useEffect(() => {
+    console.log("carts 변경 : ", carts);
+    carts.map((cart) => {
+      settotalPrice((prev) => {
+        console.log(
+          "🚀 ~ file: CartPage.js:24 ~ settotalPrice ~ parseInt(cart.price)",
+          parseInt(cart.price)
+        );
+        console.log(
+          "🚀 ~ file: CartPage.js:24 ~ settotalPrice ~ parseInt(prev)",
+          parseInt(prev)
+        );
+        console.log(
+          "cart.price + prev : ",
+          parseInt(prev) + parseInt(cart.price)
+        );
+        return parseInt(prev) + parseInt(cart.price);
+      });
+    });
+  }, [carts]);
 
   return (
     <div className="container">
