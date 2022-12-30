@@ -9,6 +9,7 @@ const Review = function (review) {
   this.like_count = review.like_count;
   this.date = review.date;
   this.image = review.image;
+  this.isBest = review.isBest;
 };
 
 Review.get = (cb) => {

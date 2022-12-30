@@ -8,6 +8,16 @@
   border-bottom: 1px solid #111;
 }
 
+.creatReviewButton {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+.creatReviewButton a {
+  font-weight: lighter;
+  text-decoration: underline;
+}
+
 .order_one img {
   width: 80px;
   height: 103px;

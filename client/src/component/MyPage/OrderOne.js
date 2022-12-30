@@ -5,6 +5,8 @@ import "./OrderOne.css";
 function OrderOne(props) {
   const order = props.order;
 
+  const creatReviewHandler = () => {};
+
   return (
     <div>
       <div className="order_one">
@@ -12,6 +14,11 @@ function OrderOne(props) {
           <img src={order?.image} alt="order_product_image" />
         </Link>
         <div className="order_content">
+          <div className="creatReviewButton">
+            <Link to="/review/create" onClick={creatReviewHandler}>
+              리뷰 작성하기
+            </Link>
+          </div>
           <p>{order?.name}</p>
           <p>
             수량<span> : {order?.quantity}</span>

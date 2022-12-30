@@ -27,6 +27,7 @@ import EventUpdatePage from "./component/Event/EventUpdatePage";
 
 //review
 import ReviewPage from "./component/ReviewPage/ReviewPage";
+import ReviewCreatePage from "./component/ReviewPage/ReviewCreatePage";
 
 //cart
 import CartPage from "./component/Cart/CartPage/CartPage";
@@ -58,6 +59,7 @@ export const AuthEventUpdatePage = Auth(EventUpdatePage, true);
 
 //review
 export const AuthReviewPage = Auth(ReviewPage, null);
+export const AuthReviewCreatePage = Auth(ReviewCreatePage, null);
 
 //cart
 export const AuthCartPage = Auth(CartPage, true);
