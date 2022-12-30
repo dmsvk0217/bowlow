@@ -26,6 +26,7 @@ import {
   AuthReviewPage,
   AuthLoginPage,
   AuthRegisterPage,
+  AuthMyPage,
 } from "./app.auth";
 import Test from "./component/TestComponent";
 
@@ -36,17 +37,22 @@ function App() {
       <ScrollToTop />
       <Navbar />
       <Routes>
+        {/* user, auth */}
+        <Route path="/login" element={<AuthLoginPage />} />
+        <Route path="/register" element={<AuthRegisterPage />} />
+        <Route path="/mypage" element={<AuthMyPage />} />
         <Route path="/test" element={<Test />} />
 
+        {/* product */}
+        <Route path="/product/:id" element={<AuthProductDetailPage />} />
         <Route path="/" element={<AuthLandingPage />} />
         <Route path="/bowul" element={<AuthBowulPage />} />
         <Route path="/newArrivals" element={<AuthNewArrivalsPage />} />
         <Route path="/bestItem" element={<AuthBestItemPage />} />
         <Route path="/shop" element={<AuthShop />} />
-        <Route path="/cart" element={<AuthCartPage />} />
 
-        {/* product */}
-        <Route path="/product/:id" element={<AuthProductDetailPage />} />
+        {/* cart */}
+        <Route path="/cart" element={<AuthCartPage />} />
 
         {/* notice */}
         <Route path="/notice" element={<AuthNoticePage />} />
@@ -59,10 +65,7 @@ function App() {
         <Route path="/event/:id" element={<AuthEventDatail />} />
         <Route path="/event/create" element={<AuthEventCreatePage />} />
         <Route path="/event/update/:id" element={<AuthEventUpdatePage />} />
-
         <Route path="/review" element={<AuthReviewPage />} />
-        <Route path="/login" element={<AuthLoginPage />} />
-        <Route path="/register" element={<AuthRegisterPage />} />
       </Routes>
       <Footer />
     </Router>

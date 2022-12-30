@@ -3,7 +3,7 @@ module.exports = (app) => {
   const orderController = require("../controllers/order.controller");
   const auth = require("../middleware/auth");
 
-  router.get("/", orderController.get);
+  router.get("/", auth, orderController.get);
 
   router.post("/", auth, orderController.create);
 

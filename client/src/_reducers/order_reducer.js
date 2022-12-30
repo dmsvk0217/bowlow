@@ -1,6 +1,6 @@
 import { GET_ORDERS, CREATE_ORDER } from "../_actions/types";
 
-function orderReducer(state = {}, action) {
+function orderReducer(state = [], action) {
   const { type, payload } = action;
 
   switch (type) {

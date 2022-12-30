@@ -24,11 +24,11 @@ function TotalRight(props) {
     getCartList.map((cart) => {
       const timestring = getTimeString();
       const data = {
-        name: name,
+        user_name: name,
         user_id: user_id,
         product_id: cart.product_id,
         quantity: cart.quantity,
-        date: timestring,
+        order_date: timestring,
         phone: phone,
         addressNumber: addressNumber,
         address: address,

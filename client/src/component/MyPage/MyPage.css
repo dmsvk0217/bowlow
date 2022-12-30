@@ -1,0 +1,51 @@
+.align {
+  display: flex;
+  justify-content: center;
+}
+.myPage {
+  margin-top: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.myPage .myinfo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.myPage .myorder {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.myPage input {
+  height: 30px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-bottom: 5px !important;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  text-transform: none !important;
+  padding: 5px 0 5px 10px;
+  color: #111;
+  font-family: "Montserrat", "Pretendard", sans-serif;
+}
+
+/* input 태그 설명 text */
+.myPage p,
+.myPage span {
+  padding-bottom: 5px;
+  letter-spacing: 0;
+}
+.myPage p {
+  font-size: 12px;
+}
+.input100 {
+  width: 100%;
+}
+.input33 {
+  width: 31.95%;
+}

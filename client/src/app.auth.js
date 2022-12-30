@@ -1,9 +1,10 @@
 import Auth from "./hoc/auth";
 
-//user auth
+//user, auth
 import LandingPage from "./component/Landingpage/LandingPage";
 import RegisterPage from "./component/RegisterPage/RegisterPage";
 import LoginPage from "./component/LoginPage/LoginPage";
+import MyPage from "./component/MyPage/MyPage";
 
 //product type + detail
 import BowulPage from "./component/BowulPage/BowulPage";
@@ -34,6 +35,7 @@ import CartPage from "./component/Cart/CartPage/CartPage";
 export const AuthLandingPage = Auth(LandingPage, null);
 export const AuthLoginPage = Auth(LoginPage, false);
 export const AuthRegisterPage = Auth(RegisterPage, false);
+export const AuthMyPage = Auth(MyPage, true);
 
 //product type + detail
 export const AuthBowulPage = Auth(BowulPage, null);

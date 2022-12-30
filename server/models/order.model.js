@@ -6,7 +6,7 @@ const Order = function (order) {
   this.product_id = order.product_id;
   this.user_name = order.user_name;
   this.quantity = order.quantity;
-  this.date = order.date;
+  this.order_date = order.order_date;
   this.phone = order.phone;
   this.addressNumber = order.addressNumber;
   this.address = order.address;
@@ -14,10 +14,12 @@ const Order = function (order) {
   this.email = order.email;
 };
 
-Order.get = (cb) => {
-  let sql = "SELECT * FROM orders ";
+Order.get = (user_id, cb) => {
+  let sql =
+    "select * from orders left join product on orders.product_id = product.id where orders.user_id=?";
 
-  db.query(sql, (err, result) => {
+  db.query(sql, user_id, (err, result) => {
+    console.log("🚀 ~ file: order.model.js:22 ~ db.query ~ err", err);
     console.log("🚀 ~ file: Order.model.js:14 ~ db.query ~ result", result);
     if (err) return cb(err, null);
     return cb(null, result);
@@ -28,7 +30,7 @@ Order.create = (order, cb) => {
   var order = order.map(Object.values);
   console.log("🚀 ~ file: order.model.js:40 ~ order", order);
   const sql =
-    "insert into orders (name, user_id, product_id, quantity, date, phone, addressNumber, address, addressDetail, email) values ?";
+    "insert into orders (user_name, user_id, product_id, quantity, date, phone, addressNumber, address, addressDetail, email) values ?";
   db.query(sql, [order], (err, result) => {
     console.log("🚀 ~ file: order.model.js:25 ~ db.query ~ err", err);
     console.log("🚀 ~ file: Order.model.js:23 ~ db.query ~ result", result);

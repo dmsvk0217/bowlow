@@ -7,7 +7,9 @@ exports.get = (req, res) => {
     res.status(400).send({ data: "Content can not be empty" });
   }
 
-  Order.get((err, data) => {
+  const user_id = req.user.id;
+
+  Order.get(user_id, (err, data) => {
     if (err)
       res.status(500).json(data || "Some error occured while getting Order");
     res.json(data);
@@ -20,6 +22,7 @@ exports.create = (req, res) => {
   }
 
   const orders = req.body;
+  console.log("🚀 ~ file: order.controller.js:25 ~ orders", orders);
   // console.log("🚀 ~ file: order.controller.js:22 ~ orders", orders);
   const user_id = req.user.id;
   // console.log("🚀 ~ file: order.controller.js:24 ~ user_id", user_id);

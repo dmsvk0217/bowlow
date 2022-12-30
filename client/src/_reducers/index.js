@@ -4,6 +4,7 @@ import notice from "./notice_reducer";
 import event from "./event_reducer";
 import product from "./product_reducer";
 import cart from "./cart_reducer";
+import order from "./order_reducer";
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   event,
   product,
   cart,
+  order,
 });
 
 export default persistReducer(persistConfig, rootReducer);
