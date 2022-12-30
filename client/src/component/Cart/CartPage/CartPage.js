@@ -10,9 +10,10 @@ function CartPage() {
   const [carts, setcarts] = useState([]);
   const [totalPrice, settotalPrice] = useState(0);
   const getCartsList = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user.userData.user);
   const [onOrder, setonOrder] = useState(false);
 
-  const [name, setname] = useState("");
+  const [name, setname] = useState(user.name);
   const [addressNumber, setaddressNumber] = useState("");
   const [address, setaddress] = useState("");
   const [addressDetail, setaddressDetail] = useState("");
@@ -22,6 +23,7 @@ function CartPage() {
   const [email, setemail] = useState("");
   const [emailDomain, setemailDomain] = useState("");
 
+  useEffect(() => {}, [user]);
   useEffect(() => {
     setcarts(getCartsList);
   }, [getCartsList]);
