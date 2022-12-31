@@ -3,24 +3,43 @@ import "./MyPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import OrderOne from "./OrderOne";
 import { getOrders } from "../../_actions/order_action";
+import ModalBasic from "./modal/ModalBasic";
 
 function MyPage() {
   const user = useSelector((state) => state.user.userData.user);
   const orders = useSelector((state) => state.order);
   const dispatch = useDispatch();
 
+  const [orderToReivew, setorderToReivew] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {}, [orders]);
   useEffect(() => {
-    console.log("getuser 완료");
     dispatch(getOrders()).then((response) => {
       console.log("[getOrders]");
       console.log(response.payload);
     });
   }, [user]);
-  useEffect(() => {}, [orders]);
+
+  //스크롤 위치 가져오기
+  useEffect(() => {
+    window.addEventListener("scroll", () => {});
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
 
   return (
     <div className="container">
       <div className="content">
+        {modalOpen && (
+          <ModalBasic
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+            position={window.scrollY}
+            orderToReivew={orderToReivew}
+          />
+        )}
         <div className="align">
           <div className="myPage">
             <h2 className="myinfo">개인정보 확인</h2>
@@ -42,7 +61,14 @@ function MyPage() {
             <div className="border_div"></div>
             {orders &&
               orders?.map((order) => {
-                return <OrderOne order={order} />;
+                return (
+                  <OrderOne
+                    order={order}
+                    setModalOpen={setModalOpen}
+                    setorderToReivew={setorderToReivew}
+                    type={true}
+                  />
+                );
               })}
           </div>
         </div>

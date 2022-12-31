@@ -1,0 +1,49 @@
+/* 모달창을 화면 중앙. 최상단에 노출 */
+.modal {
+  /* 모달창 크기 */
+  width: 100vh;
+  position: fixed;
+  height: 65vh;
+  /* 최상단 위치 */
+  z-index: 999;
+  left: 50%;
+  transform: translate(-50%, -10%);
+
+  /* 모달창 디자인 */
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 40px;
+}
+
+/* 모달창 내부 X버튼 */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.input_div {
+  padding-bottom: 10px;
+}
+
+.content_text {
+  width: 100%;
+  height: 20%;
+}
+
+.score_select {
+  margin-left: 5px;
+}
+
+.modal_button {
+  background-color: black;
+  color: white;
+  width: 150px;
+  height: 30px;
+  float: right;
+  margin: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}

@@ -1,7 +1,7 @@
 const db = require("./db");
 
 const Order = function (order) {
-  this.id = order.id;
+  this.order_id = order.order_id;
   this.user_id = order.user_id;
   this.product_id = order.product_id;
   this.user_name = order.user_name;
