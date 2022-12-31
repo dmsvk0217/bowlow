@@ -4,6 +4,7 @@ import "./ReviewPage.css";
 import ReviewText from "../common/Review/ReviewText";
 import { useDispatch } from "react-redux";
 import { getReviews } from "../../_actions/review_action";
+import ModalBasic from "../MyPage/modal/ModalBasic";
 
 export default function ReviewPage() {
   const dispatch = useDispatch();
@@ -12,11 +13,21 @@ export default function ReviewPage() {
   const [photoReviews, setphotoReviews] = useState([]);
   const [textReviews, settextReviews] = useState([]);
 
+  const [orderToReivew, setorderToReivew] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     dispatch(getReviews()).then((response) => {
       console.log(response.payload);
       setreviews(response.payload);
     });
+  }, []);
+  //스크롤 위치 가져오기
+  useEffect(() => {
+    window.addEventListener("scroll", () => {});
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
   }, []);
 
   useEffect(() => {
@@ -33,12 +44,25 @@ export default function ReviewPage() {
   return (
     <div className="container">
       <div className="content">
+        {modalOpen && (
+          <ModalBasic
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+            position={window.scrollY}
+            orderToReivew={orderToReivew}
+          />
+        )}
         <div className="Review__title">Best Review</div>
         <div className="marginDiv50"></div>
         <div className="grid3">
           {/* 6개 */}
           {bestReviews.map((review, index) => (
-            <Review key={index} review={review} />
+            <Review
+              key={index}
+              review={review}
+              setorderToReivew={setorderToReivew}
+              setModalOpen={setModalOpen}
+            />
           ))}
         </div>
         <div className="marginDiv80"></div>
@@ -48,7 +72,12 @@ export default function ReviewPage() {
         <div className="grid4">
           {/* 8개 */}
           {photoReviews.map((review, index) => (
-            <Review key={index} review={review} />
+            <Review
+              key={index}
+              review={review}
+              setorderToReivew={setorderToReivew}
+              setModalOpen={setModalOpen}
+            />
           ))}
         </div>
         <div className="marginDiv50"></div>
@@ -57,7 +86,12 @@ export default function ReviewPage() {
         <div className="marginDiv50"></div>
         {/* 4개 */}
         {textReviews.map((review, index) => (
-          <ReviewText key={index} review={review} />
+          <ReviewText
+            key={index}
+            review={review}
+            setorderToReivew={setorderToReivew}
+            setModalOpen={setModalOpen}
+          />
         ))}
       </div>
     </div>

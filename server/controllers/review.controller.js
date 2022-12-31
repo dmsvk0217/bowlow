@@ -46,7 +46,7 @@ exports.create = (req, res) => {
   //리뷰 만들고, product의 리뷰개수 +1 및 리뷰 평점 계산
 
   const review = new Review({
-    user_id: req.user.id,
+    user_name: req.user.name,
     product_id: req.body.product_id,
     score: req.body.score,
     review_content: req.body.content,

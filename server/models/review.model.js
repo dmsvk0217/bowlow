@@ -2,7 +2,7 @@ const db = require("./db");
 
 const Review = function (review) {
   this.id = review.id;
-  this.user_id = review.user_id;
+  this.user_name = review.user_name;
   this.product_id = review.product_id;
   this.score = review.score;
   this.review_content = review.review_content;
