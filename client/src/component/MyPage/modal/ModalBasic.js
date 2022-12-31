@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import OrderOne from "../OrderOne";
 import "./ModalBasic.css";
 import { useDispatch } from "react-redux";
-import { createReview } from "../../../_actions/review_action";
+import { createReview, getReviews } from "../../../_actions/review_action";
 import getTimeString from "../../common/getTimeString";
+import { useNavigate } from "react-router-dom";
 
 function ModalBasic(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const setModalOpen = props.setModalOpen;
   const modalOpen = props.modalOpen;
@@ -24,11 +26,18 @@ function ModalBasic(props) {
       image: image,
       date: getTimeString(),
       product_id: orderToReivew.product_id,
+      review_avg_score: orderToReivew.review_avg_score,
+      review_count: orderToReivew.review_count,
     };
+    console.log(
+      "🚀 ~ file: ModalBasic.js:29 ~ createReviewHandler ~ dataTosubmit",
+      dataTosubmit
+    );
     dispatch(createReview(dataTosubmit)).then((response) => {
       if (response.payload.crateReviewSuccess) {
         alert("리뷰가 성공적으로 제출되었습니다.");
         closeModal();
+        navigate(0);
         return;
       }
       alert("리뷰 제출과정에서 오류가 발생했습니다.");

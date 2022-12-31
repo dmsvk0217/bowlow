@@ -20,7 +20,7 @@ Order.get = (user_id, cb) => {
 
   db.query(sql, user_id, (err, result) => {
     console.log("🚀 ~ file: order.model.js:22 ~ db.query ~ err", err);
-    console.log("🚀 ~ file: Order.model.js:14 ~ db.query ~ result", result);
+    // console.log("🚀 ~ file: Order.model.js:14 ~ db.query ~ result", result);
     if (err) return cb(err, null);
     return cb(null, result);
   });
@@ -30,7 +30,7 @@ Order.create = (order, cb) => {
   var order = order.map(Object.values);
   console.log("🚀 ~ file: order.model.js:40 ~ order", order);
   const sql =
-    "insert into orders (user_name, user_id, product_id, quantity, date, phone, addressNumber, address, addressDetail, email) values ?";
+    "insert into orders (user_name, user_id, product_id, quantity, order_date, phone, addressNumber, address, addressDetail, email) values ?";
   db.query(sql, [order], (err, result) => {
     console.log("🚀 ~ file: order.model.js:25 ~ db.query ~ err", err);
     console.log("🚀 ~ file: Order.model.js:23 ~ db.query ~ result", result);

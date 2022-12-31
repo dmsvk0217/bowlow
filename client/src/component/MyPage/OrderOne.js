@@ -26,7 +26,7 @@ function OrderOne(props) {
               <button onClick={showModal}>리뷰 작성하기</button>
             </div>
           )}
-          <p>{order?.name}</p>
+          <p>{order?.product_name}</p>
           <p>
             수량<span> : {order?.quantity}</span>
           </p>

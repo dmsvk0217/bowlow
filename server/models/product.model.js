@@ -114,4 +114,31 @@ Product.delete = (id, cb) => {
   });
 };
 
+Product.createReview = (
+  product_id,
+  review_count,
+  review_avg_score,
+  score,
+  cb
+) => {
+  var result_review_avg_score =
+    (parseFloat(score) +
+      parseFloat(review_avg_score) * parseFloat(review_count)) /
+    parseFloat(review_count + 1);
+  console.log("result_review_avg_score : ", result_review_avg_score);
+  const sql =
+    "UPDATE product set review_count=?, review_avg_score=? where id = ?";
+  const sql_object = [
+    review_count + 1,
+    parseFloat(result_review_avg_score),
+    product_id,
+  ];
+  db.query(sql, sql_object, (err, result) => {
+    // console.log("🚀 ~ file: product.model.js:130 ~ db.query ~ result", result);
+    console.log("🚀 ~ file: product.model.js:130 ~ db.query ~ err", err);
+    if (err) return cb(err, null);
+    return cb(null, result);
+  });
+};
+
 module.exports = Product;

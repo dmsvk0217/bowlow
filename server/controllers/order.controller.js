@@ -23,11 +23,9 @@ exports.create = (req, res) => {
 
   const orders = req.body;
   console.log("🚀 ~ file: order.controller.js:25 ~ orders", orders);
-  // console.log("🚀 ~ file: order.controller.js:22 ~ orders", orders);
-  const user_id = req.user.id;
-  // console.log("🚀 ~ file: order.controller.js:24 ~ user_id", user_id);
 
-  //createOrder 역할 :  1) createOrder
+  const user_id = req.user.id;
+
   Order.create(orders, (err, data) => {
     if (err) return res.status(500).json(err);
 

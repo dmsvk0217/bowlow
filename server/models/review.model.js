@@ -18,7 +18,7 @@ Review.get = (user_id, cb) => {
 
   db.query(sql, user_id, (err, result) => {
     console.log("🚀 ~ file: review.model.js:20 ~ db.query ~ err", err);
-    console.log("🚀get ~ file: Review.model.js:36 ~ db.query ~ result", result);
+    // console.log("🚀get ~ file: Review.model.js:36 ~ db.query ~ result", result);
     if (err) return cb(err, null);
     return cb(null, result);
   });
@@ -41,10 +41,10 @@ Review.create = (review, cb) => {
 
   db.query(sql, review, (err, result) => {
     console.log("🚀 ~ file: review.model.js:41 ~ db.query ~ err", err);
-    console.log(
-      "🚀create ~ file: Review.model.js:42 ~ db.query ~ result",
-      result
-    );
+    // console.log(
+    //   "🚀create ~ file: Review.model.js:42 ~ db.query ~ result",
+    //   result
+    // );
     if (err) return cb(err);
     return cb(null, { crateReviewSuccess: true });
   });

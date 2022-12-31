@@ -8,7 +8,7 @@ function GridItem(props) {
     <div className="gridItem">
       <Link to={`/product/${product?.id}`} state={{ type: props.type }}>
         <img src={product?.product_image} alt="img" />
-        <p>[{product?.name}]</p>
+        <p>{product?.product_name}</p>
         <p>KRW [{product?.price}]</p>
       </Link>
     </div>

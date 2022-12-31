@@ -17,10 +17,10 @@ function CartOne(props) {
   return (
     <div className="cart_one">
       <Link to="/">
-        <img src={cart.image} alt="cart_product_image" />
+        <img src={cart.product_image} alt="cart_product_image" />
       </Link>
       <div className="cart_content">
-        <p>{cart.name}</p>
+        <p>{cart.product_name}</p>
         <p>옵션 사이즈 및 색상.</p>
         <p>[수량 선택 옵션 추가]</p>
         <p>KRW {cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>

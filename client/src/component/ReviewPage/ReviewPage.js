@@ -14,7 +14,6 @@ export default function ReviewPage() {
 
   useEffect(() => {
     dispatch(getReviews()).then((response) => {
-      console.log("reviewPAge");
       console.log(response.payload);
       setreviews(response.payload);
     });
@@ -22,7 +21,6 @@ export default function ReviewPage() {
 
   useEffect(() => {
     const getbestReviews = reviews.filter((review) => {
-      console.log("!!!!!");
       return review.isBest == 1;
     });
     setbestReviews(getbestReviews.slice(0, 6));

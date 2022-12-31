@@ -1,3 +1,4 @@
+const Product = require("../models/product.model");
 const Review = require("../models/review.model");
 
 exports.get = (req, res) => {
@@ -44,6 +45,7 @@ exports.create = (req, res) => {
   if (!req.body) {
     return res.status(400).send({ data: "Content can not be empty" });
   }
+  //리뷰 만들고, product의 리뷰개수 +1 및 리뷰 평점 계산
 
   const review = new Review({
     user_id: req.user.id,
@@ -55,15 +57,28 @@ exports.create = (req, res) => {
     like_count: 0,
     isBest: 0,
   });
+  const review_avg_score = req.body.review_avg_score;
+  const product_id = req.body.product_id;
+  const score = req.body.score;
+  const review_count = req.body.review_count;
 
-  console.log("🚀 ~ file: review.controller.js:54 ~ review", review);
+  // console.log("🚀 ~ file: review.controller.js:54 ~ review", review);
 
   Review.create(review, (err, data) => {
     if (err)
       return res
         .status(500)
         .json(data || "Some error occured while creating review");
-    return res.json(data);
+    Product.createReview(
+      product_id,
+      review_count,
+      review_avg_score,
+      score,
+      (err, result) => {
+        if (err) return res.status(500).json(err);
+        return res.json(data);
+      }
+    );
   });
 };
 

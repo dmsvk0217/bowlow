@@ -7,7 +7,7 @@ function reviewReducer(state = [], action) {
     case GET_REVIEWS:
       return payload;
     case CREATE_REVIEW:
-      return [...state, ...payload];
+      return state;
     default:
       return state;
   }
