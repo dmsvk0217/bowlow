@@ -5,6 +5,7 @@ import event from "./event_reducer";
 import product from "./product_reducer";
 import cart from "./cart_reducer";
 import order from "./order_reducer";
+import review from "./review_reducer";
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -13,7 +14,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root", // localStorage key
   storage, // localStorage
-  whitelist: ["user", "notice", "event", "product"], // target (reducer name)
+  whitelist: ["user", "notice", "event", "product", "review"], // target (reducer name)
 };
 
 const rootReducer = combineReducers({
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   product,
   cart,
   order,
+  review,
 });
 
 export default persistReducer(persistConfig, rootReducer);

@@ -3,17 +3,18 @@ const db = require("./db");
 // constructor
 const Product = function (product) {
   this.id = product.id;
-  this.name = product.name;
+  this.product_name = product.product_name;
   this.price = product.price;
-  this.content = product.content;
-  this.image = product.image;
+  this.product_content = product.product_content;
+  this.product_image = product.product_image;
   this.review_count = product.review_count;
   this.review_avg_score = product.review_avg_score;
   this.type = product.type;
   this.category1 = product.category1;
   this.category2 = product.category2;
-  this.date = product.date;
+  this.product_date = product.product_date;
 };
+
 // insert into product values(
 //   null,
 //   "트위스트 루즈 브이넥 니트",

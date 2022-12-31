@@ -5,7 +5,9 @@ exports.get = (req, res) => {
     return res.status(400).send({ data: "Content can not be empty" });
   }
 
-  Review.get((err, data) => {
+  const user_id = req.user.id;
+
+  Review.get(user_id, (err, data) => {
     if (err)
       return res
         .status(500)

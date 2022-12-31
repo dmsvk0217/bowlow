@@ -48,13 +48,14 @@ exports.create = (req, res) => {
   }
 
   const product = new Product({
-    name: req.body.name,
+    product_name: req.body.name,
     price: req.body.price,
-    content: req.body.content,
-    image: req.body.image,
+    product_content: req.body.content,
+    product_image: req.body.image,
     type: req.body.type,
     category1: req.body.category1,
     category2: req.body.category2,
+    product_date: req.body.date,
   });
 
   Product.create(product, (err, data) => {

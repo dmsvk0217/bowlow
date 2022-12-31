@@ -7,7 +7,7 @@ function GridItem(props) {
   return (
     <div className="gridItem">
       <Link to={`/product/${product?.id}`} state={{ type: props.type }}>
-        <img src={product?.image} alt="img" />
+        <img src={product?.product_image} alt="img" />
         <p>[{product?.name}]</p>
         <p>KRW [{product?.price}]</p>
       </Link>

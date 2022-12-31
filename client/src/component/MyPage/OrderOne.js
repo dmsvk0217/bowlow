@@ -18,7 +18,7 @@ function OrderOne(props) {
     <div>
       <div className="order_one">
         <Link to="/">
-          <img src={order?.image} alt="order_product_image" />
+          <img src={order?.product_image} alt="order_product_image" />
         </Link>
         <div className="order_content">
           {type && (

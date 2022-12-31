@@ -15,7 +15,7 @@
   height: 92px;
 }
 .widget_product_name {
-  font-size: 1rem;
+  font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -25,13 +25,13 @@
   word-break: break-word;
   line-height: 1.3rem;
   height: 1.3rem;
-  margin-top: 10px;
+  margin-top: 7px;
   color: #333336;
   font-weight: bold;
 }
 
 .widget_product_price {
-  font-size: 1rem;
+  font-size: 0.8rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -41,7 +41,6 @@
   word-break: break-word;
   line-height: 1.3rem;
   height: 1.3rem;
-  margin-top: 4px;
   color: #91949c;
 }
 

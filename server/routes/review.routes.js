@@ -3,7 +3,7 @@ module.exports = (app) => {
   const reviewController = require("../controllers/review.controller");
   const auth = require("../middleware/auth");
 
-  router.get("/", reviewController.get);
+  router.get("/", auth, reviewController.get);
 
   router.get("/:id", reviewController.findOne);
 
