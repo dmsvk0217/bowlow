@@ -1,16 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 import OrderOne from "../OrderOne";
 import "./ModalBasic.css";
+import { useDispatch } from "react-redux";
+import { createReview } from "../../../_actions/review_action";
+import getTimeString from "../../common/getTimeString";
 
 function ModalBasic(props) {
+  const dispatch = useDispatch();
+
   const setModalOpen = props.setModalOpen;
   const modalOpen = props.modalOpen;
   const position = props.position;
   const orderToReivew = props.orderToReivew;
 
-  const [score, setscore] = useState("");
+  const [score, setscore] = useState(0);
   const [content, setcontent] = useState("");
   const [image, setimage] = useState("");
+
+  const createReviewHandler = () => {
+    const dataTosubmit = {
+      score: score,
+      content: content,
+      image: image,
+      date: getTimeString(),
+      product_id: orderToReivew.product_id,
+    };
+    dispatch(createReview(dataTosubmit)).then((response) => {
+      if (response.payload.crateReviewSuccess) {
+        alert("리뷰가 성공적으로 제출되었습니다.");
+        closeModal();
+        return;
+      }
+      alert("리뷰 제출과정에서 오류가 발생했습니다.");
+      return;
+    });
+  };
 
   // 모달 끄기 (X버튼 onClick 이벤트 핸들러)
   const closeModal = () => {
@@ -52,7 +76,11 @@ function ModalBasic(props) {
       <div className="input_div">
         <p>
           리뷰 점수
-          <select className="score_select">
+          <select
+            className="score_select"
+            value={score}
+            onChange={(e) => setscore(e.target.value)}
+          >
             <option value="0">점수를 선택해 주세요</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -80,7 +108,9 @@ function ModalBasic(props) {
           onChange={(e) => setimage(e.target.value)}
         />
       </div>
-      <button className="modal_button">리뷰 제출하기</button>
+      <button className="modal_button" onClick={createReviewHandler}>
+        리뷰 제출하기
+      </button>
     </div>
   );
 }

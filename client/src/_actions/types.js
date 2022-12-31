@@ -35,3 +35,7 @@ export const DELETE_CART = "delete_cart";
 //order
 export const GET_ORDERS = "get_orders";
 export const CREATE_ORDER = "create_order";
+
+//review
+export const GET_REVIEWS = "get_reviews";
+export const CREATE_REVIEW = "create_review";

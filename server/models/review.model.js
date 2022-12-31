@@ -5,9 +5,9 @@ const Review = function (review) {
   this.user_id = review.user_id;
   this.product_id = review.product_id;
   this.score = review.score;
-  this.content = review.content;
+  this.review_content = review.review_content;
   this.like_count = review.like_count;
-  this.date = review.date;
+  this.review_date = review.review_date;
   this.image = review.image;
   this.isBest = review.isBest;
 };
@@ -35,9 +35,10 @@ Review.findOne = (id, cb) => {
 };
 
 Review.create = (review, cb) => {
-  const sql = "insert into Rrview set ?";
+  const sql = "insert into Review set ?";
 
   db.query(sql, review, (err, result) => {
+    console.log("🚀 ~ file: review.model.js:41 ~ db.query ~ err", err);
     console.log(
       "🚀create ~ file: Review.model.js:42 ~ db.query ~ result",
       result

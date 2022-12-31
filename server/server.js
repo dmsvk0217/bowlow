@@ -18,6 +18,7 @@ require("./routes/user.routes")(app);
 require("./routes/product.routes")(app);
 require("./routes/cart.routes")(app);
 require("./routes/order.routes")(app);
+require("./routes/review.routes")(app);
 require("./routes/notice.routes")(app);
 require("./routes/event.routes")(app);
 

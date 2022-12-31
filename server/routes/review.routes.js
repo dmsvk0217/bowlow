@@ -1,12 +1,13 @@
 module.exports = (app) => {
   const router = require("express").Router();
   const reviewController = require("../controllers/review.controller");
+  const auth = require("../middleware/auth");
 
   router.get("/", reviewController.get);
 
   router.get("/:id", reviewController.findOne);
 
-  router.post("/", reviewController.create);
+  router.post("/", auth, reviewController.create);
 
   router.put("/:id", reviewController.update);
 

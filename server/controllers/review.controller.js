@@ -44,14 +44,17 @@ exports.create = (req, res) => {
   }
 
   const review = new Review({
-    user_id: req.body.user_id,
+    user_id: req.user.id,
     product_id: req.body.product_id,
     score: req.body.score,
-    content: req.body.content,
-    like_count: req.body.like_count,
-    date: req.body.date,
+    review_content: req.body.content,
+    review_date: req.body.date,
     image: req.body.image,
+    like_count: 0,
+    isBest: 0,
   });
+
+  console.log("🚀 ~ file: review.controller.js:54 ~ review", review);
 
   Review.create(review, (err, data) => {
     if (err)
