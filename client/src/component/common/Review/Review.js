@@ -16,7 +16,7 @@ function Review(props) {
 
           <div className="reviewContent">{review.review_content}</div>
           <div className="writerAndDate">
-            {review.name} {review.review_date}
+            {review.user_name} {review.review_date}
           </div>
         </div>
         <div className="product">

@@ -12,11 +12,11 @@ const Review = function (review) {
   this.isBest = review.isBest;
 };
 
-Review.get = (user_id, cb) => {
+Review.get = (cb) => {
   const sql =
-    "select * from review left join product on product.id = review.product_id where review.user_id=?";
+    "select * from review left join product on product.id = review.product_id";
 
-  db.query(sql, user_id, (err, result) => {
+  db.query(sql, (err, result) => {
     console.log("🚀 ~ file: review.model.js:20 ~ db.query ~ err", err);
     // console.log("🚀get ~ file: Review.model.js:36 ~ db.query ~ result", result);
     if (err) return cb(err, null);
