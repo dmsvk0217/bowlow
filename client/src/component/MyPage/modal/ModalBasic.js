@@ -12,7 +12,6 @@ function ModalBasic(props) {
 
   const setModalOpen = props.setModalOpen;
   const modalOpen = props.modalOpen;
-  const position = props.position;
   const orderToReivew = props.orderToReivew;
 
   const [score, setscore] = useState(0);

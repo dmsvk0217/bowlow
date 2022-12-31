@@ -4,7 +4,7 @@ import "./ReviewPage.css";
 import ReviewText from "../common/Review/ReviewText";
 import { useDispatch } from "react-redux";
 import { getReviews } from "../../_actions/review_action";
-import ModalBasic from "../MyPage/modal/ModalBasic";
+import ReviewModal from "./ReviewModal";
 
 export default function ReviewPage() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function ReviewPage() {
   const [photoReviews, setphotoReviews] = useState([]);
   const [textReviews, settextReviews] = useState([]);
 
-  const [orderToReivew, setorderToReivew] = useState(0);
+  const [modalReview, setmodalReview] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -42,58 +42,54 @@ export default function ReviewPage() {
   }, [reviews]);
 
   return (
-    <div className="container">
-      <div className="content">
-        {modalOpen && (
-          <ModalBasic
-            modalOpen={modalOpen}
-            setModalOpen={setModalOpen}
-            position={window.scrollY}
-            orderToReivew={orderToReivew}
-          />
-        )}
-        <div className="Review__title">Best Review</div>
-        <div className="marginDiv50"></div>
-        <div className="grid3">
-          {/* 6개 */}
-          {bestReviews.map((review, index) => (
-            <Review
-              key={index}
-              review={review}
-              setorderToReivew={setorderToReivew}
-              setModalOpen={setModalOpen}
-            />
+    <>
+      {modalOpen && (
+        <ReviewModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          modalReview={modalReview}
+        />
+      )}
+      <div className="container">
+        <div className="content">
+          <div className="Review__title">Best Review</div>
+          <div className="marginDiv50"></div>
+          <div className="grid3">
+            {/* 6개 */}
+            {bestReviews.map((review, index) => (
+              <Review
+                key={index}
+                review={review}
+                setmodalReview={setmodalReview}
+                setModalOpen={setModalOpen}
+              />
+            ))}
+          </div>
+          <div className="marginDiv80"></div>
+          <div className="marginDiv50"></div>
+          <div className="Review__title">Photo Review</div>
+          <div className="marginDiv50"></div>
+          <div className="grid4">
+            {/* 8개 */}
+            {photoReviews.map((review, index) => (
+              <Review
+                key={index}
+                review={review}
+                setmodalReview={setmodalReview}
+                setModalOpen={setModalOpen}
+              />
+            ))}
+          </div>
+          <div className="marginDiv50"></div>
+          <div className="marginDiv80"></div>
+          <div className="Review__title">Review</div>
+          <div className="marginDiv50"></div>
+          {/* 4개 */}
+          {textReviews.map((review, index) => (
+            <ReviewText key={index} review={review} />
           ))}
         </div>
-        <div className="marginDiv80"></div>
-        <div className="marginDiv50"></div>
-        <div className="Review__title">Photo Review</div>
-        <div className="marginDiv50"></div>
-        <div className="grid4">
-          {/* 8개 */}
-          {photoReviews.map((review, index) => (
-            <Review
-              key={index}
-              review={review}
-              setorderToReivew={setorderToReivew}
-              setModalOpen={setModalOpen}
-            />
-          ))}
-        </div>
-        <div className="marginDiv50"></div>
-        <div className="marginDiv80"></div>
-        <div className="Review__title">Review</div>
-        <div className="marginDiv50"></div>
-        {/* 4개 */}
-        {textReviews.map((review, index) => (
-          <ReviewText
-            key={index}
-            review={review}
-            setorderToReivew={setorderToReivew}
-            setModalOpen={setModalOpen}
-          />
-        ))}
       </div>
-    </div>
+    </>
   );
 }

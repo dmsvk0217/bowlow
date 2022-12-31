@@ -5,6 +5,10 @@
   border: 1px solid lightgray;
 }
 
+.modal_go_button {
+  text-align: start;
+}
+
 .reviewAndProductContainer {
   padding: 13px;
 }
@@ -24,7 +28,6 @@
   height: 33px;
   /* 특정 단위로 텍스트를 자르기 위한 구문 */
   white-space: normal;
-  display: -webkit-box;
   -webkit-line-clamp: 2; /* 텍스트를 자를 때 원하는 단위 ex) 3줄 */
   -webkit-box-orient: vertical;
   overflow: hidden;

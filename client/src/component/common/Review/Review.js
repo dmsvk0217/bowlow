@@ -5,17 +5,17 @@ function Review(props) {
   const review = props.review;
 
   const setModalOpen = props.setModalOpen;
-  const setorderToReivew = props.setorderToReivew;
+  const setmodalReview = props.setmodalReview;
 
   // 클릭했을때 모달창 노출
   const showModal = () => {
-    setorderToReivew(review);
+    setmodalReview(review);
     setModalOpen(true);
   };
 
   return (
     <div className="reviewContainer">
-      <button onClick={showModal}>
+      <button className="modal_go_button" onClick={showModal}>
         <img className="review__image" src={review.image} alt={review.image} />
         <div className="reviewAndProductContainer">
           <div className="review">

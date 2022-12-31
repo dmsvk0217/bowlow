@@ -55,6 +55,10 @@ button {
   margin-bottom: 20px;
 }
 
+.margin_div10 {
+  margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 900px) {
   .content {
     margin: 75px auto 0px;

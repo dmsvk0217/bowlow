@@ -14,7 +14,7 @@ const Review = function (review) {
 
 Review.get = (cb) => {
   const sql =
-    "select * from review left join product on product.id = review.product_id";
+    "select * from review left join product on product.id = review.product_id ORDER BY review_date;";
 
   db.query(sql, (err, result) => {
     console.log("🚀 ~ file: review.model.js:20 ~ db.query ~ err", err);
