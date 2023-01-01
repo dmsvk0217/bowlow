@@ -46,9 +46,9 @@ function App() {
         {/* product */}
         <Route path="/product/:id" element={<AuthProductDetailPage />} />
         <Route path="/" element={<AuthLandingPage />} />
-        <Route path="/bowul" element={<AuthBowulPage />} />
-        <Route path="/newArrivals" element={<AuthNewArrivalsPage />} />
-        <Route path="/bestItem" element={<AuthBestItemPage />} />
+        <Route path="/bowul" element={<AuthShop />} />
+        <Route path="/newArrivals" element={<AuthShop />} />
+        <Route path="/bestItem" element={<AuthShop />} />
         <Route path="/shop" element={<AuthShop />} />
         {/* cart */}
         <Route path="/cart" element={<AuthCartPage />} />

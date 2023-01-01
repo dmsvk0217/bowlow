@@ -5,6 +5,10 @@
   padding-left: 5%;
 }
 
+.final_text {
+  text-align: right;
+}
+
 .total_right .total_div {
   border-top: 1px solid black;
   border-bottom: 1px solid black;

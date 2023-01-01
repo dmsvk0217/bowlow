@@ -3,11 +3,11 @@ module.exports = (app) => {
 
   var router = require("express").Router();
 
-  router.get("/:type", productController.get);
+  router.post("/", productController.get);
 
   router.get("/:id", productController.findOne);
 
-  router.post("/", productController.create);
+  // router.post("/", productController.create);
 
   router.put("/:id", productController.update);
 

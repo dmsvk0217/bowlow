@@ -57,10 +57,14 @@ function ProductDetailPage() {
         //그런데 두 작업을 묶어서 하나가 취소될경우 되돌릴 수 있도록 바꿔야 할 듯함.
         dispatch(addCountUser());
         if (type == 1)
-          return alert(`${product.name}이 장바구니에 성공적으로 담겼습니다.`);
+          return alert(
+            `${product.product_name}이 장바구니에 성공적으로 담겼습니다.`
+          );
         if (type == 2) return navigate("/cart", { replace: false });
       } else {
-        return alert(`${product.name}을 장바구니에 담는데 실패했습니다.`);
+        return alert(
+          `${product.product_name}을 장바구니에 담는데 실패했습니다.`
+        );
       }
     });
   };

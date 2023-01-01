@@ -6,9 +6,9 @@ import {
   DELETE_PRODUCT,
 } from "./types";
 
-export function getProduct(getType) {
+export function getProduct(submitTodata) {
   const requset = axios
-    .get(`/api/product/${getType}`, { withCredentials: true })
+    .post(`/api/product/`, submitTodata, { withCredentials: true })
     .then((response) => {
       return response.data;
     });

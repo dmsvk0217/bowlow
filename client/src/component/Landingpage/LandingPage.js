@@ -14,11 +14,15 @@ function LandingPage() {
 
   useEffect(() => {
     const type = 0;
-    dispatch(getProduct(type)).then((response) => {
-      const products = response.payload;
-      setnewArrivalesProducts(products.filter((product) => product.type == 2));
-      setBestProducts(products.filter((product) => product.type == 3));
-    });
+    dispatch(getProduct({ type: type, category1: 0, category2: 0 })).then(
+      (response) => {
+        const products = response.payload;
+        setnewArrivalesProducts(
+          products.filter((product) => product.type == 2)
+        );
+        setBestProducts(products.filter((product) => product.type == 3));
+      }
+    );
   }, []);
   return (
     <div className="landing">

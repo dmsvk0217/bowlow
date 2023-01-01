@@ -41,20 +41,42 @@ const Product = function (product) {
 // KRW 134,900
 
 //추가적인 category1,2 별 분류를 통한 초기 로딩 시간 줄이기 및 최적화 요.
-Product.get = (type, cb) => {
-  console.log("🚀 ~ file: product.model.js:43 ~ type", type);
+Product.get = (data, cb) => {
+  console.log("🚀 ~ file: product.model.js:43 ~ data", data);
+  const type = data.type;
+  const category1 = data.category1;
+  const category2 = data.category2;
 
-  let sql = "SELECT * FROM product where type=?";
-  const sql_object = [type];
+  let sql = "SELECT * FROM product";
+  let sql_object;
 
+  //type 0,1,2,3은 type으로만 select
+  if (type != 4) sql += " where type=?";
   if (type == 0) {
-    sql += " or type=?";
-    sql_object.pop();
-    sql_object.push(2);
-    sql_object.push(3);
+    sql += " OR type =?";
+    sql_object = [2, 3];
+  }
+  if (type == 1) sql_object = [1];
+  if (type == 2) sql_object = [2];
+  if (type == 3) sql_object = [3];
+
+  //type4는 category1,2로만 select
+  if (type == 4) {
+    //대분류
+    if (category2 == 0) {
+      sql += " where category1 = ?";
+      sql_object = [category1];
+    }
+    //소분류
+    else {
+      sql += " where category1 = ? AND category2 = ?";
+      sql_object = [category1, category2];
+    }
   }
 
   db.query(sql, sql_object, (err, result) => {
+    console.log("🚀 ~ file: product.model.js:78 ~ db.query ~ result", result);
+    console.log("🚀 ~ file: product.model.js:78 ~ db.query ~ err", err);
     if (err) return cb(err, null);
     return cb(null, result);
   });

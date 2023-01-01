@@ -79,46 +79,184 @@ function Navbar() {
         onMouseOut={shopNavBarOutHandler}
       >
         <ul className="shopNavbar__menu">
-          <li className="bold">bowlow Made</li>
-          <li className="bold">당일발송</li>
-          <li className="bold">머슬핏</li>
+          <li className="bold">
+            <Link to="/shop" state={{ type: 4, category1: 1, category2: 0 }}>
+              bowlow Made
+            </Link>
+          </li>
+          <li className="bold">
+            <Link to="/shop" state={{ type: 4, category1: 2, category2: 0 }}>
+              당일발송
+            </Link>
+          </li>
+          <li className="bold">
+            <Link to="/shop" state={{ type: 4, category1: 3, category2: 0 }}>
+              머슬핏
+            </Link>
+          </li>
           <li>
             <ul className="shopNavbar__menu__sub">
-              <li className="bold">아우터</li>
-              <li>자켓</li>
-              <li>점퍼</li>
-              <li>코트</li>
-              <li>가디건</li>
+              <li className="bold">
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 4, category2: 0 }}
+                >
+                  아우터
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 4, category2: 1 }}
+                >
+                  자켓
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 4, category2: 2 }}
+                >
+                  점퍼
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 4, category2: 3 }}
+                >
+                  코트
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 4, category2: 4 }}
+                >
+                  가디건
+                </Link>
+              </li>
             </ul>
           </li>
           <li>
             <ul className="shopNavbar__menu__sub">
-              <li className="bold">상의</li>
-              <li>티셔츠</li>
-              <li>니트웨어</li>
-              <li>셔츠</li>
-              <li>스웻셔츠&후드</li>
+              <li className="bold">
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 5, category2: 0 }}
+                >
+                  상의
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 5, category2: 1 }}
+                >
+                  티셔츠
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 5, category2: 2 }}
+                >
+                  니트웨어
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 5, category2: 3 }}
+                >
+                  셔츠
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 5, category2: 4 }}
+                >
+                  스웻셔츠&후드
+                </Link>
+              </li>
             </ul>
           </li>
           <li>
             <ul className="shopNavbar__menu__sub">
-              <li className="bold">하의</li>
-              <li>슬랙스</li>
-              <li>데님</li>
-              <li>코튼팬츠</li>
-              <li>트레이닝</li>
-              <li>하프팬츠</li>
+              <li className="bold">
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 6, category2: 0 }}
+                >
+                  하의
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 6, category2: 1 }}
+                >
+                  슬랙스
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 6, category2: 2 }}
+                >
+                  데님
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 6, category2: 3 }}
+                >
+                  코튼팬츠
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 6, category2: 4 }}
+                >
+                  트레이닝
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  state={{ type: 4, category1: 6, category2: 5 }}
+                >
+                  하프팬츠
+                </Link>
+              </li>
             </ul>
           </li>
-          <li className="bold">셋업</li>
-          <li className="bold">슈즈&장화</li>
-          <li className="bold">실버 925</li>
+          <li className="bold">
+            <Link to="/shop" state={{ type: 4, category1: 7, category2: 0 }}>
+              셋업
+            </Link>
+          </li>
+          <li className="bold">
+            <Link to="/shop" state={{ type: 4, category1: 8, category2: 0 }}>
+              슈즈&장화
+            </Link>
+          </li>
+          <li className="bold">
+            <Link to="/shop" state={{ type: 4, category1: 9, category2: 0 }}>
+              실버 925
+            </Link>
+          </li>
         </ul>
       </div>
       <nav className="navbar" ref={navBar}>
         <div className="navbar__top">
           <div className="navbar__top__logo">
-            <Link to="/">BOWLOW</Link>
+            <Link to="/" state={{ type: 0, category1: 0, category2: 0 }}>
+              BOWLOW
+            </Link>
           </div>
           <ul className="navbar__top__middleMenu">
             <li className="nabar__top__middleMune__item">
@@ -159,13 +297,25 @@ function Navbar() {
 
         <ul className="navbar__bottom">
           <li className="bottom_navbar_item">
-            <Link to="/bowul">BOWUL</Link>
+            <Link to="/bowul" state={{ type: 1, category1: 0, category2: 0 }}>
+              BOWUL
+            </Link>
           </li>
           <li className="bottom_navbar_item">
-            <Link to="/newArrivals">NEW ARRIVALS</Link>
+            <Link
+              to="/newArrivals"
+              state={{ type: 2, category1: 0, category2: 0 }}
+            >
+              NEW ARRIVALS
+            </Link>
           </li>
           <li className="bottom_navbar_item">
-            <Link to="/bestItem">BEST ITEM</Link>
+            <Link
+              to="/bestItem"
+              state={{ type: 3, category1: 0, category2: 0 }}
+            >
+              BEST ITEM
+            </Link>
           </li>
           <li className="bottom_navbar_item">
             <div

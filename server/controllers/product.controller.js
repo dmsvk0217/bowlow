@@ -6,10 +6,9 @@ exports.get = (req, res) => {
     return res.status(400).send({ data: "Content can not be empty" });
   }
 
-  const type = req.params.type;
-  console.log("🚀 ~ file: product.controller.js:10 ~ type", type);
+  console.log("🚀 ~ file: product.controller.js:6 ~ req.body", req.body);
 
-  Product.get(type, (err, data) => {
+  Product.get(req.body, (err, data) => {
     if (err)
       return res
         .status(500)

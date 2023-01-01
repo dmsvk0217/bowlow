@@ -77,7 +77,7 @@ function TotalRight(props) {
         </div>
       </div>
       <p className="final_text">카드 결제 최종결제 금액</p>
-      <h2 className="final_price">
+      <h2 className="final_text">
         <span>
           KRW {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </span>
