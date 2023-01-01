@@ -40,3 +40,7 @@
   font-weight: 300;
   margin-top: 5px;
 }
+
+.login_submit {
+  height: 50px;
+}

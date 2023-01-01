@@ -4,13 +4,16 @@ import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../_actions/user_action";
-import { getCarts } from "../../_actions/cart_action";
 
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  //오류메시지 상태저장
+  const [emailMessage, setEmailMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
   const [alramText, setalramText] = useState("");
 
   const loginHandler = () => {
@@ -53,21 +56,28 @@ function LoginPage() {
           </p>
         </div>
         <div className="login_body">
-          <UserInput
-            name="Email address"
-            data={email}
-            setData={setEmail}
-            placeholder="Email Address"
-          />
-          <UserInput
-            name="Password"
-            data={password}
-            setData={setPassword}
-            placeholder="Password"
-            type="password"
-          />
-          <button onClick={loginHandler}>Submit</button>
-          <p>{alramText}</p>
+          <div className="text_form">
+            <UserInput
+              name="Email address"
+              data={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email Address"
+            />
+          </div>
+          <div className="text_form">
+            <UserInput
+              name="Password"
+              data={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              type="password"
+            />
+          </div>
+
+          <div className="login_submit">
+            <button onClick={loginHandler}>Submit</button>
+            <p>{alramText}</p>
+          </div>
           <p className="login_bottom">
             Forgot <Link to="#">password?</Link>
           </p>

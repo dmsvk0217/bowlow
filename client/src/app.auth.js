@@ -7,9 +7,6 @@ import LoginPage from "./component/LoginPage/LoginPage";
 import MyPage from "./component/MyPage/MyPage";
 
 //product type + detail
-import BowulPage from "./component/BowulPage/BowulPage";
-import NewArrivalsPage from "./component/NewArrivalsPage/NewArrivalsPage";
-import BestItemPage from "./component/BestItemPage/BestItemPage";
 import Shop from "./component/Shop/Shop";
 import ProductDetailPage from "./component/ProductPage/ProductDetailPage";
 
@@ -39,9 +36,6 @@ export const AuthRegisterPage = Auth(RegisterPage, false);
 export const AuthMyPage = Auth(MyPage, true);
 
 //product type + detail
-export const AuthBowulPage = Auth(BowulPage, null);
-export const AuthNewArrivalsPage = Auth(NewArrivalsPage, null);
-export const AuthBestItemPage = Auth(BestItemPage, null);
 export const AuthShop = Auth(Shop, null);
 export const AuthProductDetailPage = Auth(ProductDetailPage, null);
 

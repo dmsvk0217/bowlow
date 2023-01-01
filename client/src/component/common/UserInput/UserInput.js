@@ -6,10 +6,7 @@ function UserInput(props) {
   const placeholder = props.placeholder;
   const type = props.type;
   const data = props.data;
-
-  const textHandler = (e) => {
-    props.setData(e.currentTarget.value);
-  };
+  const onChange = props.onChange;
 
   return (
     <div className="userInput">
@@ -18,7 +15,7 @@ function UserInput(props) {
         type={type}
         value={data}
         placeholder={placeholder}
-        onChange={textHandler}
+        onChange={onChange}
       />
     </div>
   );

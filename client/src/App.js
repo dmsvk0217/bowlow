@@ -9,9 +9,6 @@ import ScrollToTop from "./component/ScrollToTop";
 
 import {
   AuthLandingPage,
-  AuthBowulPage,
-  AuthNewArrivalsPage,
-  AuthBestItemPage,
   AuthShop,
   AuthCartPage,
   AuthProductDetailPage,
