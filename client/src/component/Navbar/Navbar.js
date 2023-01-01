@@ -13,7 +13,9 @@ function Navbar() {
   const getCartCount = useSelector((state) => state.user.cart_count);
   const positionChange = useRef();
   const opacityChange = useRef();
-  const navBarChange = useRef();
+  const shop = useRef();
+  const shopNavbar = useRef();
+  const navBar = useRef();
 
   const [cart_count, setcart_count] = useState(0);
 
@@ -49,9 +51,71 @@ function Navbar() {
       });
   };
 
+  const shopOverHandler = () => {
+    shopNavbar.current.style =
+      "z-index:2; display:block; background-color:white;";
+  };
+  const shopOutHandler = () => {
+    shopNavbar.current.style =
+      "z-index:-1; display:none; background-color:none";
+  };
+  const shopNavBarOverHandler = () => {
+    shopNavbar.current.style =
+      "z-index:2; display:block; background-color:white;";
+    navBar.current.style = "background-color:white";
+  };
+  const shopNavBarOutHandler = () => {
+    shopNavbar.current.style =
+      "z-index:-1; display:none; background-color:none";
+    navBar.current.style = "background-color:none";
+  };
+
   return (
-    <>
-      <nav className="navbar" ref={navBarChange}>
+    <div>
+      <div
+        className="shopNavbar"
+        ref={shopNavbar}
+        onMouseOver={shopNavBarOverHandler}
+        onMouseOut={shopNavBarOutHandler}
+      >
+        <ul className="shopNavbar__menu">
+          <li className="bold">bowlow Made</li>
+          <li className="bold">당일발송</li>
+          <li className="bold">머슬핏</li>
+          <li>
+            <ul className="shopNavbar__menu__sub">
+              <li className="bold">아우터</li>
+              <li>자켓</li>
+              <li>점퍼</li>
+              <li>코트</li>
+              <li>가디건</li>
+            </ul>
+          </li>
+          <li>
+            <ul className="shopNavbar__menu__sub">
+              <li className="bold">상의</li>
+              <li>티셔츠</li>
+              <li>니트웨어</li>
+              <li>셔츠</li>
+              <li>스웻셔츠&후드</li>
+            </ul>
+          </li>
+          <li>
+            <ul className="shopNavbar__menu__sub">
+              <li className="bold">하의</li>
+              <li>슬랙스</li>
+              <li>데님</li>
+              <li>코튼팬츠</li>
+              <li>트레이닝</li>
+              <li>하프팬츠</li>
+            </ul>
+          </li>
+          <li className="bold">셋업</li>
+          <li className="bold">슈즈&장화</li>
+          <li className="bold">실버 925</li>
+        </ul>
+      </div>
+      <nav className="navbar" ref={navBar}>
         <div className="navbar__top">
           <div className="navbar__top__logo">
             <Link to="/">BOWLOW</Link>
@@ -104,10 +168,19 @@ function Navbar() {
             <Link to="/bestItem">BEST ITEM</Link>
           </li>
           <li className="bottom_navbar_item">
-            <Link to="/shop">SHOP</Link>
+            <div
+              className="shop_hover"
+              ref={shop}
+              onMouseOver={shopOverHandler}
+              onMouseOut={shopOutHandler}
+            >
+              SHOP
+            </div>
           </li>
         </ul>
       </nav>
+
+      {/* mobile__menu */}
       <div ref={positionChange} className="mobile__menu">
         <ul className="mobile__menu__section__1">
           <li className="mobile__menu__section__1__item">
@@ -160,7 +233,7 @@ function Navbar() {
         ref={opacityChange}
         onClick={menuOffHandler}
       ></div>
-    </>
+    </div>
   );
 }
 
