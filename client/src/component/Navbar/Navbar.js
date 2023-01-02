@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Navber.css";
 import axios from "axios";
 import { initCountUser } from "../../_actions/user_action";
+import e from "connect-flash";
 
 function Navbar() {
   const isAuth = useSelector((state) => state.user.userData.isAuth);
@@ -68,6 +69,13 @@ function Navbar() {
     shopNavbar.current.style =
       "z-index:-1; display:none; background-color:none";
     navBar.current.style = "background-color:none";
+  };
+
+  const authHandler = () => {
+    if (!isAuth) {
+      alert("로그인이 필요한 페이지입니다.");
+      return navigate("/login", { replace: false });
+    }
   };
 
   return (
@@ -269,7 +277,7 @@ function Navbar() {
               <Link to="/review">리뷰</Link>
             </li>
             <li className="nabar__top__middleMune__item">
-              <Link to="/myPage">마이 페이지</Link>
+              <button onClick={authHandler}>마이 페이지</button>
             </li>
           </ul>
           <ul className="navbar__top__sideMenu">
@@ -284,10 +292,10 @@ function Navbar() {
               )}
             </li>
             <li className="navbar__top__sideMenu__item">
-              <Link to="/cart">
+              <button onClick={authHandler}>
                 장바구니
                 {isAuth == true ? <span> {cart_count}</span> : <span></span>}
-              </Link>
+              </button>
             </li>
           </ul>
           <Link to="#" className="menu" onClick={menuOnHandler}>
@@ -340,10 +348,10 @@ function Navbar() {
             <Link to="/login">로그인</Link>
           </li>
           <li className="mobile__menu__section__1__item">
-            <Link to="/cart">장바구니</Link>
+            <button onClick={authHandler}>장바구니</button>
           </li>
           <li className="mobile__menu__section__1__item">
-            <Link to="/myPage">마이 페이지</Link>
+            <button onClick={authHandler}>마이 페이지</button>
           </li>
         </ul>
 

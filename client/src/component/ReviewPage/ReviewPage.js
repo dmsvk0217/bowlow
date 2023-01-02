@@ -22,13 +22,6 @@ export default function ReviewPage() {
       setreviews(response.payload);
     });
   }, []);
-  //스크롤 위치 가져오기
-  useEffect(() => {
-    window.addEventListener("scroll", () => {});
-    return () => {
-      window.removeEventListener("scroll", () => {});
-    };
-  }, []);
 
   useEffect(() => {
     const getbestReviews = reviews.filter((review) => {
@@ -40,6 +33,14 @@ export default function ReviewPage() {
     const gettextReviews = reviews.filter((review) => review.image == null);
     settextReviews(gettextReviews.slice(0, 4));
   }, [reviews]);
+
+  //스크롤 위치 가져오기
+  useEffect(() => {
+    window.addEventListener("scroll", () => {});
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
 
   return (
     <>

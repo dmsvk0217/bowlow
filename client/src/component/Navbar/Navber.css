@@ -22,6 +22,7 @@
 }
 
 .nabar__top__middleMune__item a,
+.navbar button,
 .navbar__top__sideMenu__item a {
   color: #111;
   font-size: 12px;
@@ -38,7 +39,9 @@
 .mobile__menu li {
   list-style: none;
 }
+
 .navbar a,
+.navbar button,
 .mobile__menu a {
   text-decoration: none;
   color: black;
