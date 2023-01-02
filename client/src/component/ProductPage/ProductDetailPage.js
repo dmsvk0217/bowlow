@@ -12,7 +12,7 @@ function ProductDetailPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const Producttype = location.state?.type;
-  const user_id = useSelector((state) => state.user.userData.user.id);
+  const user_id = useSelector((state) => state.user.userData.user?.id);
   const getProduct = useSelector((state) =>
     state.product.find((product) => {
       return product.id == id;
@@ -34,6 +34,10 @@ function ProductDetailPage() {
   }, [getProduct, user_id, type]);
 
   const addCartHandler = (type, e) => {
+    if (!user_id) {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate("/login", { replace: false });
+    }
     const today = new Date();
     let time = {
       year: today.getFullYear(), //현재 년도

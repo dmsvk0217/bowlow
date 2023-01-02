@@ -7,6 +7,7 @@ import { deleteEvent } from "../../_actions/event_action";
 function EventDatail() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user_id = useSelector((state) => state.user.userData.user?.id);
   const id = useParams().id;
   const getEvent = useSelector((state) =>
     state.event.find((event) => event.id == id)
@@ -28,8 +29,12 @@ function EventDatail() {
     <div className="container">
       <div className="content">
         <div className="createBtn">
-          <Link to={`/event/update/${event?.id}`}>수정하기</Link>
-          <Link onClick={deleteHandler}>삭제하기</Link>
+          {user_id && (
+            <>
+              <Link to={`/event/update/${event?.id}`}>수정하기</Link>
+              <Link onClick={deleteHandler}>삭제하기</Link>
+            </>
+          )}
         </div>
         <div className="event_top">
           <div className="event_title">{event?.title}</div>

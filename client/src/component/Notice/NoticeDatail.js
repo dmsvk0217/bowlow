@@ -9,6 +9,7 @@ function NoticeDatail(props) {
   const dispatch = useDispatch();
   const id = useParams().id;
   const [notice, setnotice] = useState(null);
+  const user_id = useSelector((state) => state.user.userData.user?.id);
 
   const getNotice = useSelector((state) =>
     state.notice.find((notice) => notice.id == id)
@@ -16,10 +17,6 @@ function NoticeDatail(props) {
 
   useEffect(() => {
     setnotice(getNotice);
-    console.log("--------useEffect on getNotice-------");
-    console.log("getNotice : ", getNotice);
-    console.log("Notice : ", notice);
-    console.log("---------------------------------");
   }, [getNotice]);
 
   const deleteHandler = (event) => {
@@ -33,8 +30,12 @@ function NoticeDatail(props) {
     <div className="container">
       <div className="content">
         <div className="createBtn">
-          <Link to={`/notice/update/${notice?.id}`}>수정하기</Link>
-          <Link onClick={deleteHandler}>삭제하기</Link>
+          {user_id && (
+            <>
+              <Link to={`/notice/update/${notice?.id}`}>수정하기</Link>
+              <Link onClick={deleteHandler}>삭제하기</Link>
+            </>
+          )}
         </div>
         <div className="notice_top">
           <div className="notice_title">{notice?.title}</div>

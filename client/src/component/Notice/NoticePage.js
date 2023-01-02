@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import NoticeComponent from "../common/List/NoticeComponent";
 import "./NoticePage.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getNotices } from "../../_actions/notice_action";
 import { Link } from "react-router-dom";
 
 function NoticePage() {
   const [notices, setnotices] = useState(null);
+  const user_id = useSelector((state) => state.user.userData.user?.id);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function NoticePage() {
       <div className="marginDiv80"></div>
       <div className="content">
         <div className="createBtn">
-          <Link to="./create">글쓰기</Link>
+          {user_id && <Link to="./create">글쓰기</Link>}
         </div>
         <ul>
           <li className="topList">
