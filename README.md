@@ -68,6 +68,8 @@
 - 컴포넌트 최적화 (notice event component 등)
 - 장바구니 추가기능과 리뷰 추가기능에 대한 트렌젝션처리
 - type/category별 제품탐색 시 usememo와 redux를 활용한 딜레이 최적화 작업
+- passport facebook,google auth 연동
+- 상품페이지 silder바 구현
 
 ---
 
