@@ -26,9 +26,9 @@
 
 |로그인 및 회원가입 기능|카테고리 별 제품보기|
 |------|---|
-|fff|ㅏㅏㅏ|
+|![Kapture 2023-01-03 at 06 26 17](https://user-images.githubusercontent.com/116181378/210304145-4dc84c86-cc2a-4526-83f1-c74a814bd4fe.gif)|![Kapture 2023-01-03 at 06 18 57](https://user-images.githubusercontent.com/116181378/210303709-2960cd51-2eda-4325-b982-a534b1cce72b.gif)|
 |공지사항 및 이벤트 페이지|장바구니 기능|
-|로그|카테|
+|![Kapture 2023-01-03 at 06 22 44](https://user-images.githubusercontent.com/116181378/210304003-30a403f8-bb6c-4a5d-9ffe-fa27e8445693.gif) |![Kapture 2023-01-03 at 06 21 11](https://user-images.githubusercontent.com/116181378/210303802-cb771bc0-64f8-4d4b-8327-a46736f1037f.gif)|
 |주문 기능|리뷰 작성 및 조회 기능|
 |![Kapture 2023-01-03 at 05 41 59](https://user-images.githubusercontent.com/116181378/210302818-9a6cdf49-23f6-410f-ab6c-9a1a74bebffa.gif)|![Kapture 2023-01-03 at 05 56 52](https://user-images.githubusercontent.com/116181378/210303313-6686e802-f8b2-4a63-a93f-c1bcaf58d822.gif)|
 
