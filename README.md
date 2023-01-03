@@ -61,7 +61,7 @@
 
 ## 5. 📂 업데이트 내역
 
-- ver1 완료-최소 기능구현 (23.01.01 )
+- ver1 완료- 기본 기능구현 (23.01.01)
 
 ---
 
@@ -78,6 +78,7 @@
 - type/category별 제품탐색 시 usememo와 redux를 활용한 딜레이 최적화 작업
 - passport facebook,google auth 연동
 - 상품페이지 silder바 구현
+- 리뷰페이지 평점 별표 아이콘 추가
 
 ---
 
