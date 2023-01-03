@@ -25,7 +25,7 @@
 - 주문한 제품에 대한 리뷰를 작성할 수 있습니다.
 
 |로그인 및 회원가입 기능|카테고리 별 제품보기|
-|------|---|
+|:--:|:--:|
 |![Kapture 2023-01-03 at 06 26 17](https://user-images.githubusercontent.com/116181378/210304145-4dc84c86-cc2a-4526-83f1-c74a814bd4fe.gif)|![Kapture 2023-01-03 at 06 18 57](https://user-images.githubusercontent.com/116181378/210303709-2960cd51-2eda-4325-b982-a534b1cce72b.gif)|
 |공지사항 및 이벤트 페이지|장바구니 기능|
 |![Kapture 2023-01-03 at 06 22 44](https://user-images.githubusercontent.com/116181378/210304003-30a403f8-bb6c-4a5d-9ffe-fa27e8445693.gif) |![Kapture 2023-01-03 at 06 21 11](https://user-images.githubusercontent.com/116181378/210303802-cb771bc0-64f8-4d4b-8327-a46736f1037f.gif)|
