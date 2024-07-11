@@ -1,6 +1,6 @@
 # 1. BOWLOW
 
-남성 쇼핑몰 [Bowlow](https://bowlow.co.kr/) 웹사이트 클론 프로젝트입니다
+남성 쇼핑몰 [Bowlow](https://bowlow.co.kr/) 웹사이트 클론 프로젝트입니다.
 
 ---
 
